@@ -5,7 +5,8 @@ package com.elife.beans;
  *         博客 http://blog.csdn.net/wgyscsf</n>
  * 
  */
-//
+// 权威的网球的
+// 卧槽。。。
 public class Demo {
 	private String sDemo;
 
