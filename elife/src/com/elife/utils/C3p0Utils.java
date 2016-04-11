@@ -8,7 +8,10 @@ import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-
+/**
+ * @author 高远</n> 邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
+ *         编写时期 2016-3-23 上午10:46:25
+ */
 //hello Git
 public class C3p0Utils {
 	private static ComboPooledDataSource cpds = null;

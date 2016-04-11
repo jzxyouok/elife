@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.elife.utils.ParamUtils;
 
-
+/**
+ * @author 高远</n> 编写时期 2016-4-11 上午10:06:38</n> TODO:关于不同用户访问页面权限的控制</n>
+ * 
+ */
 public class AccessFilter implements Filter {
 	// private static final String TAG = "AccessFilter";
 	private static final String PATH = "/config/access";

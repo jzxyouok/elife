@@ -3,7 +3,10 @@ package com.elife.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * @author 高远 2015-6-3 下午6:24:36
+ * 
+ */
 public class DateUtils {
 
 	/*
