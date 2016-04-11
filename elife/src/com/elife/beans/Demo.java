@@ -5,6 +5,7 @@ package com.elife.beans;
  *         博客 http://blog.csdn.net/wgyscsf</n>
  * 
  */
+//
 public class Demo {
 	private String sDemo;
 
