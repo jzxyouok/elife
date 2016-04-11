@@ -9,10 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-/**
- * @author 高远</n> 邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
- *         编写时期 2016-4-5 下午5:47:25
- */
+
 public class EncodingFilter implements Filter {
 	// private static final String TAG = "EncodingFilter";
 	private static String encode = "utf-8";// 默认编码
