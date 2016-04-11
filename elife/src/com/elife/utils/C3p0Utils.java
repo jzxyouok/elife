@@ -1,0 +1,72 @@
+package com.elife.utils;
+
+import java.beans.PropertyVetoException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+/**
+ * @author 高远</n> 邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
+ *         编写时期 2016-3-23 上午10:46:25
+ */
+public class C3p0Utils {
+	private static ComboPooledDataSource cpds = null;
+
+	public static ComboPooledDataSource getCpds() {
+		return cpds;
+	}
+
+	static {
+
+		cpds = new ComboPooledDataSource();
+		try {
+			cpds.setDriverClass("com.mysql.jdbc.Driver");
+			cpds.setJdbcUrl("jdbc:mysql://localhost/elife");
+			cpds.setUser("root");
+			cpds.setPassword("elifeadmin");
+
+			// the settings below are optional -- c3p0 can work with defaults
+			cpds.setMinPoolSize(5);
+			cpds.setAcquireIncrement(5);
+			cpds.setMaxPoolSize(20);
+			cpds.setInitialPoolSize(5);
+
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // loads the jdbc driver
+
+	}
+
+	public static void release(ResultSet rs, Statement ps, Connection conn) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

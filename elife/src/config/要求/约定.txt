@@ -1,0 +1,67 @@
+服务器开发约定
+
+--------------------------
+一：为了减少servlet数量，请求必须携带type=xxx，xxx为1、2、3、4等。方式：
+get请求必须携带  ?type=xxx；
+post请求 通过  <input type="hidden" name="type" value="1">等方式携带type参数。
+
+二：servlet尽量避免使用成员变量（常量无所谓），而使用私有变量。（线程安全问题）
+-------------------------
+
+
+环境配置：Windows7+jdk1.7+tomcat1.7+j2ee6.0+mysql5.0+myeclipse10.7+SQLyog
+数据库名：elife,编码：utf-8;密码：elifeadmin
+
+web项目名：elife,编码：utf-8
+Web包根结构：com.elife.包名
+Web详细包结构：已确定
+Web架构：mvc
+
+Web编码设置: 过滤器；命名：全类名小写
+Web安全设置：过滤器；命名：全类名小写
+Web用户权限管理：过滤器；命名：全类名小写
+
+Web数据库连接池：c3p0
+Web表单封装：beanutils框架
+Web dao操作：dbutils
+Web日志记录：log4j
+Web文件操作：smartupload(utf8)
+Web调试:类成员常量：TAG = 类名
+
+Web关于jsp：
+一级文件夹分为web、app;
+二级目录：admin、merchant、customer；
+三级目录：js、css、upload、img、jsp页面。
+Jsp、html、js等命名以每个单词首字母大写，若多个单词，每个单词都大写。
+web关于servlet:
+以XxxServlet命名；使用注解，命名：@WebServlet("/类名小写")
+Web关于service:
+以XxxService命名
+Web关于dao:
+以XxxDao命名
+Web关于bean：
+和数据表命名对应，首字母大写。全部带toString重载方法，
+实现带参数构造方法和无参构造方法
+
+Web关于utils:以XxxUtil命名，根据用途命名
+
+Web关于接口：以I开头，后缀和对应实现类名一致。
+
+
+Web关于请求路径：全部使用相对路径
+
+Web关于参数返回：
+1.若是返回int:-1代表操作失败（出现异常）；0代表返回为空
+2.若是返回String：-1代表操作失败；””代表返回为空
+3.若是返回对象：null代表获取数据失败（包括操作异常和返回为空）
+4.不允许不带返回值的操作
+
+Web关于代码注释：
+1.类注释：作者、编写日期、作用、修改日期（没有不写）、修改人名（原作者不写）
+2.方法注释：作用、修改日期（没有不写）、修改人名（原作者不写）
+
+Web代码管理工具：git
+
+
+约定：规则确定后，谁不完全遵守，出现问题谁负责。
+
