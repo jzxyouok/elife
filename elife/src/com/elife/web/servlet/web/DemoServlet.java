@@ -1,4 +1,4 @@
-package com.elife.web.servlet;
+package com.elife.web.servlet.web;
 
 import java.io.IOException;
 
