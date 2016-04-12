@@ -43,7 +43,7 @@
 	</filter-mapping>
 
 	<!-- 错误页 -->
-	<error-page>
+	<!-- <error-page>
 		<error-code>500</error-code>
 		<location>/500.jsp</location>
 	</error-page>
@@ -51,7 +51,7 @@
 		<error-code>400</error-code>
 		<location>/400.jsp</location>
 	</error-page>
-
+ -->
 
 
 	<welcome-file-list>
