@@ -33,12 +33,36 @@
     <div class="left-menu">
         <ul id="menu">
             <li class="menu-list">
-               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>商品管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="企业资料管理.html" target="menuFrame">
+                        <a href="ShowGoodsList.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
-                            企业资料管理
+                            商品排行
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ShowClassList.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                           分类管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-list">
+                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>社区管理<s class="sz"></s></a>
+                <ul>
+                    <li>
+                        <a href="Topic.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right1"></i>
+                            话题管理
                         </a>
                     </li>
                     <li>
@@ -57,36 +81,12 @@
             </li>
 
             <li class="menu-list">
-                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
+                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>管理员管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="企业资料管理.html" target="menuFrame">
+                        <a href="Admin.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
-                            企业资料管理
-                        </a>
-                    </li>
-                    <li>
-                        <a href="产品管理.html" target="menuFrame">
-                            <i class="glyph-icon icon-chevron-right2"></i>
-                            产品管理(石材等)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="我的微网站.html" target="menuFrame">
-                            <i class="glyph-icon icon-chevron-right3"></i>
-                            我的微网站
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu-list">
-                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
-                <ul>
-                    <li>
-                        <a href="企业资料管理.html" target="menuFrame">
-                            <i class="glyph-icon icon-chevron-right1"></i>
-                            企业资料管理
+                            管理员管理
                         </a>
                     </li>
                     <li>

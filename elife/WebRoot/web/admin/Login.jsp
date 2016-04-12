@@ -75,7 +75,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 <div class="login">
 	<h1>Login</h1>
-	<form method="post">
+	<form action="Home.jsp" method="post">
 		<input type="text" name="u" placeholder="用户名" required="required" />
 		<input type="password" name="p" placeholder="密码" required="required" />
 		<button type="submit" class="btn btn-primary btn-block btn-large">登录</button>
