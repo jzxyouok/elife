@@ -124,4 +124,10 @@ public interface IProductDao {
 	 */
 	public boolean cancelBanGoodsById(int id);
 
+	/*
+	 * 添加商品
+	 * 
+	 * @prarm Goods 商品信息
+	 */
+	public boolean addGoods(Goods goods);
 }
