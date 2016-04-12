@@ -25,7 +25,7 @@
 <body>
 	<span class="cp_title">产品管理</span>
 	<div class="add_cp">
-		<a href="logo.html">+添加产品</a>
+		<a href="AddGoods.jsp">+添加产品</a>
 	</div>
 	<div class="table_con">
 		<%--ID 商品  商家名字  原价  现价  库存  销量   操作--%>

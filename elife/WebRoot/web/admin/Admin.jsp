@@ -118,6 +118,7 @@
 			</a></li>
 		</ul>
 		</nav>
-		</div>
+	
+</div>
 </body>
 </html>
