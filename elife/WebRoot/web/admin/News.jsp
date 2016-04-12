@@ -62,7 +62,7 @@
 				<td width="8%" align="center">浏览人数</td>
 				<td width="8%" align="center">发表人</td>
 				<td width="12%" align="center">所属话题</td>
-				<td width="14%" align="center"><a href="#">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+				<td width="14%" align="center"><a href="ModifyNews.jsp">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
 			</tr>
 		</table>
 
