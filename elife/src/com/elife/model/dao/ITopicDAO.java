@@ -1,5 +1,9 @@
 package com.elife.model.dao;
-
+/**
+ * @author 叶梦雅
+ *E-mail:1277918272@qq.com
+ * ${tags}
+ */
 import java.util.List;
 
 import com.elife.model.beans.Topic;
