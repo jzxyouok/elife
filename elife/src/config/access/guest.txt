@@ -2,4 +2,3 @@
 /index.jsp
 /500.jsp
 /400.jsp
-/web/admin/login.jsp
