@@ -51,7 +51,20 @@
         	<td width="10%">id</td>
             <td width="20%">管理员名</td>
             <td width="12%">密码</td>
-            <td width="12%">等级</td>
+           
+            <td width="12%"> 
+            <div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							等级 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">按照等级从高到低排序</a>
+							</li>
+						</ul>
+					</div>
+	  </td>
             <td width="21%">操作 </td>
         </tr>
        

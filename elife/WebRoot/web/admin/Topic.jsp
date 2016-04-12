@@ -46,7 +46,19 @@
 			<tr class="tb_title">
 				<td width="10%">id</td>
 				<td width="20%">话题</td>
-				<td width="12%">参与量</td>
+				<td width="12%">
+                       <div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							参与量<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">按照参与量从多到少排序</a>
+							</li>
+						</ul>
+					</div>
+               </td>
 				<td width="12%">审核</td>
 				<td width="15%">创建时间</td>
 				<td width="10%">创建人</td>
