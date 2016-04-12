@@ -81,69 +81,71 @@ public class AccessFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		//
-		// HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		// // 获取访问的根路径
-		// String visitPath = httpServletRequest.getRequestURI().substring(
-		// httpServletRequest.getContextPath().length());
-		// // 判断根路径是否在以下几个用户能访问的列表。如果在，允许该用户访问，如果不在，不允许访问
-		// if (adminPathList.contains(visitPath)
-		// || customerPathList.contains(visitPath)
-		// || merchantPathList.contains(visitPath)
-		// | guestPathList.contains(visitPath)) {
-		// // 获取用户身份
-		// String userRole = (String) httpServletRequest.getSession()
-		// .getAttribute(ParamUtils.LOGIN);
-		// // 如果没有设置，默认是游客
-		// if (userRole != null) {
-		// if (userRole.equals(ParamUtils.ADMIN)) {
-		// // 管理员
-		// if (adminPathList.contains(visitPath)) {
-		// // 放行
-		// chain.doFilter(httpServletRequest, response);
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		// } else if (userRole.equals(ParamUtils.MERCHANT)) {
-		// // 商家
-		// if (merchantPathList.contains(visitPath)) {
-		// chain.doFilter(httpServletRequest, response);
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		// } else if (userRole.equals(ParamUtils.CUSTOMER)) {
-		// // 用户
-		// if (customerPathList.contains(visitPath)) {
-		// chain.doFilter(httpServletRequest, response);
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		// } else if (userRole.equals(ParamUtils.GUEST)) {//
-		// if (guestPathList.contains(visitPath)) {
-		// // 游客
-		// chain.doFilter(httpServletRequest, response);
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		//
-		// } else {
-		// // 游客
-		// if (guestPathList.contains(visitPath)) {
-		// // 放行
-		// chain.doFilter(httpServletRequest, response);
-		// } else {
-		// throw new RuntimeException("对不起，没有访问权限：" + userRole);
-		// }
-		// }
-		// } else {
-		// // 用户不在允许的范围
-		// throw new RuntimeException("对不起，该页面不允许访问");
-		// }
+//
+//		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+//		// 获取访问的根路径
+//		String visitPath = httpServletRequest.getRequestURI().substring(
+//				httpServletRequest.getContextPath().length());
+//		// 判断根路径是否在以下几个用户能访问的列表。如果在，允许该用户访问，如果不在，不允许访问
+//		if (adminPathList.contains(visitPath)
+//				|| customerPathList.contains(visitPath)
+//				|| merchantPathList.contains(visitPath)
+//				| guestPathList.contains(visitPath)) {
+//			// 获取用户身份
+//			String userRole = (String) httpServletRequest.getSession()
+//					.getAttribute(ParamUtils.LOGIN);
+//			// 如果没有设置，默认是游客
+//			if (userRole != null) {
+//				if (userRole.equals(ParamUtils.ADMIN)) {
+//					// 管理员
+//					if (adminPathList.contains(visitPath)) {
+//						// 放行
+//						chain.doFilter(httpServletRequest, response);
+//					} else {
+//						throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//					}
+//				} else if (userRole.equals(ParamUtils.MERCHANT)) {
+//					// 商家
+//					if (merchantPathList.contains(visitPath)) {
+//						chain.doFilter(httpServletRequest, response);
+//					} else {
+//						throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//					}
+//				} else if (userRole.equals(ParamUtils.CUSTOMER)) {
+//					// 用户
+//					if (customerPathList.contains(visitPath)) {
+//						chain.doFilter(httpServletRequest, response);
+//					} else {
+//						throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//					}
+//				} else if (userRole.equals(ParamUtils.GUEST)) {//
+//					if (guestPathList.contains(visitPath)) {
+//						// 游客
+//						chain.doFilter(httpServletRequest, response);
+//					} else {
+//						throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//					}
+//				} else {
+//					throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//				}
+//
+//			} else {
+//				// 游客
+//				if (guestPathList.contains(visitPath)) {
+//					// 放行
+//					chain.doFilter(httpServletRequest, response);
+//				} else {
+//					throw new RuntimeException("对不起，没有访问权限：" + userRole);
+//				}
+//			}
+//		} else {
+//			// 用户不在允许的范围
+//			throw new RuntimeException("对不起，该页面不允许访问");
+//		}
+//
+//	
 		chain.doFilter(request, response);
-	}
+			}
 
 	@Override
 	public void destroy() {

@@ -5,12 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%--<!-- 新 Bootstrap 核心 CSS 文件 -->--%>
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+
 <link rel="stylesheet"
 	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<%--<!-- 可选的Bootstrap主题文件（一般不用引入） -->--%>
-<%--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">--%>
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
@@ -19,138 +22,87 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
-
 </head>
 <body>
-	<span class="cp_title">产品管理</span>
-	<div class="add_cp">
-		<a href="logo.html">+添加产品</a>
-	</div>
-	<div class="table_con">
-		<%--ID 商品  商家名字  原价  现价  库存  销量   操作--%>
-		<table>
-			<tr class="tb_title">
-				<td width="10%">ID</td>
-				<td width="30%">商家</td>
-				<td width="12%"><div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="true">
-							销量/库存 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">按照商家分类查看</a>
-							</li>
-						</ul>
-					</div>
-				</td>
-				<td width="12%">
+	<div class="container">
+		<h3>产品排行</h3>
+
+
+
+		<%--	id  产品名字  商家名   销量   库存   原价  现价   状态--%>
+		<table class="table table-hover" border="1"
+			style="width: 600px;height: 100px;margin: 0 auto;margin-top: 20px;">
+			<tr>
+				<td>id</td>
+				<td>产品名字</td>
+				<td>商家名</td>
+				<td>
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button"
 							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="true">
-							原价/现价 <span class="caret"></span>
+							销量 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">现价由低到高排序</a>
+							<li><a href="#">销量由高到低</a>
 							</li>
-							<li><a href="#">现价由高到低排序</a>
-							</li>
-							<li><a href="#">原价由低到高排序</a>
-							</li>
-							<li><a href="#">原价由高到低排序</a>
+							<li><a href="#">销量由低到高</a>
 							</li>
 						</ul>
-					</div></td>
-				<td width="10%"><div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="true">
-							销量/库存 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">销量由低到高排序</a>
-							</li>
-							<li><a href="#">销量由高到低排序</a>
-							</li>
-							<li><a href="#">库存由低到高排序</a>
-							</li>
-							<li><a href="#">库存由高到低排序</a>
-							</li>
-						</ul>
-					</div></td>
-				<td width="26%">操作</td>
+					</div>
+				</td>
+				<td>库存</td>
+				<td>原价</td>
+				<td>现价</td>
+				<td>状态</td>
 			</tr>
 			<tr>
-				<td width="10%">1</td>
-				<td width="30%">大豫竹</td>
-				<td width="12%">郑州豫竹</td>
-				<td width="12%">78/100</td>
-				<td width="10%">1000/20000</td>
-				<td width="26%"><a class="btn btn-primary"
-					onclick="window.open('Login.html')" />编辑</a> <a
-					class="btn btn-warning"
-					onclick="window.location.href('Login.html')" />锁定</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+
 			</tr>
 			<tr>
-				<td width="10%">1</td>
-				<td width="30%">大豫竹</td>
-				<td width="12%">郑州豫竹</td>
-				<td width="12%">78/100</td>
-				<td width="10%">1000/20000</td>
-				<td width="26%"><a class="btn btn-primary"
-					onclick="window.open('Login.html')" />编辑</a> <a
-					class="btn btn-warning"
-					onclick="window.location.href('Login.html')" />锁定</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+
+
 			</tr>
 			<tr>
-				<td width="10%">1</td>
-				<td width="30%">大豫竹</td>
-				<td width="12%">郑州豫竹</td>
-				<td width="12%">78/100</td>
-				<td width="10%">1000/20000</td>
-				<td width="26%"><a class="btn btn-primary"
-					onclick="window.open('Login.html')" />编辑</a> <a
-					class="btn btn-warning"
-					onclick="window.location.href('Login.html')" />锁定</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+
+
 			</tr>
 			<tr>
-				<td width="10%">1</td>
-				<td width="30%">大豫竹</td>
-				<td width="12%">郑州豫竹</td>
-				<td width="12%">78/100</td>
-				<td width="10%">1000/20000</td>
-				<td width="26%"><a class="btn btn-primary"
-					onclick="window.open('Login.html')" />编辑</a> <a
-					class="btn btn-warning"
-					onclick="window.location.href('Login.html')" />锁定</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>11</td>
+				<td>12</td>
+
 			</tr>
 		</table>
-
-		<nav class="text-right">
-		<ul class="pagination">
-			<li><a href="#" aria-label="Previous"> <span
-					aria-hidden="true">&laquo;</span> </a>
-			</li>
-			<li class="disabled"><a href="#" style="background-color:#0fe;">1</a>
-			</li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a>
-			</li>
-		</ul>
-		</nav>
+	</div>
 </body>
 </html>

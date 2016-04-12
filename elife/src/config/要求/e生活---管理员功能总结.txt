@@ -27,27 +27,48 @@
 	分类管理（修改一级、二级分类，查看分类、修改分类）
 	商品排行（根据 商品库存量、卖出数量、商家名字、地区进行商品排行| 编辑商品）
 	权限管理（限制某件商品上架销售）
-
+	修改商品信息
 	
 6、活动管理------张凯
 	增（查看点击次数）删改查各种活动
                 查看活动信息
                 权限管理（删除某个禁用的活动）
                 修改活动信息
+//增加活动
+public abstract boolean addNews(String content);
+//删除活动
+public abstract boolean deleteNews(int id);
+//查看某一个活动浏览人数
+public abstract int selectNewsReadNum(int id);
+//查看所有活动（根据浏览人数排序）（根据状态）（根据发表时间）（查看某一活动的所有评论）（根据谁发布的活动）
+public abstract List<news> selectAllNews();
+public abstract List<news> selectAllNews(int status);
+public abstract List<news> selectAllNews(String time);
+public abstract List<newscomment> selectNewsComment(int id); //通过活动ID
+public abstract List<news> selectAllNews(String username);
+//修改活动信息（修改状态）
+public abstract boolean modifyNewsStatus(int id);
 	
 7、代金券管理------张凯
               增（数量、）删改（数量）查（使用的人列表、使用情况）
               查看代金券信息（可查看使用的用户、可根据时间、使用数量、使用范围搜索）
-              增加代金券（包括数量、金额、使用范围、起始时间、截止时间）
+              增加代金券（包括数量、金额、使用范围、起
+始时间、截止时间）
               删除代金券（筛选出过期的，）
               修改代金券信息（修改数量、（注：金额不能修改）、使用范围、起始时间、截止时间）
+//增加代金券
+public abstract boolean addCoupon(String no,double value,int status,String endtime);//优惠券的状态设置为默认
+//查询代金券（过期的代金券）
+public abstract List<coupon> selectCoupon();
+public abstract List<coupon> selectCouponOverdue();
+//删除代金券
+public abstract boolean deleteCoupon(int id);
+public abstract boolean deleteCoupons(int[] id); //批量删除
 	
 8、社区管理-----叶梦雅
 	查看图文消息、话题（根据发表时间、话题名称、参与度（用户参与数量）搜索）
 	审核话题
 	禁用图文消息
-	
-	
 	
 9、版本管理-----王高远
             查看版本信息
