@@ -70,6 +70,8 @@ public abstract boolean deleteCoupons(int[] id); //批量删除
 	审核话题
 	禁用图文消息
 	
+	
+	
 9、版本管理-----王高远
             查看版本信息
             更新版本信息
