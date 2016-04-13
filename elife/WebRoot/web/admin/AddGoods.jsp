@@ -24,14 +24,12 @@
 </head>
 <body>
 	<span class="cp_title">添加商品</span>
-	<div class="add_cp">
-		<a href="ShowGoodsList.jsp">"<<"返回商品列表</a>
-	</div>
+
 	<div class="table_con">
 		<%--		添加商品--%>
 		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
 		<form action="" method="post">
-			<table style="width: 60%;height:80%;margin: 0 auto;">
+			<table style="width: 60%;height:50%;margin: 0 auto;">
 
 				<tr>
 					<td width="15%">商 品 名 字</td>
@@ -40,22 +38,20 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="15%"><s>原 价</s></td>
-					<td><input type="text" name="oldprice" class="form-control"
-						id="" placeholder="请输入价格">
+					<td width="15%"><s>原 价</s>
 					</td>
+					<td><input type="text" name="oldprice" class="form-control"
+						id="" placeholder="请输入价格"></td>
 				</tr>
 				<tr>
 					<td width="15%">打 折 价</td>
 					<td><input type="text" name="price" class="form-control" id=""
-						placeholder="请输入打折价格，不打折输入0，或者忽略">
-					</td>
+						placeholder="请输入打折价格，不打折输入0，或者忽略"></td>
 				</tr>
 				<tr>
 					<td width="15%">库 存 量</td>
 					<td><input type="text" name="stock" class="form-control" id=""
-						placeholder="请输入库存数量">
-					</td>
+						placeholder="请输入库存数量"></td>
 				</tr>
 				<tr>
 					<td width="15%">分 类</td>
@@ -66,13 +62,16 @@
 								选择分类 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><a href="#">甜食</a></li>
-								<li><a href="#">辣食</a></li>
-								<li><a href="#">小甜饼</a></li>
-								<li><a href="#">麻辣烫</a></li>
+								<li><a href="#">甜食</a>
+								</li>
+								<li><a href="#">辣食</a>
+								</li>
+								<li><a href="#">小甜饼</a>
+								</li>
+								<li><a href="#">麻辣烫</a>
+								</li>
 							</ul>
-						</div>
-					</td>
+						</div></td>
 				</tr>
 				<tr>
 					<td width="15%">上传图片</td>
@@ -90,16 +89,14 @@
 					</td>
 				</tr>
 				<tr style="height: 100px;">
-					<td >商品 描述</td>
-					<td ><textarea placeholder="填下商品描述，最多支持200字哟"  rows="3"
-							cols="30" name="description"></textarea>
-					</td>
+					<td>商品 描述</td>
+					<td><textarea placeholder="填下商品描述，最多支持200字哟" rows="3"
+							cols="30" name="description"></textarea></td>
 				</tr>
 
 				<tr>
 					<td width="50%"><button type="reset" class="btn btn-warning"
-							style="width: 60%;">重置上述数据</button>
-					</td>
+							style="width: 60%;">重置上述数据</button></td>
 					<td width="50%">
 						<button style="width: 60%;" type="submit" class="btn btn-primary">提交商品信息</button>
 					</td>
