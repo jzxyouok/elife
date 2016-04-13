@@ -56,7 +56,7 @@
 						<table style="width: 85%;height:50%;margin: 5px auto;">
 							<tr>
 								<td width="25%">话题名称</td>
-								<td align="center" style="margin: 8px auto;t"><input
+								<td align="center" style="margin: 5px auto;t"><input
 									type="text" name="name" class="form-control" id=""
 									placeholder="请输入话题名称">
 								</td>

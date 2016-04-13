@@ -54,7 +54,7 @@
              <div class="table_con">
 		          <table style="width: 60%;height:80%;margin: 5px auto;" >
 					<tr>
-						<td width="35%">管理员名字</td>
+						<td width="30%">管理员名字</td>
 						<td align="center" style="margin: 8px auto;t"><input type="text" name="name" class="form-control" id=""
 							placeholder="请输入管理员名字">
 						</td>
@@ -62,7 +62,7 @@
 					
 				
 					<tr>
-						<td width="35%">密码</td>
+						<td width="30%">密码</td>
 						<td><input type="text" name="psword" class="form-control" id=""
 							placeholder="请输入密码">
 						</td>
