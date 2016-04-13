@@ -34,13 +34,18 @@
 <body>
 	<span class="cp_title">话题管理</span>
 	<!-- 搜索栏 -->
+	<div class="add_cp">
+		<a href="AddTopic.jsp">+添加话题</a>
+	
+	<div float="left">
 <form class="navbar-form navbar-left" role="search">
-  <button type="button" class="btn btn-default navbar-btn">+添加话题</button>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="请输入搜索内容">
+  <div class="form-group" float="left">
+  <input type="text" class="form-control" placeholder="请输入搜索内容">
   </div>
   <button type="submit" class="btn btn-default">搜索</button>
 </form>
+</div>
+</div>
 	<div class="table_con">
 		<table>
 			<tr class="tb_title">
@@ -73,8 +78,10 @@
 				</td>
 				<td width="15%">2016-04-12 16:05</td>
 				<td width="10%">叶梦雅</td>
-				<td width="21%"><a class="sj_btn" href="">编辑</a> <a
-					class="del_btn" href="">禁用</a></td>
+				<td width="21%">
+				<a class="bj_btn" href="TopicAlter.jsp">编辑</a> 
+				<a class="sj_btn" href="">审核</a> 
+				<a class="del_btn" href="">禁用</a></td>
 			</tr>
 			<tr>
 				<td width="10%">002</td>
@@ -83,10 +90,14 @@
 				<td width="12%">已通过</td>
 				<td width="15%">2016-04-12 16:05</td>
 				<td width="10%">叶梦雅</td>
-				<td width="21%"><a class="sj_btn" href="">编辑</a> <a
-					class="del_btn" href="">禁用</a></td>
+				<td width="21%">
+				
+				<a class="bj_btn" href="TopicAlter.jsp">编辑</a> 
+				<a class="sj_btn" href="">审核</a> 
+				<a class="del_btn" href="">禁用</a></td>
 			</tr>
 		</table>
+		</div>
 		<div align="center">
 		<nav>
 		<ul class="pagination">
@@ -108,7 +119,7 @@
 			</a></li>
 		</ul>
 		</nav>
-		</div>
+		
 	</div>
 </body>
 </html>
