@@ -17,7 +17,7 @@ public interface IAdminDAO {
 	public abstract List<Admin> selectAllAdmin(int page);
 	//查询根据管理员等级排序
 	public abstract List<Admin> selectTopicBylevel(int id,int page);
-	
+	//
 	//添加管理员
 	public abstract boolean addAdmin(Admin admin);
 	//删除管理员
