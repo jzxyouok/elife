@@ -21,7 +21,6 @@ public interface IProductDao {
 	/**
 	 * 添加二级分类
 	 */
-
 	public boolean addSecondClass(Classsecond classsecond);
 
 	/**

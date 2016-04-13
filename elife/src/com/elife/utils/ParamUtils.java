@@ -20,10 +20,7 @@ public class ParamUtils {
 	/*
 	 * 临时token，后期再改
 	 */
-	public static final String TOKEN = "elife";
-	/*
-	 * 规定全局分页，每页显示条数
-	 */
-	public static final int PERPAGE = 10;
+	private static final String TOKEN = "elife";
+
 
 }

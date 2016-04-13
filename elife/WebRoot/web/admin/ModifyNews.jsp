@@ -6,21 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<%--<!-- 新 Bootstrap 核心 CSS 文件 -->--%>
-<link rel="stylesheet"
-	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<%--<!-- 可选的Bootstrap主题文件（一般不用引入） -->--%>
-<%--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">--%>
-
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
-
 <script>
 	function viewmypic(mypic, imgfile) {
 		if (imgfile.value) {
@@ -33,17 +18,14 @@
 
 </head>
 <body>
-
-	<form action="">
-		<h4>请填写新的新闻内容：</h4>
-		<div class="form-group" margin-left:2cm>
-			<textarea class="form-control" rows="4"></textarea>
-		</div>
-		<br /> <br />
-		<div align="center">
-			<input type="submit" class="btn btn-default" /> &nbsp;&nbsp;&nbsp; <input
-				type="reset" value="重置" class="btn btn-default" />
-		</div>
+	<h3 align="center">请填写新的活动内容：</h3>
+	<form action="" align="center">
+		<textarea rows="15" cols="30"></textarea>
+		<br />
+		<br /> <input name="imgfile" type="file" id="imgfile" size="40"
+			onchange="viewmypic(showimg,this.form.imgfile);" /><br />
+		<br /> <input type="submit" value="发表">&nbsp;&nbsp;&nbsp; <input
+			type="reset" value="重置">
 	</form>
 
 </body>

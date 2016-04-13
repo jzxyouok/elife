@@ -47,6 +47,12 @@
                            分类管理
                         </a>
                     </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -60,9 +66,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="News.jsp" target="menuFrame">
+                        <a href="产品管理.html" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
-                           说说管理 
+                            产品管理(石材等) 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
                         </a>
                     </li>
                 </ul>
@@ -77,40 +89,40 @@
                             管理员管理
                         </a>
                     </li>
+                    <li>
+                        <a href="产品管理.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                            产品管理(石材等)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
                 </ul>
             </li>
 
             <li class="menu-list">
-               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>活动管理<s class="sz"></s></a>
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="Banner.jsp" target="menuFrame">
+                        <a href="企业资料管理.html" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
-                           轮播图管理
+                            企业资料管理
                         </a>
                     </li>
                     <li>
-                        <a href="Coupon.jsp" target="menuFrame">
+                        <a href="产品管理.html" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
-		代金券管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            
-             <li class="menu-list">
-                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>用户管理<s class="sz"></s></a>
-                <ul>
-                    <li>
-                        <a href="ManageUser.jsp" target="menuFrame">
-                            <i class="glyph-icon icon-chevron-right1"></i>
-                          用户管理
+                            产品管理(石材等)
                         </a>
                     </li>
                     <li>
-                        <a href="ManageBusiness.jsp" target="menuFrame">
-                            <i class="glyph-icon icon-chevron-right2"></i>
-                           商家管理 
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
                         </a>
                     </li>
                 </ul>
@@ -120,10 +132,10 @@
     </div>
     
     <!--菜单右边的iframe页面-->
-    <div id="right-content" class="right-content" >
+    <div id="right-content" class="right-content">
         <div class="content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="default.jsp" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
                         scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
             </div>
         </div>

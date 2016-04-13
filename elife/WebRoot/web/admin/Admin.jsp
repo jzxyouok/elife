@@ -29,8 +29,6 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/Iframe.css" />
-<link rel="stylesheet" href="css/utilLib/bootstrap.min.css"
-	type="text/css" media="screen" />
 
   </head>
  
@@ -39,24 +37,78 @@
 
 <!-- 搜索栏 -->
 <div class="add_cp">
-		<a href="AddAdmin.jsp">+添加管理员</a>
+		<a  data-toggle="modal" 
+      	data-target=".bs-example-modal-lg">+添加管理员</a> 
+     <div class="modal fade bs-example-modal-lg">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">添加管理员</h4>
+				</div>
+		<div class="modal-body">
+		<!-- 这个地方放内容 -->
+             <div class="table_con">
+		          <table style="width: 60%;height:80%;margin: 5px auto;" >
+					<tr>
+						<td width="35%">管理员名字</td>
+						<td align="center" style="margin: 8px auto;t"><input type="text" name="name" class="form-control" id=""
+							placeholder="请输入管理员名字">
+						</td>
+					</tr>
+					
+				
+					<tr>
+						<td width="35%">密码</td>
+						<td><input type="text" name="psword" class="form-control" id=""
+							placeholder="请输入密码">
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="50%">选择上传头像</td>
+						<td><input style="display: block;width: 100%;" type="file"
+							name="img" id="exampleInputFile">
+						</td>
+						</td>
+					</tr>
+					
+				</table>
+		<div align="center" style="margin:5px">
+		
+			</div>
+	</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-info">添加</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
 	<div float="left">
 		<form class="navbar-form navbar-left" role="search">
-		 
-		 <div class="form-group" float="left">
-		    
-		<input type="text" class="form-control" placeholder="请输入搜索内容">
-		  </div>
-		  <button type="submit" class="btn btn-default">搜索</button>
+			<div class="form-group" float="left">
+				<input type="text" class="form-control" placeholder="请输入搜索内容">
+			</div>
+			<button type="submit" class="btn btn-default">搜索</button>
 		</form>
-		
-		<div class="btn-group" style="margin:0 auto;">
-  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    按等级查询 <span class="caret"></span>
-  </button>
-  
+	</div>
+	<div class="btn-group" style="margin:8px auto;">
+		<button type="button" class="btn btn-info dropdown-toggle"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			按等级查询 <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href="#">按等级查询</a></li>
+		</ul>
+	</div>
 </div>
-
 </div>
 
 
@@ -67,19 +119,7 @@
             <td width="20%">管理员名</td>
             <td width="12%">密码</td>
            
-            <td width="12%"> 
-            <div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="true">
-							等级 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">按照等级从高到低排序</a>
-							</li>
-						</ul>
-					</div>
-	  </td>
+            <td width="12%">等级</td>
             <td width="21%">操作 </td>
         </tr>
        
