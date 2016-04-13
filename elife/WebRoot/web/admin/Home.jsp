@@ -105,38 +105,18 @@
             </li>
 
             <li class="menu-list">
-<<<<<<< HEAD
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>活动管理<s class="sz"></s></a>
-=======
-               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>用户管理<s class="sz"></s></a>
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
                 <ul>
                     <li>
-<<<<<<< HEAD
                         <a href="Banner.jsp" target="menuFrame">
-=======
-                        <a href="ManageUser.jsp" target="menuFrame">
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
                             <i class="glyph-icon icon-chevron-right1"></i>
-<<<<<<< HEAD
                            轮播图管理
-=======
-                         用户管理   
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
                         </a>
                     </li>
                     <li>
-<<<<<<< HEAD
                         <a href="Coupon.jsp" target="menuFrame">
-=======
-                        <a href="ManageBusiness.jsp" target="menuFrame">
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
                             <i class="glyph-icon icon-chevron-right2"></i>
-<<<<<<< HEAD
                             代金券管理
-=======
-                            商家管理
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
                         </a>
                     </li>
                     <li>
@@ -155,7 +135,7 @@
     <div id="right-content" class="right-content" >
         <div class="content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="default.jsp" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
                         scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
             </div>
         </div>
