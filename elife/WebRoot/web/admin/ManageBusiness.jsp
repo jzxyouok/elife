@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>商家管理</title>
 <%--<!-- 新 Bootstrap 核心 CSS 文件 -->--%>
 <link rel="stylesheet"
@@ -32,8 +33,13 @@
 
 </head>
 <body>
-	<span class="cp_title">商家管理</span>
-	<div class="table_con">
+	<span class="cp_title" style="width:100px;">商家管理</span>
+	<!-- <div class="add_cp" >
+		<a  href="AddBusiness.jsp" data-toggle="modal" 
+      	data-target=".bs-example-modal-lg">+添加商家</a>
+     </div> -->
+	<div class="table_con add_cp">
+		<a  href="AddBusiness.jsp" >+添加商家</a>
 		<%--ID 商品  商家名字  原价  现价  库存  销量   操作--%>
 		<table>
 			<tr class="tb_title">
@@ -71,9 +77,13 @@
 				<td width="9%">用户状态</td>
 				<td width="19%" align="left">操作</td>
 			</tr>
+			<%
+			int i = 6;
+				while(i-- > 0){
+			 %>
 			<tr>
-				<td width="10%"><a href="showBusiness.jsp" class="text-primary" id="link" >leke</a></td>
-				<td width="10%">郑州航院乐可便利</td>
+				<td width="10%"><a href="ShowBusiness.jsp" class="text-primary" id="link" >leke</a></td>
+				<td width="10%">郑州航院</td>
 				<td width="12%">18018126045</td>
 				<td width="13%">零食</td>
 				<td width="15%">航院南门50米</td>
@@ -84,6 +94,9 @@
 				<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 				</td>
 			</tr>
+			<%
+			}
+			 %>
 			
 		</table>
 

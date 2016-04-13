@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>展示商家信息</title>
+<title>Insert title here</title>
 <%--<!-- 新 Bootstrap 核心 CSS 文件 -->--%>
 <link rel="stylesheet"
 	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,51 +17,52 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
 <link rel="stylesheet" type="text/css" href="css/Iframe.css" />
-<style type="text/css">
-	table tr td{
-		text-align: center;
-	}
-	table tr td.tdbg{
-		background-color: #E3E3E3;
-	}
-</style>
 
 </head>
 <body>
-	<span class="cp_title">商家详细信息</span>
+	<span class="cp_title">添加商家</span>
 	<div class="add_cp">
 		<a href="ManageBusiness.jsp">返回商家列表</a>
 	</div>
 	<div class="table_con">
-		
+		<%--		添加商品--%>
+		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
 		<form action="" method="post">
 			<table style="width: 60%;height:80%;margin: 0 auto;">
-
 				<tr>
-					<td width="25%"  class="tdbg">手机号：</td>
-					<td width="25%" >13298282779</td>
-					<td width="25%"  class="tdbg">商家名称：</td>
-					<td width="25%" >乐可便利</td>
+					<td width="15%">手机号：</td>
+					<td align="center" style="margin: 0 auto;t"><input type="text"
+						name="name" class="form-control" id="" placeholder="请输入产品名字">
+					</td>
 				</tr>
 				<tr>
-					<td width="25%"  class="tdbg">地址</td>
-					<td width="70%">郑州航院东校区</td>
+					<td width="15%">商家名称：</td>
+					<td><input type="text" name="oldprice" class="form-control"
+						id="" placeholder="请输入价格">
+					</td>
 				</tr>
 				<tr>
-					<td width="25%"  class="tdbg">身份类型</td>
-					<td width="75%">零食、洗车</td>
+					<td width="15%">身份类型：</td>
+					<td><input type="text" name="price" class="form-control" id=""
+						placeholder="身份类型可以选择(多选)">
+					</td>
 				</tr>
 				<tr>
-					<td width="25%"  class="tdbg">邮箱</td>
-					<td width="75%">571146698@qq.com</td>
+					<td width="15%">地址：</td>
+					<td><input type="text" name="stock" class="form-control" id=""
+						placeholder="验证手机号的正确性">
+					</td>
 				</tr>
-				
 				<tr>
-					<td width="25%"  class="tdbg">注册时间</td>
-					<td width="25%">2015-02-23</td>
-					<td width="25%"  class="tdbg">最后登录时间</td>
-					<td width="25%">2016-03-07</td>
+					<td width="50%"><button type="reset" class="btn btn-warning"
+							style="width: 60%;">重置上述数据</button>
+					</td>
+					<td width="50%">
+						<button style="width: 60%;" type="submit" class="btn btn-primary">提交商家信息</button>
+					</td>
 				</tr>
 			</table>
 		</form>

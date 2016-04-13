@@ -12,7 +12,6 @@
 		<tr align="left"><td><h4>请填写说说内容：</h4></td></tr>
 		<tr><td>
 		<div class="form-group">
-		
 			<textarea class="form-control" rows="6" cols="80"></textarea>
 		</div>
 		</td>
