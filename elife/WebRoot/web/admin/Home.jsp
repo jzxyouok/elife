@@ -29,116 +29,114 @@
             </div>
     </div>
     <!--顶部结束-->
-    <div>
-        <!--菜单-->
-        <div class="left-menu">
-            <ul id="menu">
-                <li class="menu-list">
-                   <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>商品管理<s class="sz"></s></a>
-                    <ul>
-                        <li>
-                            <a href="ShowGoodsList.jsp" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right1"></i>
-                                商品排行
-                            </a>
-                        </li>
-                        <li>
-                            <a href="ShowClassList.jsp" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right2"></i>
-                               分类管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="我的微网站.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right3"></i>
-                                我的微网站
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+    <!--菜单-->
+    <div class="left-menu">
+        <ul id="menu">
+            <li class="menu-list">
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>商品管理<s class="sz"></s></a>
+                <ul>
+                    <li>
+                        <a href="ShowGoodsList.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right1"></i>
+                            商品排行
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ShowClassList.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                           分类管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="menu-list">
-                    <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>社区管理<s class="sz"></s></a>
-                    <ul>
-                        <li>
-                            <a href="Topic.jsp" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right1"></i>
-                                话题管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="产品管理.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right2"></i>
-                                产品管理(石材等)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="我的微网站.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right3"></i>
-                                我的微网站
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="menu-list">
+                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>社区管理<s class="sz"></s></a>
+                <ul>
+                    <li>
+                        <a href="Topic.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right1"></i>
+                            话题管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="产品管理.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                            产品管理(石材等) 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="menu-list">
-                    <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>管理员管理<s class="sz"></s></a>
-                    <ul>
-                        <li>
-                            <a href="Admin.jsp" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right1"></i>
-                                管理员管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="产品管理.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right2"></i>
-                                产品管理(石材等)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="我的微网站.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right3"></i>
-                                我的微网站
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="menu-list">
+                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>管理员管理<s class="sz"></s></a>
+                <ul>
+                    <li>
+                        <a href="Admin.jsp" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right1"></i>
+                            管理员管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="产品管理.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                            产品管理(石材等)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="menu-list">
-                   <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
-                    <ul>
-                        <li>
-                            <a href="企业资料管理.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right1"></i>
-                                企业资料管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="产品管理.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right2"></i>
-                                产品管理(石材等)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="我的微网站.html" target="menuFrame">
-                                <i class="glyph-icon icon-chevron-right3"></i>
-                                我的微网站
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="menu-list">
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
+                <ul>
+                    <li>
+                        <a href="企业资料管理.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right1"></i>
+                            企业资料管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="产品管理.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right2"></i>
+                            产品管理(石材等)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="我的微网站.html" target="menuFrame">
+                            <i class="glyph-icon icon-chevron-right3"></i>
+                            我的微网站
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-            </ul>
-        </div>
-
-        <!--菜单右边的iframe页面-->
-        <div id="right-content" class="right-content">
-            <div class="content">
-                <div id="page_content">
-                    <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
-                            scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
-                </div>
+        </ul>
+    </div>
+    
+    <!--菜单右边的iframe页面-->
+    <div id="right-content" class="right-content">
+        <div class="content">
+            <div id="page_content">
+                <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
+                        scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
             </div>
         </div>
     </div>
