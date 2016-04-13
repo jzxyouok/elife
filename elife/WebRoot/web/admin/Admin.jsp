@@ -6,7 +6,7 @@
   <head>
     
     
-    <title>My JSP 'Admin.jsp' starting page</title>
+    <title>管理员</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -82,8 +82,9 @@
            
             <td width="21%">
       
-                <a class="sj_btn" href="AdminAlter.jsp" >编辑</a>
-                <a class="del_btn" href="" >删除</a>
+                <a class="btn btn-primary"
+					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
+					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 
             </td>
         </tr>
@@ -94,9 +95,9 @@
             <td width="12%">商家</td>
             
             <td width="21%">
-            	
-                <a class="sj_btn" href="" >编辑</a>
-                <a class="del_btn" href="" >删除</a>
+            	 <a class="btn btn-primary"
+					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
+					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 
             </td>
         </tr>

@@ -79,9 +79,11 @@
 				<td width="15%">2016-04-12 16:05</td>
 				<td width="10%">叶梦雅</td>
 				<td width="21%">
-				<a class="bj_btn" href="TopicAlter.jsp">编辑</a> 
-				<a class="sj_btn" href="">审核</a> 
-				<a class="del_btn" href="">禁用</a></td>
+					 <a class="btn btn-primary"
+					onclick="window.open('TopicAlter.jsp')" />编辑</a> <a
+					class="btn btn-warning"
+					onclick="window.location.href('Login.html')" />审核</a> <a
+					class="btn btn-danger" onclick="window.location.href('连接')" />禁用</a>
 			</tr>
 			<tr>
 				<td width="10%">002</td>
@@ -91,10 +93,12 @@
 				<td width="15%">2016-04-12 16:05</td>
 				<td width="10%">叶梦雅</td>
 				<td width="21%">
-				
-				<a class="bj_btn" href="TopicAlter.jsp">编辑</a> 
-				<a class="sj_btn" href="">审核</a> 
-				<a class="del_btn" href="">禁用</a></td>
+			 <a class="btn btn-primary"
+					onclick="window.open('TopicAlter.jsp')" />编辑</a> <a
+					class="btn btn-warning"
+					onclick="window.location.href('Login.html')" />审核</a> <a
+					class="btn btn-danger" onclick="window.location.href('连接')" />禁用</a>
+</td>
 			</tr>
 		</table>
 		</div>
