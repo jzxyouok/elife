@@ -132,7 +132,7 @@
     </div>
     
     <!--菜单右边的iframe页面-->
-    <div id="right-content" class="right-content">
+    <div id="right-content" class="right-content" >
         <div class="content">
             <div id="page_content">
                 <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
