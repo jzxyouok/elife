@@ -12,21 +12,23 @@ public interface ITopicDAO {
 	//查看某个话题
 	public abstract Topic selectTopicByid(int id);
 	//根据话题名称查询话题
-	public abstract Topic selectTopicByname(int name);
+	public abstract Topic selectTopicByname(String name);
 	//根据创建时间范围查询某时间段内的话题
-	public abstract List<Topic> selectTopic(String starttime,String endtime,int page);
+	public abstract List<Topic> selectTopic(String starttime,String endtime,int nowpage);
 	//查询根据话题讨论的人数对话题进行排序（查询出最热话题）
-	public abstract List<Topic> selectAllTopicBynumber(int id,int page);
+	public abstract List<Topic> selectAllTopicByJoin(boolean bl, int nowpage);
 	//查询没有通过审核的话题
-	public abstract List<Topic> selectNockTopic(int status,int page,Topic topic);
+	public abstract List<Topic> selectNockTopic(int status, int nowpage);
 	//查询所有的话题信息
 	public abstract List<Topic> selectAllTopic(int page);
 
-
 	//审核话题,修改状态status
-	public abstract boolean checkTopic(Topic topic);
+	public abstract boolean updateTopic(Topic topic);
 
-	//禁用图文消息
+
+	// 删除话题
 	public abstract boolean deleteTopicByid(int id);
-	public abstract boolean deleteTopicByname(int name);
+
+	// 删除话题
+	public abstract boolean deleteTopicByname(String name);
 }
