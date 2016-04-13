@@ -66,9 +66,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="产品管理.html" target="menuFrame">
+                        <a href="News.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
-                            产品管理(石材等) 
+                           说说管理 
                         </a>
                     </li>
                     <li>
@@ -105,18 +105,18 @@
             </li>
 
             <li class="menu-list">
-               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>活动管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="企业资料管理.html" target="menuFrame">
+                        <a href="Banner.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
-                            企业资料管理
+                           轮播图管理
                         </a>
                     </li>
                     <li>
-                        <a href="产品管理.html" target="menuFrame">
+                        <a href="Coupon.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
-                            产品管理(石材等)
+                            代金券管理
                         </a>
                     </li>
                     <li>

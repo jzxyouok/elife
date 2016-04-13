@@ -26,9 +26,8 @@
 		<a href="AddNews.jsp">+添加说说</a>
 		<div float="left">
 			<form class="navbar-form navbar-left" role="search">
-
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="请输入发表人姓名">
+				<div class="form-group" float="left">
+					<input type="text" class="form-control" placeholder="请输入说说发表人">
 				</div>
 				<button type="submit" class="btn btn-default">查询</button>
 			</form>
@@ -40,14 +39,10 @@
 				Dropdown <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">Action</a>
-				</li>
-				<li><a href="#">Another action</a>
-				</li>
-				<li><a href="#">Something else here</a>
-				</li>
-				<li><a href="#">Separated link</a>
-				</li>
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li><a href="#">Separated link</a></li>
 			</ul>
 		</div>
 		<div></div>
@@ -79,7 +74,8 @@
 				<td width="6%" align="center">1</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('ModifyNews.jsp')" />编辑</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a></td>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
+				</td>
 			</tr>
 			<tr>
 				<td width="4%" align="center">2</td>
@@ -92,7 +88,8 @@
 				<td width="6%" align="center">1</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('ModifyNews.jsp')" />编辑</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a></td>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
+				</td>
 			</tr>
 		</table>
 
@@ -101,22 +98,15 @@
 		<nav>
 		<ul class="pagination">
 			<li class="disabled"><span> <span aria-hidden="true">&laquo;</span>
-			</span>
-			</li>
-			<li><span>1 <span class="sr-only">(current)</span> </span>
-			</li>
+			</span></li>
+			<li><span>1 <span class="sr-only">(current)</span> </span></li>
 			<li class="active"><span>2 <span class="sr-only">(current)</span>
-			</span>
-			</li>
-			<li><span>3 <span class="sr-only">(current)</span> </span>
-			</li>
-			<li><span>4 <span class="sr-only">(current)</span> </span>
-			</li>
-			<li><span>5 <span class="sr-only">(current)</span> </span>
-			</li>
+			</span></li>
+			<li><span>3 <span class="sr-only">(current)</span> </span></li>
+			<li><span>4 <span class="sr-only">(current)</span> </span></li>
+			<li><span>5 <span class="sr-only">(current)</span> </span></li>
 			<li class="disabled"><span> <span aria-hidden="true">&raquo;</span>
-			</span>
-			</li>
+			</span></li>
 		</ul>
 		</nav>
 	</div>
