@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.sql.DataSource;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
@@ -16,10 +18,18 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class C3p0Utils {
 	private static ComboPooledDataSource cpds = null;
 
-	public static ComboPooledDataSource getCpds() {
+	public static DataSource getDataSource() {
 		return cpds;
 	}
-
+	public static Connection getConnection() {
+		try {
+			return cpds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	static {
 
 		cpds = new ComboPooledDataSource();
