@@ -50,10 +50,10 @@
 							</select>
 						</div></td>
 				</tr>
-				<tr><td>商品名字：</td>
+				<tr><td>链接URL：</td>
 					<td>
 					<input type="text" name="name" class="form-control" id=""
-						placeholder="请输入商品名字"></td>
+						placeholder="请输入url地址"></td>
 				</tr>
 				<tr><td>&nbsp;</td><td></td></tr>
 				<tr><td>上传轮播图图片：</td>
