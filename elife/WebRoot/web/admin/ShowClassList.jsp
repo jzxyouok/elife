@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<%--弹出对话框--%>
+	<%--弹出对话框--%>
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
@@ -37,10 +37,13 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">添加三级分类名</h4>
 				</div>
-				<div class="modal-body"><input type="text" class="form-control" placeholder="请输入新的三级分类名，谨慎操作"></div>
+				<div class="modal-body">
+					<input type="text" class="form-control"
+						placeholder="请输入新的三级分类名，谨慎操作">
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button"  class="btn btn-info">添加</button>
+					<button type="button" class="btn btn-info">添加</button>
 				</div>
 			</div>
 		</div>
@@ -58,10 +61,14 @@
 				一级分类 <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">水果</a></li>
-				<li><a href="#">零食</a></li>
-				<li><a href="#">洗衣</a></li>
-				<li><a href="#">洗车</a></li>
+				<li><a href="#">水果</a>
+				</li>
+				<li><a href="#">零食</a>
+				</li>
+				<li><a href="#">洗衣</a>
+				</li>
+				<li><a href="#">洗车</a>
+				</li>
 			</ul>
 		</div>
 
@@ -73,12 +80,30 @@
 				二级分类 <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">分类</a></li>
-				<li><a href="#">热卖</a></li>
-				<li><a href="#">地方特产</a></li>
+				<li><a href="#">分类</a>
+				</li>
+				<li><a href="#">热卖</a>
+				</li>
+				<li><a href="#">地方特产</a>
+				</li>
 
 			</ul>
+			
 		</div>
+
+		<%--		添加三级分类--%>
+		<div class="dropdown" style="display: inline;">
+<%--			<button class="btn btn-default dropdown-toggle" type="button"--%>
+<%--				id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"--%>
+<%--				aria-expanded="true">--%>
+<%--				二级分类 <span class="caret"></span>--%>
+<%--			</button>--%>
+			
+			<a data-toggle="modal"
+					data-target="#myModal" class="btn btn-info" /> 添加三级分类 </a>
+		</div>
+
+
 	</div>
 
 
@@ -103,8 +128,7 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a data-toggle="modal"
-					data-target="#myModal" class="btn btn-info" /> 添加 </a>
-				</td>
+					data-target="#myModal" class="btn btn-info" /> 添加 </a></td>
 			</tr>
 			<tr>
 				<td width="10%">1</td>
@@ -113,8 +137,7 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
-				</td>
+					onclick="window.location.href('连接')" />添加</a></td>
 			</tr>
 			<tr>
 				<td width="10%">1</td>
@@ -123,8 +146,7 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
-				</td>
+					onclick="window.location.href('连接')" />添加</a></td>
 			</tr>
 			<tr>
 				<td width="10%">1</td>
@@ -133,8 +155,7 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
-				</td>
+					onclick="window.location.href('连接')" />添加</a></td>
 			</tr>
 			<tr>
 				<td width="10%">1</td>
@@ -143,8 +164,7 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
-				</td>
+					onclick="window.location.href('连接')" />添加</a></td>
 			</tr>
 			<tr>
 				<td width="10%">1</td>
@@ -153,25 +173,25 @@
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
 					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
-				</td>
+					onclick="window.location.href('连接')" />添加</a></td>
 			</tr>
 		</table>
 
 		<nav class="text-center">
 		<ul class="pagination">
 			<li><a href="#" aria-label="Previous"> <span
-					aria-hidden="true">&laquo;</span> </a>
+					aria-hidden="true">&laquo;</span> </a></li>
+			<li class="disabled"><a href="#">1</a></li>
+			<li><a href="#">2</a>
 			</li>
-			<li class="disabled"><a href="#">1</a>
+			<li><a href="#">3</a>
 			</li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
+			<li><a href="#">4</a>
+			</li>
+			<li><a href="#">5</a>
+			</li>
 			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a>
-			</li>
+			</a></li>
 		</ul>
 		</nav>
 </body>
