@@ -23,9 +23,33 @@
 
 </head>
 <body>
+
+<%--弹出对话框--%>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">添加三级分类名</h4>
+				</div>
+				<div class="modal-body"><input type="text" class="form-control" placeholder="请输入新的三级分类名，谨慎操作"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button"  class="btn btn-info">添加</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<span class="cp_title">分类管理</span>
 	<div class="add_cp">
-筛选信息：
+		筛选信息：
 		<%--	一级分类--%>
 		<div class="dropdown" style="display: inline;">
 			<button class="btn btn-default dropdown-toggle" type="button"
@@ -78,8 +102,8 @@
 				<td width="12%">分类</td>
 				<td width="12%">零食</td>
 				<td width="26%"><a class="btn btn-primary"
-					onclick="window.open('Login.html')" />编辑</a> <a class="btn btn-info"
-					onclick="window.location.href('连接')" />添加</a>
+					onclick="window.open('Login.html')" />编辑</a> <a data-toggle="modal"
+					data-target="#myModal" class="btn btn-info" /> 添加 </a>
 				</td>
 			</tr>
 			<tr>
@@ -134,12 +158,12 @@
 			</tr>
 		</table>
 
-		<nav class="text-right">
+		<nav class="text-center">
 		<ul class="pagination">
 			<li><a href="#" aria-label="Previous"> <span
 					aria-hidden="true">&laquo;</span> </a>
 			</li>
-			<li class="disabled"><a href="#" style="background-color:#0fe;">1</a>
+			<li class="disabled"><a href="#">1</a>
 			</li>
 			<li><a href="#">2</a></li>
 			<li><a href="#">3</a></li>
