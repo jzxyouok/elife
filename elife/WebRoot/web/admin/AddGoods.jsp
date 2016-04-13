@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,7 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
 
 </head>
 <body>
@@ -30,7 +31,11 @@
 	<div class="table_con">
 		<%--		添加商品--%>
 		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
-		<form action="" method="post">
+		<form action="goodsservlet" method="post">
+			<%--		请求类型，2代表添加商品--%>
+			<input type="hidden" name="type" value="2">
+			<%--		商家id，到时候要动态获取--%>
+			<input type="hidden" name="businessid" value="1">
 			<table style="width: 60%;height:80%;margin: 0 auto;">
 
 				<tr>
@@ -40,39 +45,32 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="15%"><s>原 价</s></td>
-					<td><input type="text" name="oldprice" class="form-control"
-						id="" placeholder="请输入价格">
+					<td width="15%"><s>原 价</s>
 					</td>
+					<td><input type="text" name="oldprice" class="form-control"
+						id="" placeholder="请输入价格"></td>
 				</tr>
 				<tr>
 					<td width="15%">打 折 价</td>
 					<td><input type="text" name="price" class="form-control" id=""
-						placeholder="请输入打折价格，不打折输入0，或者忽略">
-					</td>
+						placeholder="不打折忽略该行即可"></td>
 				</tr>
 				<tr>
 					<td width="15%">库 存 量</td>
 					<td><input type="text" name="stock" class="form-control" id=""
-						placeholder="请输入库存数量">
-					</td>
+						placeholder="请输入库存数量"></td>
 				</tr>
-				<tr>
+				<tr style="height: 100px;">
 					<td width="15%">分 类</td>
-					<td><div class="dropdown">
-							<button class="btn btn-default dropdown-toggle" type="button"
-								id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="true">
-								选择分类 <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><a href="#">甜食</a></li>
-								<li><a href="#">辣食</a></li>
-								<li><a href="#">小甜饼</a></li>
-								<li><a href="#">麻辣烫</a></li>
-							</ul>
-						</div>
+					<%--					这个地方需要通过三级分类id加载所有三级名称，返回值是 三级id数组，这个不是存到商品表里面，需要存到三级分类表中--%>
+					<td><c:forEach items="${classthrees}" var="ct">
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" name="threeclassid" value="${ct.id }">${ct.name
+								} </label>
+						</c:forEach>
 					</td>
+
+
 				</tr>
 				<tr>
 					<td width="15%">上传图片</td>
@@ -90,16 +88,14 @@
 					</td>
 				</tr>
 				<tr style="height: 100px;">
-					<td >商品 描述</td>
-					<td ><textarea placeholder="填下商品描述，最多支持200字哟"  rows="3"
-							cols="30" name="description"></textarea>
-					</td>
+					<td>商品 描述</td>
+					<td><textarea placeholder="填下商品描述，最多支持200字哟" rows="3"
+							cols="30" name="description"></textarea></td>
 				</tr>
 
 				<tr>
 					<td width="50%"><button type="reset" class="btn btn-warning"
-							style="width: 60%;">重置上述数据</button>
-					</td>
+							style="width: 60%;">重置上述数据</button></td>
 					<td width="50%">
 						<button style="width: 60%;" type="submit" class="btn btn-primary">提交商品信息</button>
 					</td>

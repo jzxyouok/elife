@@ -6,13 +6,14 @@ import com.elife.model.beans.Classone;
 import com.elife.model.beans.Classsecond;
 import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
+import com.elife.model.beans.Goodsclass;
 
 /**
  * @author 高远</n> 编写时期 2016-4-12 上午9:55:18</n> TODO 关于管理员商品的各种处理</n>
  *         邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
  * 
  */
-public interface IProductDao {
+public interface IGoodsDao {
 	/**
 	 * 添加一级分类
 	 */
@@ -127,4 +128,9 @@ public interface IProductDao {
 	 * @prarm Goods 商品信息
 	 */
 	public boolean addGoods(Goods goods);
+
+	/**
+	 * 添加三级中间表 goodsclass 插入数据
+	 */
+	public boolean addGoodsClass(Goodsclass goodsclass);
 }
