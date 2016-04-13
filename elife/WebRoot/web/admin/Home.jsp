@@ -105,18 +105,18 @@
             </li>
 
             <li class="menu-list">
-               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>产品与服务<s class="sz"></s></a>
+               <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>用户管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="企业资料管理.html" target="menuFrame">
+                        <a href="ManageUser.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
-                            企业资料管理
+                         用户管理   
                         </a>
                     </li>
                     <li>
-                        <a href="产品管理.html" target="menuFrame">
+                        <a href="ManageBusiness.jsp" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
-                            产品管理(石材等)
+                            商家管理
                         </a>
                     </li>
                     <li>
@@ -135,7 +135,7 @@
     <div id="right-content" class="right-content">
         <div class="content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="企业资料管理.html" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="default.jsp" style="overflow:visible;"
                         scrolling="no" frameborder="no" width="100%" height="90%"></iframe>
             </div>
         </div>
