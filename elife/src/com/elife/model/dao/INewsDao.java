@@ -16,7 +16,7 @@ import com.elife.model.beans.Newscomment;
  */
 public interface INewsDao {
 	//增加活动
-	public abstract boolean addNews(String content);
+	public abstract boolean addNews();
 	//删除活动
 	public abstract boolean deleteNews(int id);
 	//查看某一个活动浏览人数

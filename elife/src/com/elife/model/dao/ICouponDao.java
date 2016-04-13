@@ -13,7 +13,7 @@ import com.elife.model.beans.Coupon;
  * @date: 2016-4-12 上午11:39:03 
  * @Description: TODO
  */
-public interface ICoupon {
+public interface ICouponDao {
 	//增加代金券
 	public abstract boolean addCoupon(String no,double value,int status,String endtime);//优惠券的状态设置为默认
 	//查询代金券（过期的代金券）
