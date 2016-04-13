@@ -56,38 +56,42 @@
 				<td width="4%" align="center">ID</td>
 				<td width="30%" align="center">新闻内容</td>
 				<td width="8%" align="center">点赞数量</td>
-				<td width="10%" align="center">评论的数量</td>
+				<td width="8%" align="center">评论的数量</td>
 				<td width="8%" align="center">浏览人数</td>
 				<td width="8%" align="center">发表人</td>
-				<td width="12%" align="center">所属话题</td>
-				<td width="6%" align="center">状态</td>
-				<td width="14%" align="center">操作</td>
+				<td width="8%" align="center">所属话题</td>
+				<td width="8%" align="center">状态</td>
+				<td width="18%" align="center">操作</td>
 			</tr>
 			<tr>
 				<td width="4%" align="center">1</td>
 				<td width="30%" align="center">习近平欢迎尼日利亚总统访华并举行会谈</td>
 				<td width="8%" align="center">120</td>
-				<td width="10%" align="center">2330</td>
+				<td width="8%" align="center">2330</td>
 				<td width="8%" align="center">12358</td>
 				<td width="8%" align="center">张淳</td>
-				<td width="12%" align="center">习近平</td>
-				<td width="6%" align="center">1</td>
-				<td width="14%" align="center"><a class="btn btn-primary"
+				<td width="8%" align="center">习近平</td>
+				<td width="8%" align="center">未通过</td>
+				<td width="18%" align="center"><a class="btn btn-primary"
 					onclick="window.open('ModifyNews.jsp')" />编辑</a> <a
+					class="btn btn-warning"
+					onclick="window.location.href('Login.html')" />审核</a>&nbsp;<a
 					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 				</td>
 			</tr>
 			<tr>
-				<td width="4%" align="center">2</td>
+				<td width="4%" align="center">1</td>
 				<td width="30%" align="center">习近平欢迎尼日利亚总统访华并举行会谈</td>
 				<td width="8%" align="center">120</td>
-				<td width="10%" align="center">2330</td>
+				<td width="8%" align="center">2330</td>
 				<td width="8%" align="center">12358</td>
 				<td width="8%" align="center">张淳</td>
-				<td width="12%" align="center">习近平</td>
-				<td width="6%" align="center">1</td>
-				<td width="14%" align="center"><a class="btn btn-primary"
+				<td width="8%" align="center">习近平</td>
+				<td width="8%" align="center">未审核</td>
+				<td width="18%" align="center"><a class="btn btn-primary"
 					onclick="window.open('ModifyNews.jsp')" />编辑</a> <a
+					class="btn btn-warning"
+					onclick="window.location.href('Login.html')" />审核</a>&nbsp;<a
 					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 				</td>
 			</tr>

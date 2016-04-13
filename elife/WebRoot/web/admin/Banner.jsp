@@ -32,7 +32,7 @@
 				<td width="20%" align="center">一级分类</td>
 				<td width="20%" align="center">二级分类</td>
 				<td width="20%" align="center">图片地址</td>
-				<td width="20%" align="center">图片链接</td>
+				<td width="20%" align="center">链接地址</td>
 				<td width="14%" align="center">操作</td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@
 				<td width="20%" align="center">零食</td>
 				<td width="20%" align="center">坚果</td>
 				<td width="20%" align="center">abjhdis45467df</td>
-				<td width="20%" align="center">核桃</td>
+				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
 					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
@@ -51,7 +51,7 @@
 				<td width="20%" align="center">零食</td>
 				<td width="20%" align="center">坚果</td>
 				<td width="20%" align="center">abjhdis45467df</td>
-				<td width="20%" align="center">核桃</td>
+				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
 					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
@@ -62,7 +62,7 @@
 				<td width="20%" align="center">零食</td>
 				<td width="20%" align="center">坚果</td>
 				<td width="20%" align="center">abjhdis45467df</td>
-				<td width="20%" align="center">核桃</td>
+				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
 					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>

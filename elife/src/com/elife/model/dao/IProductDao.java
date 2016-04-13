@@ -63,17 +63,17 @@ public interface IProductDao {
 	/**
 	 * 修改一级分类
 	 */
-	public boolean updateFirstClassById(int id);
+	public boolean updateFirstClassById(Classone classone);
 	
 	/**
 	 * 修改二级分类
 	 */
-	public boolean updateSecondClassById(int id);
+	public boolean updateSecondClassById(Classsecond classsecond);
 
 	/**
 	 * 修改三级分类
 	 */
-	public boolean updateThreeClassById(int id);
+	public boolean updateThreeClassById(Classthree classthree);
 
 	/**
 	 * 查询商品总条数
@@ -92,14 +92,14 @@ public interface IProductDao {
 	 * 
 	 * @param 页码
 	 */
-	public List<Goods> getGoodsBySale(int page);
+	public List<Goods> getGoodsBySale(int page, boolean bl);
 
 	/**
-	 * 根据商家名分组排行
+	 * 根据商家id查询商品
 	 * 
 	 * @param:页码
 	 */
-	public List<Goods> getGoodsByMerchant(int page);
+	public List<Goods> getGoodsByMerchant(int businessid);
 
 	/**
 	 * 根据商品id获取商品
@@ -113,17 +113,13 @@ public interface IProductDao {
 	 * 
 	 * @param:商品id
 	 */
-	public boolean updateGoodsById(int id);
+	public boolean updateGoodsById(Goods goods);
 
 	/**
 	 * 根据商品id限制商品上架出售
 	 */
-	public boolean banGoodsById(int id);
+	public boolean toggleGoodsById(int id);
 
-	/**
-	 * 根据商品id取消限制商品上架出售
-	 */
-	public boolean cancelBanGoodsById(int id);
 
 	/*
 	 * 添加商品

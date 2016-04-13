@@ -16,7 +16,7 @@ import com.elife.model.beans.Newscomment;
  */
 public interface INewsDao {
 	//增加新闻
-	public abstract boolean addNews(News news,int page);
+	public abstract boolean addNews(News news);
 	//删除新闻
 	public abstract boolean deleteNews(int id);
 	//查看某一个新闻浏览人数
@@ -27,6 +27,9 @@ public interface INewsDao {
 	public abstract List<News> selectAllNewsByTime(String time,int page);
 	public abstract List<Newscomment> selectNewsComment(int id); //通过活动ID
 	public abstract List<News> selectAllNewsByUserName(String username);
+
+	public abstract List<News> selectAllNewsByUserId(int userid, int nowpage);
+
 	//修改新闻信息（修改状态）
 	public abstract boolean modifyNewsStatus(int id);
 }
