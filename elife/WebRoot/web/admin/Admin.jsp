@@ -6,7 +6,7 @@
   <head>
     
     
-    <title>My JSP 'Admin.jsp' starting page</title>
+    <title>管理员</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -37,14 +37,20 @@
   <body>
 <span class="cp_title">管理员管理</span>
 <!-- 搜索栏 -->
+<div class="add_cp">
+		<a href="AddAdmin.jsp">+添加管理员</a>
+	
+	<div float="left">
 <form class="navbar-form navbar-left" role="search">
-  <button type="button" class="btn btn-default navbar-btn">+添加管理员</button>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="请输入搜索内容">
+ 
+ <div class="form-group" float="left">
+    
+<input type="text" class="form-control" placeholder="请输入搜索内容">
   </div>
   <button type="submit" class="btn btn-default">搜索</button>
 </form>
-
+</div>
+</div>
 <div class="table_con">
 	<table>
     	<tr class="tb_title">
@@ -76,8 +82,9 @@
            
             <td width="21%">
       
-                <a class="sj_btn" href="" >编辑</a>
-                <a class="del_btn" href="" >删除</a>
+                <a class="btn btn-primary"
+					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
+					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 
             </td>
         </tr>
@@ -88,9 +95,9 @@
             <td width="12%">商家</td>
             
             <td width="21%">
-            	
-                <a class="sj_btn" href="" >编辑</a>
-                <a class="del_btn" href="" >删除</a>
+            	 <a class="btn btn-primary"
+					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
+					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 
             </td>
         </tr>
@@ -117,8 +124,7 @@
 			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 			</a></li>
 		</ul>
-		</nav>
-	
+		</nav>	
 </div>
 </body>
 </html>

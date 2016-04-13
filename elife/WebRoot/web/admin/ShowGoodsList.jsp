@@ -136,12 +136,12 @@
 			</tr>
 		</table>
 
-		<nav class="text-right">
+		<nav class="text-center">
 		<ul class="pagination">
 			<li><a href="#" aria-label="Previous"> <span
 					aria-hidden="true">&laquo;</span> </a>
 			</li>
-			<li class="disabled"><a href="#" style="background-color:#0fe;">1</a>
+			<li class="disabled"><a href="#" >1</a>
 			</li>
 			<li><a href="#">2</a></li>
 			<li><a href="#">3</a></li>
