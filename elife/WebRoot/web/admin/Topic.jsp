@@ -45,6 +45,16 @@
   <button type="submit" class="btn btn-default">搜索</button>
 </form>
 </div>
+<div class="btn-group" style="margin:0 auto;">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    按参与量查询 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">按参与量查询</a></li>
+    <li><a href="#">按创建时间查询</a></li>
+    <li><a href="#">查询未审核话题</a></li>
+  </ul>
+</div>
 </div>
 	<div class="table_con">
 		<table>

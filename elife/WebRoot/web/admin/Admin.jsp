@@ -36,21 +36,30 @@
  
   <body>
 <span class="cp_title">管理员管理</span>
+
 <!-- 搜索栏 -->
 <div class="add_cp">
 		<a href="AddAdmin.jsp">+添加管理员</a>
-	
 	<div float="left">
-<form class="navbar-form navbar-left" role="search">
- 
- <div class="form-group" float="left">
-    
-<input type="text" class="form-control" placeholder="请输入搜索内容">
-  </div>
-  <button type="submit" class="btn btn-default">搜索</button>
-</form>
+		<form class="navbar-form navbar-left" role="search">
+		 
+		 <div class="form-group" float="left">
+		    
+		<input type="text" class="form-control" placeholder="请输入搜索内容">
+		  </div>
+		  <button type="submit" class="btn btn-default">搜索</button>
+		</form>
+		
+		<div class="btn-group" style="margin:0 auto;">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    按等级查询 <span class="caret"></span>
+  </button>
+  
 </div>
+
 </div>
+
+
 <div class="table_con">
 	<table>
     	<tr class="tb_title">
@@ -102,8 +111,8 @@
             </td>
         </tr>
     </table>
-   
-</div>
+   </div>
+
 <div align="center">
  <nav>
 		<ul class="pagination" >
