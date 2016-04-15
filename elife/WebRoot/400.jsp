@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <img alt='我是图片标题' src='D:/elife/web/admin/upload/goods/1460697901796.jpg'>
+    <img alt='我是图片标题' src="elife/web/admin/upload/goods/1460697901796.jpg">
   </body>
 </html>
