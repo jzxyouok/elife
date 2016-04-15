@@ -31,9 +31,9 @@
 	<div class="table_con">
 		<%--		添加商品--%>
 		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
-		<form action="goodsservlet" method="post">
+		<form action="goodsservlet?type=2" method="post" enctype="multipart/form-data">
 			<%--		请求类型，2代表添加商品--%>
-			<input type="hidden" name="type" value="2">
+<!-- 			<input type="hidden" name="type" value="2"> -->
 			<%--		商家id，到时候要动态获取--%>
 			<input type="hidden" name="businessid" value="1">
 			<table style="width: 60%;height:80%;margin: 0 auto;">

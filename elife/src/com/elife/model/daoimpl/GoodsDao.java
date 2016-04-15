@@ -14,6 +14,7 @@ import com.elife.model.beans.Classsecond;
 import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
+import com.elife.model.beans.Goodsimg;
 import com.elife.model.dao.IGoodsDao;
 import com.elife.utils.C3p0Utils;
 
@@ -26,6 +27,8 @@ import com.elife.utils.C3p0Utils;
  * 
  */
 public class GoodsDao implements IGoodsDao {
+
+	private static final String TAG = "GoodsDao";
 
 	@Override
 	public boolean addFirstClass(Classone classone) {
@@ -163,9 +166,40 @@ public class GoodsDao implements IGoodsDao {
 	}
 
 	@Override
-	public boolean addGoods(Goods goods) {
+	public int addGoods(Goods goods) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		conn = C3p0Utils.getConnection();
+		String sql = "insert into goods values(null,?,?,?,?,?,null,null,?,null,?)";// 注意，倒数第二个是个多余的字段，到时候要删除
+		try {
+			ps = conn.prepareStatement(sql,
+					PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setString(1, goods.getName());
+			ps.setString(2, goods.getDescription());
+			ps.setDouble(3, goods.getPrice());
+			ps.setInt(4, goods.getStock());
+			ps.setDouble(5, goods.getOldprice());
+			ps.setInt(6, goods.getBusinessid());
+			ps.setString(7, goods.getRemark());
+			ps.executeUpdate();
+			rs = ps.getGeneratedKeys();
+			if (rs.next()){
+				int index=rs.getInt(1);
+				System.out.println(TAG + ":" + index);
+				return index;
+			}
 
-		return false;
+			else
+				return -1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3p0Utils.release(rs, ps, conn);
+		}
+		return -1;
+
 	}
 
 	@Override
@@ -173,6 +207,21 @@ public class GoodsDao implements IGoodsDao {
 		String sql = "insert into goodsclass values(null,?,?,?)";
 		Object[] param = { goodsclass.getGoodsid(),
 				goodsclass.getClassthreeid(), goodsclass.getRemark() };
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addGoodsImg(Goodsimg goodsimg) {
+		String sql = "insert into goodsimg values(null,?,?,?)";
+		Object[] param = { goodsimg.getImgaddress(), goodsimg.getGoodsid(),
+				goodsimg.getRemark() };
 		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
 		try {
 			queryRunner.update(sql, param);

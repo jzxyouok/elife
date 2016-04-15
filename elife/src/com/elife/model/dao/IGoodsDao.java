@@ -7,6 +7,7 @@ import com.elife.model.beans.Classsecond;
 import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
+import com.elife.model.beans.Goodsimg;
 
 /**
  * @author 高远</n> 编写时期 2016-4-12 上午9:55:18</n> TODO 关于管理员商品的各种处理</n>
@@ -125,12 +126,17 @@ public interface IGoodsDao {
 	/*
 	 * 添加商品
 	 * 
-	 * @prarm Goods 商品信息
+	 * @prarm Goods 商品信息;修改该接口返回boolean，返回id。失败返回-1
 	 */
-	public boolean addGoods(Goods goods);
+	public int addGoods(Goods goods);
 
 	/**
 	 * 添加三级中间表 goodsclass 插入数据
 	 */
 	public boolean addGoodsClass(Goodsclass goodsclass);
+	/*
+	 * 添加接口：添加商品图片表。添加时间：0414
+	 */
+
+	public boolean addGoodsImg(Goodsimg goodsimg);
 }

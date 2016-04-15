@@ -5,6 +5,7 @@ import java.util.List;
 import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
+import com.elife.model.beans.Goodsimg;
 import com.elife.model.dao.IGoodsDao;
 import com.elife.model.daoimpl.GoodsDao;
 
@@ -40,10 +41,18 @@ public class GoodsService {
 	/**
 	 * TODO
 	 */
-	public boolean addGoods(Goods goods) {
-		return false;
+	public int addGoods(Goods goods) {
+		IGoodsDao goodsDao = new GoodsDao();
+		return goodsDao.addGoods(goods);
 
 	}
 
+	/**
+	 * TODO
+	 */
+	public boolean addGoodsImg(Goodsimg gs) {
+		IGoodsDao goodsDao = new GoodsDao();
+		return goodsDao.addGoodsImg(gs);
+	}
 
 }
