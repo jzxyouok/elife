@@ -2,7 +2,6 @@ package com.elife.web.servlet.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -59,7 +58,7 @@ public class GoodsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		GoodsService goodsService = new GoodsService();
 		/*
-		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食，id:1
+		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食
 		 */
 		String type = req.getParameter("type");
 		if (type.equals("1")) {
@@ -72,40 +71,35 @@ public class GoodsServlet extends HttpServlet {
 				System.out.println(TAG + "：获取三级分类失败。");
 			}
 		} else if (type.equals("2")) {
-			List<Goodsimg> goodsimgs = new ArrayList<Goodsimg>();
 			/*
-			 * 逻辑：第一步：获取商品基本信息、商家id、商品分类id数组. 第二步：存储商品信息(不包括商品图片信息)，返回商品id.第三步：
-			 * 、遍历存储商品id和对应分类id到三级分类中间表。第四步：根据商品id存储商品图片信息到商品图片表
+			 * 上传商品所有逻辑： 第一步：点击添加商品按钮，携带过来商家ID、商家产的商品所属的全部三级分类信息。
+			 * 第二步：提交之后，初始化第三方文件上传框架
+			 * ，为获取普通表单数据做准备。注意,获取普通表单数据不能使用传统方式，在smartUpload
+			 * .upload()之后，用该框架提供的方法获取表单数据。第三步：上传文件。
+			 * 第四步：获取商品表单基本信息之后插入商品表，返回插入商品的id 第五步：遍历存储分类ID和返回的商品ID到三级分类中间表。
+			 * 第六步：遍历获取到的商品图片路径和商品ID存储到商品图片表。
 			 */
-			Goods goods = new Goods();
-			try {
-				// 第一步，获取数据
-				// BeanUtils.populate(goods, req.getParameterMap());//不能使用
-				// 获取分类组数据
-				@SuppressWarnings("unused")
-				// String[] threeclassid =
-				// req.getParameterValues("threeclassid");//
-				// 这个数据不能保存到商品表中。应该通过商品id，把商品id和三级分类id保存到对应的三级中间表中。
 
-				// 第二步，保存商品信息
+			List<Goodsimg> goodsimgs = new ArrayList<Goodsimg>();// 商品图片列表
+			Goods goods = new Goods();// 商品
+
+			try {
+				// 第二步，初始化SmartUpload
 				SmartUpload smartUpload = new SmartUpload();
 				smartUpload.initialize(config, req, resp);
 				try {
-					smartUpload.upload();// 此步操作之后才可以获取表单参数
+					smartUpload.upload();// 此步操作之后才可以获取普通表单参数
 				} catch (SmartUploadException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				/*
-				 * 这一块处理获取普通表单
-				 */
+
 				Map<String, String> parameterMap = new HashMap<String, String>();
-				String parameter = smartUpload.getRequest()
-						.getParameter("name");
-				System.out.println(TAG + "打印name:" + parameter);
 				@SuppressWarnings("rawtypes")
 				Enumeration em = smartUpload.getRequest()
 						.getParameterNames();
+				/*
+				 * 这一块处理获取普通表单， 存储到Map中然后用beanutils进行封装
+				 */
 				while (em.hasMoreElements()) {
 					String key = (String) em.nextElement();
 					String value = smartUpload.getRequest().getParameter(key);
@@ -114,17 +108,17 @@ public class GoodsServlet extends HttpServlet {
 
 				BeanUtils.populate(goods, parameterMap);// 我们在这里获取自己封装的数据
 				String[] threeclassid = smartUpload.getRequest()
-						.getParameterValues("threeclassid");// 获取分类列表
+						.getParameterValues("threeclassid");// 获取分类列表ID
 
 				System.out.println(TAG + "测试打印goods:" + goods);
 				System.out.println(TAG + ":测试打印分类列表："
 						+ Arrays.toString(threeclassid));
 
-				// 文件夹不存在，创建
+				// 第三步：上传文件
 				String dir = ParamUtils.SAVEPATP + ParamUtils.SAVEPATP_GOODS;
 				File file = new File(dir);
 				if (!file.exists()) {
-					file.mkdirs();
+					file.mkdirs();// 文件夹不存在，创建
 				}
 				for (int i = 0; i < smartUpload.getFiles().getCount(); i++) {
 					// 用户上传少于四张时处理
@@ -149,7 +143,7 @@ public class GoodsServlet extends HttpServlet {
 				}
 				System.out.println(TAG + "文件已上传");
 
-				// 准备上传商品信息到数据库
+				// 第四步：添加商品到商品表，返回ID
 				int returnId = goodsService.addGoods(goods);
 				System.out.println(TAG + "商品id" + returnId);
 				if (returnId != -1) {
@@ -158,7 +152,7 @@ public class GoodsServlet extends HttpServlet {
 					System.out.println(TAG + "上传商品失败");
 				}
 
-				// 第三步，根据获取到商品id，保存三级分类中间表
+				// 第五步：根据获取到商品id，保存三级分类中间表
 				for (int i = 0; i < threeclassid.length; i++) {
 					Goodsclass goodsclass = new Goodsclass();
 					goodsclass.setClassthreeid(Integer
@@ -173,7 +167,7 @@ public class GoodsServlet extends HttpServlet {
 					goodsclass = null;// 释放资源
 				}
 
-				// 第四步，保存商品图片到商品图片表
+				// 第六步，保存商品图片到商品图片表
 				for (Goodsimg gs : goodsimgs) {
 					gs.setGoodsid(returnId);// 保存商品id
 					boolean isAdd = goodsService.addGoodsImg(gs);
@@ -183,16 +177,12 @@ public class GoodsServlet extends HttpServlet {
 						System.out.println(TAG + "添加商品图片表失败");
 					}
 				}
-				//goodsimgs = null;// 释放内存
-
+				goodsimgs = null;// 释放内存
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println(TAG + ":测试打印数据：" + goods);
-			PrintWriter printWriter=resp.getWriter();
-			printWriter
-					.print("<img alt='我是图片标题' src='D:/elife/web/admin/upload/goods/1460697901796.jpg'>");
+
 		}
 		
 	}
