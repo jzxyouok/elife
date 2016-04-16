@@ -8,6 +8,7 @@ import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
 import com.elife.model.beans.Goodsimg;
+import com.elife.model.beans.Pager;
 
 /**
  * @author 高远</n> 编写时期 2016-4-12 上午9:55:18</n> TODO 关于管理员商品的各种处理</n>
@@ -87,12 +88,12 @@ public interface IGoodsDao {
 	 * 
 	 * @param 页码
 	 */
-	public List<Goods> getGoodsByStock(int page);
+	public List<Goods> getGoodsByStock(int page,boolean bl);
 
 	/**
 	 * 根据卖出量查看商品排行
 	 * 
-	 * @param 页码
+	 * @param 页码 true表示由高到低
 	 */
 	public List<Goods> getGoodsBySale(int page, boolean bl);
 
@@ -103,6 +104,7 @@ public interface IGoodsDao {
 	 */
 	public List<Goods> getGoodsByMerchant(int businessid);
 
+	
 	/**
 	 * 根据商品id获取商品
 	 * 
@@ -139,4 +141,22 @@ public interface IGoodsDao {
 	 */
 
 	public boolean addGoodsImg(Goodsimg goodsimg);
+	
+	/*
+	 * 添加接口：获取商品Pager(默认顺序)。添加时间：0416
+	 */
+
+	public Pager<Goods> getGoodsPager(int page);
+	/*
+	 * 添加接口：获取商品list(默认顺序)。添加时间：0416
+	 */
+
+	public List<Goods> getGoodsList(int page);
+	/*
+	
+	 * 添加接口：获取商家名字。添加时间：0416
+	 */
+
+	public String getBusinessNameById(int id);
+	
 }

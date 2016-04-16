@@ -22,6 +22,7 @@ import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
 import com.elife.model.beans.Goodsimg;
+import com.elife.model.beans.Pager;
 import com.elife.model.service.GoodsService;
 import com.elife.utils.ParamUtils;
 import com.jspsmart.upload.SmartUpload;
@@ -58,7 +59,7 @@ public class GoodsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		GoodsService goodsService = new GoodsService();
 		/*
-		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食
+		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;3:获取商品list
 		 */
 		String type = req.getParameter("type");
 		if (type.equals("1")) {
@@ -71,6 +72,9 @@ public class GoodsServlet extends HttpServlet {
 				System.out.println(TAG + "：获取三级分类失败。");
 			}
 		} else if (type.equals("2")) {
+			/*
+			 * 添加商品
+			 */
 			/*
 			 * 上传商品所有逻辑： 第一步：点击添加商品按钮，携带过来商家ID、商家产的商品所属的全部三级分类信息。
 			 * 第二步：提交之后，初始化第三方文件上传框架
@@ -132,7 +136,7 @@ public class GoodsServlet extends HttpServlet {
 					String saveName = currentTimeMillis
 							+ fileName.substring(fileName.lastIndexOf("."));
 					String saveFullPath = dir + saveName;
-					goodsimg.setImgaddress(saveFullPath);
+					goodsimg.setImgaddress(saveFullPath.substring(1));
 					goodsimgs.add(goodsimg);// 保存路径
 					try {
 						smartUpload.getFiles().getFile(i).saveAs(saveFullPath);
@@ -183,6 +187,46 @@ public class GoodsServlet extends HttpServlet {
 			}
 			System.out.println(TAG + ":测试打印数据：" + goods);
 
+		}else if(type.equals("3")){
+			/*
+			 * 查询商品排行
+			 */
+			/*
+			 * 显示商品list逻辑：
+			 * 第一步：获取请求页码。如果第一次请求，默认页码是1。
+			 * 第二步：根据页码获取相应商品List。
+			 * 第三步：根据商品id获取商家bean。
+			 * 我们需要回传的数据：List<Goods>（在该bean中添加属性列:username(商家名称)）、pager
+			 */
+			/*
+			 * 分页逻辑：
+			 * 第一步：获取请求页码【nowPager】。如果第一次请求，默认页码是1。
+			 * 第二步：获取信息条数【totalRecordNum】，得到页数【totalPageNum】。
+			 * 第三步：根据页码获取对应List【List<Object>】。
+			 * 第四步：封装成pagerbean。
+			 */
+			//第一步
+			String parameter = req.getParameter("page");//获取的页码
+			int page=1;//默认第一页
+			if(parameter==null){
+				
+			}else{
+				page=Integer.parseInt(parameter);//获取的页码
+			}
+			Pager<Goods>  goodsPager=goodsService.getGoodsPager(page);
+			
+			/*
+			 * 测试数据
+			 */
+			System.out.println(TAG+"页码信息:"+goodsPager);
+			List<Goods> goodsList=goodsPager.getObjects();
+			for (Goods goods2 : goodsList) {
+				System.out.println(TAG+"获取到的商品list:"+goods2);
+			}
+			
+			
+			req.setAttribute("goodsPager",goodsPager);
+			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(req, resp);
 		}
 		
 	}

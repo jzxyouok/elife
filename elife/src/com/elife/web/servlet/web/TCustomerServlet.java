@@ -25,28 +25,9 @@ public class TCustomerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String str = getServletContext().getRealPath("/upload");
+		System.out.println(str);
 
-		// String type = req.getParameter("type");
-		// if (type.equals("1")) {
-		// IUserService userService = new UserService();
-		// // 添加用户
-		// Users users = new Users();
-		// try {
-		// BeanUtils.populate(users, req.getParameterMap());
-		// boolean addUser = userService.addUser(users);
-		// System.out.println(addUser);
-		// } catch (IllegalAccessException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// } catch (InvocationTargetException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// } else if (type.equals("2")) {
-		// // 修改用户信息
-		// } else if (type.equals("3")) {
-		// // 查询所有用户
-		// }
 	}
 
 }
