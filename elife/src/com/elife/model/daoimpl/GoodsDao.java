@@ -8,15 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+
+
+import com.elife.model.beans.Business;
 import com.elife.model.beans.Classone;
 import com.elife.model.beans.Classsecond;
 import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
 import com.elife.model.beans.Goodsimg;
+import com.elife.model.beans.Pager;
 import com.elife.model.dao.IGoodsDao;
 import com.elife.utils.C3p0Utils;
+import com.elife.utils.PageUtils;
+import com.elife.utils.ParamUtils;
 
 /**
  * @author 高远</n>
@@ -125,21 +134,23 @@ public class GoodsDao implements IGoodsDao {
 
 	@Override
 	public int getGoodsCount() {
-
-		return 0;
+		String sql = "select count(*) from goods";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		
+		try {
+			long totalRecordNum = (Long) queryRunner.query(sql,
+					new ScalarHandler(1));
+			return (int) totalRecordNum;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
 	}
 
-	@Override
-	public List<Goods> getGoodsByStock(int page) {
+	
 
-		return null;
-	}
-
-	@Override
-	public List<Goods> getGoodsBySale(int page, boolean bl) {
-
-		return null;
-	}
+	
 
 	@Override
 	public List<Goods> getGoodsByMerchant(int businessid) {
@@ -230,6 +241,63 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public List<Goods> getGoodsByStock(int page, boolean bl) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Goods> getGoodsList(int page) {
+		
+		String sql = "select * from goods limit ?,?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goods> goodsList = queryRunner.query(sql,
+					new BeanListHandler<Goods>(Goods.class),PageUtils.getParam1(page),ParamUtils.PERPAGE);
+			//返回之前，我们获取商家名字
+			for (Goods goods : goodsList) {
+				String name=getBusinessNameById(goods.getBusinessid());
+				goods.setUsername(name);
+			}
+			return goodsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	@Override
+	public List<Goods> getGoodsBySale(int page, boolean bl) {
+		
+		
+		
+		return null;
+	}
+
+	@Override
+	public Pager<Goods> getGoodsPager(int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getBusinessNameById(int id) {
+		String sql = "select * from business where id = ?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			Business business = queryRunner.query(sql,
+					new BeanHandler<Business>(Business.class), id);
+			return business.getUsername();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1+"";
+		}
+
+		
 	}
 
 }

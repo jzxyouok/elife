@@ -12,12 +12,12 @@ import com.elife.utils.ParamUtils;
  * 博客  http://blog.csdn.net/wgyscsf</n>
  * 
  */
-public class Pager {
+public class Pager<T> {
 	public int perSize = ParamUtils.PERPAGE;// 每页条数
 	private int nowPager; // 当前页
 	private int totalPageNum; // 总页数
 	private int totalRecordNum; // 总条数
-	private List<Object> objects; // 获取的信息列表
+	private List<T> objects; // 获取的信息列表
 	public int getPerSize() {
 		return perSize;
 	}
@@ -50,12 +50,19 @@ public class Pager {
 		this.totalRecordNum = totalRecordNum;
 	}
 
-	public List<Object> getObjects() {
+	public List<T> getObjects() {
 		return objects;
 	}
 
-	public void setObjects(List<Object> objects) {
+	public void setObjects(List<T> objects) {
 		this.objects = objects;
+	}
+
+	@Override
+	public String toString() {
+		return "Pager [perSize=" + perSize + ", nowPager=" + nowPager
+				+ ", totalPageNum=" + totalPageNum + ", totalRecordNum="
+				+ totalRecordNum + ", objects=" + objects + "]";
 	}
 
 
