@@ -1,5 +1,6 @@
 package com.elife.utils;
 
+
 /**
  * @author 高远</n> 编写时期 2016-4-11 下午12:53:46</n> TODO 一些全局参数全部放到这个类里面</n>
  *         邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
@@ -29,10 +30,12 @@ public class ParamUtils {
 	 * 定义一个存储的全局位置，注意，这是一个根节点，全部img在此文件夹下.前面加“/”相对于tomcat所在的盘符的根目录，不加“/”，
 	 * 相对于myeclipse安装目录为根目录
 	 */
-	public static final String SAVEPATP = "D:/elife";
+	public static final String SAVEPATP = "/save";
 	/*
 	 * 商品的存储位置
 	 */
-	public static final String SAVEPATP_GOODS = "/web/admin/upload/goods/";
+	public static final String SAVEPATP_GOODS = "/img/goods/";
+
+
 
 }

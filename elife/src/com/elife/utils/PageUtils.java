@@ -16,7 +16,7 @@ public class PageUtils {
 	 * @param pager
 	 *            当前页 。返回limit m,n 的第一个参数
 	 */
-	public int getParam(int pager) {
+	public static int getParam1(int pager) {
 		int param1 = (pager - 1) * ParamUtils.PERPAGE;
 		return param1;
 	}
@@ -25,7 +25,7 @@ public class PageUtils {
 	 * @param totalRecordNum
 	 *            信息总条数 。返回 总页数
 	 */
-	public int getPagersByNums(int totalRecordNum) {
+	public static int getPagersByNums(int totalRecordNum) {
 		int totalPageNum = (totalRecordNum + ParamUtils.PERPAGE - 1)
 				/ ParamUtils.PERPAGE;
 		return totalPageNum;

@@ -6,8 +6,11 @@ import com.elife.model.beans.Classthree;
 import com.elife.model.beans.Goods;
 import com.elife.model.beans.Goodsclass;
 import com.elife.model.beans.Goodsimg;
+import com.elife.model.beans.Pager;
 import com.elife.model.dao.IGoodsDao;
 import com.elife.model.daoimpl.GoodsDao;
+import com.elife.utils.PageUtils;
+import com.elife.utils.ParamUtils;
 
 /**
  * @author 高远</n>
@@ -53,6 +56,22 @@ public class GoodsService {
 	public boolean addGoodsImg(Goodsimg gs) {
 		IGoodsDao goodsDao = new GoodsDao();
 		return goodsDao.addGoodsImg(gs);
+	}
+
+
+
+	public Pager<Goods> getGoodsPager(int page) {
+		IGoodsDao goodsDao = new GoodsDao();
+		Pager<Goods> p=new Pager<Goods>();
+		List<Goods> goodsList=goodsDao.getGoodsList(page);
+		int count =goodsDao.getGoodsCount();
+		
+		p.setNowPager(page);
+		p.setPerSize(ParamUtils.PERPAGE);
+		p.setTotalRecordNum(count);
+		p.setTotalPageNum(PageUtils.getPagersByNums(count));
+		p.setObjects(goodsList);
+		return p;
 	}
 
 }
