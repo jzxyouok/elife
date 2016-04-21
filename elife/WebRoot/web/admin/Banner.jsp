@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="css/Iframe.css" />
 </head>
 <body>
-<span class="cp_title">轮播图管理</span>
+	<span class="cp_title">轮播图管理</span>
 	<div class="add_cp">
 		<a href="AddBanner.jsp">+添加轮播图</a>
 	</div>
@@ -43,8 +43,7 @@
 				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a></td>
 			</tr>
 			<tr>
 				<td width="6%" align="center">1</td>
@@ -54,8 +53,7 @@
 				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a></td>
 			</tr>
 			<tr>
 				<td width="6%" align="center">1</td>
@@ -65,10 +63,9 @@
 				<td width="20%" align="center">www.baidu.com</td>
 				<td width="14%" align="center"><a class="btn btn-primary"
 					onclick="window.open('AddBanner.jsp')" />编辑</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-				</td>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a></td>
 			</tr>
-						
+
 		</table>
 
 	</div>
@@ -76,19 +73,22 @@
 		<nav>
 		<ul class="pagination">
 			<li class="disabled"><span> <span aria-hidden="true">&laquo;</span>
-			</span></li>
-			<li><span>1 <span class="sr-only">(current)</span>
-			</span></li>
+			</span>
+			</li>
+			<li><span>1 <span class="sr-only">(current)</span> </span>
+			</li>
 			<li class="active"><span>2 <span class="sr-only">(current)</span>
-			</span></li>
-			<li><span>3 <span class="sr-only">(current)</span>
-			</span></li>
-			<li><span>4 <span class="sr-only">(current)</span>
-			</span></li>
-			<li><span>5 <span class="sr-only">(current)</span>
-			</span></li>
+			</span>
+			</li>
+			<li><span>3 <span class="sr-only">(current)</span> </span>
+			</li>
+			<li><span>4 <span class="sr-only">(current)</span> </span>
+			</li>
+			<li><span>5 <span class="sr-only">(current)</span> </span>
+			</li>
 			<li class="disabled"><span> <span aria-hidden="true">&raquo;</span>
-			</span></li>
+			</span>
+			</li>
 		</ul>
 		</nav>
 	</div>

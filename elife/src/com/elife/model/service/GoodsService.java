@@ -63,14 +63,14 @@ public class GoodsService {
 	public Pager<Goods> getGoodsPager(int page) {
 		IGoodsDao goodsDao = new GoodsDao();
 		Pager<Goods> p=new Pager<Goods>();
-		List<Goods> goodsList=goodsDao.getGoodsList(page);
-		int count =goodsDao.getGoodsCount();
+		List<Goods> goodsList=goodsDao.getGoodsList(page);//过去List参数
+		int count =goodsDao.getGoodsCount();//获取总条数
 		
-		p.setNowPager(page);
-		p.setPerSize(ParamUtils.PERPAGE);
-		p.setTotalRecordNum(count);
-		p.setTotalPageNum(PageUtils.getPagersByNums(count));
-		p.setObjects(goodsList);
+		p.setNowPager(page);//设置当前页
+		p.setPerSize(ParamUtils.PERPAGE);//设置每页大小
+		p.setTotalRecordNum(count);//设置总条数
+		p.setTotalPageNum(PageUtils.getPagersByNums(count));//设置总页数
+		p.setObjects(goodsList);//封装信息list
 		return p;
 	}
 
