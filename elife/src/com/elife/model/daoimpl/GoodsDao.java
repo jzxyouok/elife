@@ -12,8 +12,6 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-
-
 import com.elife.model.beans.Business;
 import com.elife.model.beans.Classone;
 import com.elife.model.beans.Classsecond;
@@ -161,7 +159,17 @@ public class GoodsDao implements IGoodsDao {
 	@Override
 	public Goods getGoodsById(int id) {
 
-		return null;
+		String sql = "select * from Goods where id = ?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			Goods goods = queryRunner.query(sql, new BeanHandler<Goods>(
+					Goods.class), id);
+			return goods;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	@Override
@@ -298,6 +306,85 @@ public class GoodsDao implements IGoodsDao {
 		}
 
 		
+	}
+
+	@Override
+	public List<Goodsimg> getGoodsImgByGoodsId(int id) {
+		String sql = "select * from Goodsimg where goodsid=?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goodsimg> goodsimgList = queryRunner.query(sql,
+					new BeanListHandler<Goodsimg>(Goodsimg.class), id);
+
+			return goodsimgList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean updateGoods(Goods goods) {
+		String sql = "update goods set name=?,description=?,price=?,stock=?,oldprice=?,businessid=?,threeclassid=?,remark=? where id = ?";
+		Object[] param = { goods.getName(), goods.getDescription(),
+				goods.getPrice(), goods.getStock(), goods.getOldprice(),
+				goods.getBusinessid(), goods.getThreeclassid(),
+				goods.getRemark(), goods.getId() };
+
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGoodsClass(Goodsclass goodsclass) {
+		String sql = "update goodsclass set goodsid=?,classthreeid=?,remark=? where id = ?";
+		Object[] param = { goodsclass.getGoodsid(),
+				goodsclass.getClassthreeid(),
+ goodsclass.getRemark(),
+				goodsclass.getId() };
+
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGoodsImg(Goodsimg gs) {
+		String sql = "insert into goodsimg values(null,?,?,?)";
+		Object[] param = { gs.getImgaddress(), gs.getGoodsid(), gs.getRemark() };
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteGoodsByGoodsId(int goodsid) {
+		String sql = "delete from Goodsimg where goodsid = ?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+
+		try {
+			queryRunner.update(sql, goodsid);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

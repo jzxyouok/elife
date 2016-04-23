@@ -22,6 +22,8 @@ import com.elife.utils.ParamUtils;
  */
 public class GoodsService {
 
+	private static final String TAG = "GoodsService";
+
 	/**
 	 * TODO
 	 */
@@ -72,6 +74,53 @@ public class GoodsService {
 		p.setTotalPageNum(PageUtils.getPagersByNums(count));//设置总页数
 		p.setObjects(goodsList);//封装信息list
 		return p;
+	}
+
+	/**
+	 * TODO
+	 */
+	public Goods getGoodsById(int id) {
+		IGoodsDao goodsDao = new GoodsDao();
+		Goods goods=new Goods();
+		List<Classthree> classThreesList = goodsDao.getThreeClass();// 获取所有分类
+		List<Goodsimg> goodsImgList = goodsDao.getGoodsImgByGoodsId(id);// 根据商品id获取图片
+		goods = goodsDao.getGoodsById(id);// 获取商品基本信息
+		goods.setClassThreesList(classThreesList);
+		goods.setGoodsImgsList(goodsImgList);
+		return goods;
+	}
+
+	/**
+	 * TODO
+	 */
+	public boolean updateGoods(Goods goods) {
+		IGoodsDao goodsDao = new GoodsDao();
+		return goodsDao.updateGoods(goods);
+	}
+
+	/**
+	 * TODO
+	 */
+	public boolean updateGoodsClass(Goodsclass goodsclass) {
+		IGoodsDao goodsDao = new GoodsDao();
+		return goodsDao.updateGoodsClass(goodsclass);
+	}
+
+	/**
+	 * TODO
+	 */
+	public boolean updateGoodsImg(Goodsimg gs) {
+		IGoodsDao goodsDao = new GoodsDao();
+		return goodsDao.updateGoodsImg(gs);
+	}
+
+	/**
+	 * TODO
+	 */
+	public boolean deleteGoodsImgByGoodsId(int id) {
+		IGoodsDao goodsDao = new GoodsDao();
+		boolean isdel = goodsDao.deleteGoodsByGoodsId(id);
+		return isdel;
 	}
 
 }

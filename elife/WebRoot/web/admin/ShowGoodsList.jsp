@@ -90,7 +90,7 @@ table tr td {
 					<td width="10%">${goods.price }/${goods.oldprice }</td>
 					<td width="10%">${goods.status }</td>
 					<td width="25%"><a class="btn btn-primary"
-						onclick="window.open('Login.html')" />编辑</a> <a
+						onclick="javascript:window.location.href='goodsservlet?type=4&id=${goods.id }';" />编辑</a> <a
 						class="btn btn-warning"
 						onclick="window.location.href('Login.html')" />锁定</a> <a
 						class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
@@ -101,7 +101,7 @@ table tr td {
 		
 		
 		
-		<!-- 分页处理 -->
+		<!-- 分页处理，需要在最上面添加taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" -->
 		<!-- 		问题:不能保证当前页面每次都在中间。只能保证正常翻页 。最好可以每次保证当前页面在中间-->
 		<!-- goodsPager就是一个Pagerlist对象 -->
 		<nav class="text-center">
