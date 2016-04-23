@@ -1,5 +1,6 @@
 package com.elife.model.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.elife.model.beans.Classone;
@@ -183,5 +184,20 @@ public interface IGoodsDao {
 	 * 添加接口： 根据商品id删除原有图片。添加时间：0423
 	 */
 	public boolean deleteGoodsByGoodsId(int goodsid);
+
+	/**
+	 * TODO
+	 */
+	public boolean delGood(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean delImgs(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean delGoodsClass(Connection conn, int id);
 	
 }

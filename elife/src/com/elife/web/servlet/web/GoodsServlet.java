@@ -2,6 +2,7 @@ package com.elife.web.servlet.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -59,7 +60,7 @@ public class GoodsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		GoodsService goodsService = new GoodsService();
 		/*
-		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;3:获取商品list;4:编辑商品;5:更新商品
+		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;3:获取商品list;4:编辑商品;5:更新商品;6:删除商品
 		 */
 		String type = req.getParameter("type");
 		if (type.equals("1")) {
@@ -365,6 +366,25 @@ public class GoodsServlet extends HttpServlet {
 
 			// 这里放处理更新商品之后的操作
 
+
+		} else if (type.equals("6")) {
+			// 根据商品id删除商品
+			/*
+			 * 核心逻辑：第一步：根据商品id删除goodsclass相应的数据；第二步:根据商品id删除对应goodsimg中的图片；第三步：删除商品
+			 * 。
+			 */
+			/*
+			 * 本操作要保证原子性。在service中进行，用事务操作。
+			 */
+			String sid = req.getParameter("id");// 获取商品id
+			int id = Integer.parseInt(sid);
+			boolean isDelGood = goodsService.deleteGoodsByGoodsId(id);
+			if (isDelGood) {
+				resp.sendRedirect("goodsservlet?type=3");// 显示商品列表
+			} else {
+				PrintWriter printWriter = resp.getWriter();
+				printWriter.print("删除失败！");
+			}
 
 		}
 		

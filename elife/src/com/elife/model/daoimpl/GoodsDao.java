@@ -387,4 +387,53 @@ public class GoodsDao implements IGoodsDao {
 		}
 	}
 
+	@Override
+	public boolean delGood(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goods where id=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean delImgs(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goodsimg where goodsid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delGoodsClass(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goodsclass where goodsid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

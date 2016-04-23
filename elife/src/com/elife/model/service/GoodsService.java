@@ -1,5 +1,7 @@
 package com.elife.model.service;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.elife.model.beans.Classthree;
@@ -9,6 +11,7 @@ import com.elife.model.beans.Goodsimg;
 import com.elife.model.beans.Pager;
 import com.elife.model.dao.IGoodsDao;
 import com.elife.model.daoimpl.GoodsDao;
+import com.elife.utils.C3p0Utils;
 import com.elife.utils.PageUtils;
 import com.elife.utils.ParamUtils;
 
@@ -121,6 +124,39 @@ public class GoodsService {
 		IGoodsDao goodsDao = new GoodsDao();
 		boolean isdel = goodsDao.deleteGoodsByGoodsId(id);
 		return isdel;
+	}
+
+	/*
+	 * 核心逻辑：第一步：根据商品id删除goodsclass相应的数据；第二步:根据商品id删除对应goodsimg中的图片；第三步：删除商品 。
+	 */
+	public boolean deleteGoodsByGoodsId(int id) {
+		IGoodsDao goodsDao = new GoodsDao();
+		Connection conn = C3p0Utils.getConnection();
+		try {
+			conn.setAutoCommit(false);// 开启事务
+			boolean isDelClass = goodsDao.delGoodsClass(conn,id);
+			boolean isDelImgs = goodsDao.delImgs(conn, id);
+			boolean isDelGood = goodsDao.delGood(conn, id);
+			if (isDelClass && isDelImgs && isDelGood) {
+				conn.commit();
+				return true;
+			} else {
+				conn.rollback();
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			return false;
+		}
+
+
 	}
 
 }
