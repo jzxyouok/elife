@@ -60,7 +60,9 @@ public class GoodsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		GoodsService goodsService = new GoodsService();
 		/*
-		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;3:获取商品list;4:编辑商品;5:更新商品;6:删除商品
+		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;（3:获取商品list;删除该部分，使用7默认rank替代
+		 * ）4:编辑商品 ;5:更新商品;6:删除商品
+		 * ;7:销量/库存排行处理；现价/原价排行处理（该部分放在一起，使用另外一个字段判断具体排行，详细请参考该部分处理）
 		 */
 		String type = req.getParameter("type");
 		if (type.equals("1")) {
@@ -227,7 +229,7 @@ public class GoodsServlet extends HttpServlet {
 				System.out.println(TAG+"获取到的商品list:"+goods2);
 			}
 			
-			
+			req.setAttribute("type", type);
 			req.setAttribute("goodsPager",goodsPager);
 			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(req, resp);
 		} else if (type.equals("4")) {
@@ -380,11 +382,48 @@ public class GoodsServlet extends HttpServlet {
 			int id = Integer.parseInt(sid);
 			boolean isDelGood = goodsService.deleteGoodsByGoodsId(id);
 			if (isDelGood) {
-				resp.sendRedirect("goodsservlet?type=3");// 显示商品列表
+				resp.sendRedirect("goodsservlet?type=7&rank="
+						+ req.getSession().getAttribute("rank"));// 显示商品列表
 			} else {
 				PrintWriter printWriter = resp.getWriter();
 				printWriter.print("删除失败！");
 			}
+
+		} else if (type.equals("7")) {
+			/*
+			 * 这里具体排行根据rank字段:1:销量由低到高；2：销量由高到低；3：库存由低到高；4：库存由高到低；
+			 * 5：现价由低到高；6：现价由高到低；7：原价由低到高；8：原价由高到低。默认：按照商家排名
+			 */
+			String rank = req.getParameter("rank");
+			if (rank == null) {
+				rank = "";
+			}
+			System.out.println(TAG + "rank--->" + rank);
+			// 第一步
+			String parameter = req.getParameter("page");// 获取的页码
+			int page = 1;// 默认第一页
+			if (parameter == null) {
+
+			} else {
+				page = Integer.parseInt(parameter);// 获取的页码
+			}
+			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
+					rank);
+
+			/*
+			 * 测试数据
+			 */
+			System.out.println(TAG + "页码信息:" + goodsPager);
+			List<Goods> goodsList = goodsPager.getObjects();
+			for (Goods goods2 : goodsList) {
+				System.out.println(TAG + "获取到的商品list:" + goods2);
+			}
+
+			req.getSession().setAttribute("rank", rank);
+			req.setAttribute("type", type);
+			req.setAttribute("goodsPager", goodsPager);
+			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(
+					req, resp);
 
 		}
 		

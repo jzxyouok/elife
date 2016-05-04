@@ -26,7 +26,7 @@
 <body>
 	<span class="cp_title">修改商品</span>
 	<div class="add_cp">
-		<a href="goodsservlet?type=3">"<<"返回商品列表</a>
+		<a href="goodsservlet?type=3">返回商品列表</a>
 	</div>
 	<div class="table_con">
 		<%--		添加商品--%>

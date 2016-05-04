@@ -159,4 +159,27 @@ public class GoodsService {
 
 	}
 
+	/**
+	 * TODO
+	 */
+	public Pager<Goods> getGoodsPagerByRank(int page, String rank) {
+		/*
+		 * 这里具体排行根据rank字段:1:销量由低到高；2：销量由高到低；3：库存由低到高；4：库存由高到低；
+		 * 5：现价由低到高；6：现价由高到低；7：原价由低到高；8：原价由高到低。
+		 */
+
+		IGoodsDao goodsDao = new GoodsDao();
+		Pager<Goods> p = new Pager<Goods>();
+		List<Goods> goodsList = goodsDao.getGoodsListByRank(page, rank);// 过去List参数
+		int count = goodsDao.getGoodsCount();// 获取总条数
+
+		p.setNowPager(page);// 设置当前页
+		p.setPerSize(ParamUtils.PERPAGE);// 设置每页大小
+		p.setTotalRecordNum(count);// 设置总条数
+		p.setTotalPageNum(PageUtils.getPagersByNums(count));// 设置总页数
+		p.setObjects(goodsList);// 封装信息list
+		return p;
+
+	}
+
 }

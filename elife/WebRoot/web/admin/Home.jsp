@@ -36,7 +36,7 @@
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>商品管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="../../goodsservlet?type=3" target="menuFrame">
+                        <a href="../../goodsservlet?type=7" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
                             商品排行
                         </a>

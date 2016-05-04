@@ -199,5 +199,10 @@ public interface IGoodsDao {
 	 * TODO
 	 */
 	public boolean delGoodsClass(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public List<Goods> getGoodsListByRank(int page, String rank);
 	
 }
