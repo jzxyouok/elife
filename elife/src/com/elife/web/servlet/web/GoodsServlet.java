@@ -2,6 +2,7 @@ package com.elife.web.servlet.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -59,7 +60,9 @@ public class GoodsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		GoodsService goodsService = new GoodsService();
 		/*
-		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;3:获取商品list
+		 * 如果type=1,表示获取三级分类信息；2代表添加商品。测试数据，商家默认是零食;（3:获取商品list;删除该部分，使用7默认rank替代
+		 * ）4:编辑商品 ;5:更新商品;6:删除商品
+		 * ;7:销量/库存排行处理；现价/原价排行处理（该部分放在一起，使用另外一个字段判断具体排行，详细请参考该部分处理）
 		 */
 		String type = req.getParameter("type");
 		if (type.equals("1")) {
@@ -226,9 +229,202 @@ public class GoodsServlet extends HttpServlet {
 				System.out.println(TAG+"获取到的商品list:"+goods2);
 			}
 			
-			
+			req.setAttribute("type", type);
 			req.setAttribute("goodsPager",goodsPager);
 			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(req, resp);
+		} else if (type.equals("4")) {
+			/*
+			 * 全部逻辑： 第一步:获取商品id。 第二步：根据id获取商品信息。 第三步：根据id获取商品图片。
+			 * 第五步：根据id获取所属分类（先不实现这个，太麻烦）。 第六步：获取全部三级分类。
+			 */
+			/*
+			 * 处理：返回一个Goods bean.在Goods里面添加一个List<Classthree>、List<Goodsimg>
+			 */
+			// 编辑商品
+			String sid = req.getParameter("id");// 商品id
+			int id = Integer.parseInt(sid);
+			Goods goods = goodsService.getGoodsById(id);
+			System.out.println(TAG + ":" + goods);
+			req.setAttribute("goods", goods);
+			req.getRequestDispatcher("web/admin/EditGoods.jsp").forward(req,
+					resp);
+		} else if (type.equals("5")) {
+			/**
+			 * 这一块的逻辑基本和添加商品一致，只是把添加换成了更新
+			 */
+
+			List<Goodsimg> goodsimgs = new ArrayList<Goodsimg>();// 商品图片列表
+			Goods goods = new Goods();// 商品
+
+			try {
+				// 第二步，初始化SmartUpload
+				SmartUpload smartUpload = new SmartUpload();
+				smartUpload.initialize(config, req, resp);
+				try {
+					smartUpload.upload();// 此步操作之后才可以获取普通表单参数
+				} catch (SmartUploadException e) {
+					e.printStackTrace();
+				}
+
+				Map<String, String> parameterMap = new HashMap<String, String>();
+				@SuppressWarnings("rawtypes")
+				Enumeration em = smartUpload.getRequest().getParameterNames();
+				/*
+				 * 这一块处理获取普通表单， 存储到Map中然后用beanutils进行封装
+				 */
+				while (em.hasMoreElements()) {
+					String key = (String) em.nextElement();
+					String value = smartUpload.getRequest().getParameter(key);
+					parameterMap.put(key, value);
+				}
+
+				BeanUtils.populate(goods, parameterMap);// 我们在这里获取自己封装的数据
+				String[] threeclassid = smartUpload.getRequest()
+						.getParameterValues("threeclassid");// 获取分类列表ID
+
+				System.out.println(TAG + "更新商品测试打印goods:" + goods);
+				System.out.println(TAG + "更新商品:测试打印分类列表："
+						+ Arrays.toString(threeclassid));
+
+				// 第三步：上传文件
+				String dir = ParamUtils.SAVEPATP + ParamUtils.SAVEPATP_GOODS;
+				File file = new File(dir);
+				if (!file.exists()) {
+					file.mkdirs();// 文件夹不存在，创建
+				}
+				for (int i = 0; i < smartUpload.getFiles().getCount(); i++) {
+					// 用户上传少于四张时处理
+					if (smartUpload.getFiles().getFile(i).getSize() == 0)
+						continue;
+					Goodsimg goodsimg = new Goodsimg();// 存放商品图片路径
+					com.jspsmart.upload.File myFile = smartUpload.getFiles()
+							.getFile(i);
+					String fileName = myFile.getFileName();
+					long currentTimeMillis = System.currentTimeMillis();
+					String saveName = currentTimeMillis
+							+ fileName.substring(fileName.lastIndexOf("."));
+					String saveFullPath = dir + saveName;
+					goodsimg.setImgaddress(saveFullPath.substring(1));
+					goodsimgs.add(goodsimg);// 保存路径
+					try {
+						smartUpload.getFiles().getFile(i).saveAs(saveFullPath);
+					} catch (SmartUploadException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				System.out.println(TAG + "文件已上传");
+
+				// 第四步：更新商品
+				boolean isUpdateGoods = goodsService.updateGoods(goods);
+				if (isUpdateGoods) {
+					System.out.println(TAG + ":" + "更新商品成功");
+				} else {
+					System.out.println(TAG + ":" + "更新商品失败");
+					return;
+				}
+
+				// 第五步：根据获取到商品id，更新三级分类中间表
+				for (int i = 0; i < threeclassid.length; i++) {
+					Goodsclass goodsclass = new Goodsclass();
+					goodsclass.setClassthreeid(Integer
+							.parseInt(threeclassid[i]));
+					goodsclass.setGoodsid(goods.getId());
+					boolean isUpdateGoodsClass = goodsService
+							.updateGoodsClass(goodsclass);
+					if (isUpdateGoodsClass) {
+						System.out.println(TAG + ":" + "更新三级分类中间表成功");
+					} else {
+						System.out.println(TAG + ":" + "更新三级分类中间表失败");
+						return;
+					}
+					goodsclass = null;// 释放资源
+				}
+
+				// 第六步，更新商品图片到商品图片表
+				// 更新之前，删掉原有图片
+				boolean isdelImgs = goodsService.deleteGoodsImgByGoodsId(goods
+						.getId());
+				if (!isdelImgs) {
+					System.out.println(TAG + ":" + "删除图片失败");
+				} else {
+					System.out.println(TAG + ":" + "删除图片成功");
+				}
+
+				for (Goodsimg gs : goodsimgs) {
+					gs.setGoodsid(goods.getId());// 保存商品id
+					boolean isUpdateImages = goodsService.updateGoodsImg(gs);
+					if (isUpdateImages) {
+						System.out.println(TAG + "更新图片表成功！");
+					} else {
+						System.out.println(TAG + "更新图片表失败");
+					}
+				}
+				goodsimgs = null;// 释放内存
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+
+			// 这里放处理更新商品之后的操作
+
+
+		} else if (type.equals("6")) {
+			// 根据商品id删除商品
+			/*
+			 * 核心逻辑：第一步：根据商品id删除goodsclass相应的数据；第二步:根据商品id删除对应goodsimg中的图片；第三步：删除商品
+			 * 。
+			 */
+			/*
+			 * 本操作要保证原子性。在service中进行，用事务操作。
+			 */
+			String sid = req.getParameter("id");// 获取商品id
+			int id = Integer.parseInt(sid);
+			boolean isDelGood = goodsService.deleteGoodsByGoodsId(id);
+			if (isDelGood) {
+				resp.sendRedirect("goodsservlet?type=7&rank="
+						+ req.getSession().getAttribute("rank"));// 显示商品列表
+			} else {
+				PrintWriter printWriter = resp.getWriter();
+				printWriter.print("删除失败！");
+			}
+
+		} else if (type.equals("7")) {
+			/*
+			 * 这里具体排行根据rank字段:1:销量由低到高；2：销量由高到低；3：库存由低到高；4：库存由高到低；
+			 * 5：现价由低到高；6：现价由高到低；7：原价由低到高；8：原价由高到低。默认：按照商家排名
+			 */
+			String rank = req.getParameter("rank");
+			if (rank == null) {
+				rank = "";
+			}
+			System.out.println(TAG + "rank--->" + rank);
+			// 第一步
+			String parameter = req.getParameter("page");// 获取的页码
+			int page = 1;// 默认第一页
+			if (parameter == null) {
+
+			} else {
+				page = Integer.parseInt(parameter);// 获取的页码
+			}
+			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
+					rank);
+
+			/*
+			 * 测试数据
+			 */
+			System.out.println(TAG + "页码信息:" + goodsPager);
+			List<Goods> goodsList = goodsPager.getObjects();
+			for (Goods goods2 : goodsList) {
+				System.out.println(TAG + "获取到的商品list:" + goods2);
+			}
+
+			req.getSession().setAttribute("rank", rank);
+			req.setAttribute("type", type);
+			req.setAttribute("goodsPager", goodsPager);
+			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(
+					req, resp);
+
 		}
 		
 	}
