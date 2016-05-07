@@ -32,18 +32,41 @@ public class BannerServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("dopost");
-		// 添加轮播图
-		Banner banner = new Banner();
-		String classfirst = request.getParameter("classfirst");
-		String classsecond = request.getParameter("classsecond");
-		String url = request.getParameter("url");
-		banner.setClassfirst(classfirst);
-		banner.setClasssecond(classsecond);
-		banner.setImgaddress("uploadimage");
-		banner.setUrl(url);
-		BannerDaoImpl bannerImpl = new BannerDaoImpl();
-		bannerImpl.addBanner(banner);
+		String name = request.getParameter("name");
+		if (name.equals("add")) {
+			// 添加轮播图
+			Banner banner = new Banner();
+			String classfirst = request.getParameter("classfirst");
+			String classsecond = request.getParameter("classsecond");
+			String url = request.getParameter("url");
+			banner.setClassfirst(classfirst);
+			banner.setClasssecond(classsecond);
+			banner.setImgaddress("uploadimage");
+			banner.setUrl(url);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.addBanner(banner);
+		} else if (name.equals("modify")) {
+			// 修改轮播图
+			String bannerid = request.getParameter("id");// 获取要修改轮播图的id
+			int id = Integer.parseInt(bannerid);
+			Banner banner = new Banner();
+			String classfirst = request.getParameter("classfirst");
+			String classsecond = request.getParameter("classsecond");
+			String url = request.getParameter("url");
+			banner.setClassfirst(classfirst);
+			banner.setClasssecond(classsecond);
+			banner.setImgaddress("uploadimage");
+			banner.setUrl(url);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.modifyBanner(banner, id);
+		} else if (name.equals("delete")) {
+			// 删除轮播图
+			String bannerid = request.getParameter("id");// 获取要删除轮播图的id
+			int id = Integer.parseInt(bannerid);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.deleteBanner(id);
+		}
+
 		// // 查出所有轮播图
 		// List<Banner> bannerList = bannerImpl.selectAllBanner(start, num);
 		//

@@ -56,7 +56,7 @@
 				<td width="4%" align="center">ID</td>
 				<td width="30%" align="center">新闻内容</td>
 				<td width="8%" align="center">点赞数量</td>
-				<td width="8%" align="center">评论的数量</td>
+				<td width="8%" align="center">评论数量</td>
 				<td width="8%" align="center">浏览人数</td>
 				<td width="8%" align="center">发表人</td>
 				<td width="8%" align="center">所属话题</td>
@@ -65,7 +65,7 @@
 			</tr>
 			<tr>
 				<td width="4%" align="center">1</td>
-				<td width="30%" align="center">习近平欢迎尼日利亚总统访华并举行会谈</td>
+				<td width="30%" align="center">习近平欢迎尼日总统访华并举行会谈总统访华并举行会谈利亚总统访华并举行会谈</td>
 				<td width="8%" align="center">120</td>
 				<td width="8%" align="center">2330</td>
 				<td width="8%" align="center">12358</td>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,9 +24,12 @@
 </head>
 <body>
 	<span class="cp_title">轮播图管理</span>
+	<%
+		String bannerid=request.getParameter("id");
+	%>
 	<div align="center">
-		<label><h3>添加轮播图</h3> </label>
-		<form action="/elife/bannerServlet?name=${'add'}" method="post"
+		<label><h3>修改轮播图</h3> </label>
+		<form action="/elife/bannerServlet?name=${'modify'}&id=<%= bannerid %>" method="post"
 			enctype="MULTIPART/FORM-DATA">
 			<table style="width: 40%;height:80%;margin: 0 auto;">
 				<tr>
@@ -71,8 +76,7 @@
 					<td></td>
 				</tr>
 			</table>
-
-			<input class="btn btn-default" type="submit" value="发布">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-default" type="submit" value="修改">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class="btn btn-default" type="reset" value="重置">
 		</form>
 	</div>

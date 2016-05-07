@@ -113,18 +113,46 @@ public class BannerDaoImpl implements IBannerDao {
 	}
 
 	// 修改轮播图
-
 	@Override
-	public boolean modifyBanner(Banner banner) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modifyBanner(Banner banner, int id) {
+		conn = C3p0Utils.getConnection();
+		String sql = "update banner"
+				+ " set classfirst=?,classsecond=?,imgaddress=?,url=? where id=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, banner.getClassfirst());
+			stmt.setString(2, banner.getClasssecond());
+			stmt.setString(3, banner.getImgaddress());
+			stmt.setString(4, banner.getUrl());
+			stmt.setInt(5, id);
+			stmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			C3p0Utils.release(null, stmt, conn);
+		}
 	}
 
 	// 删除轮播图
 	@Override
 	public boolean deleteBanner(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		conn = C3p0Utils.getConnection();
+		String sql = "delete from banner where id=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			C3p0Utils.release(null, stmt, conn);
+		}
 	}
 
 }

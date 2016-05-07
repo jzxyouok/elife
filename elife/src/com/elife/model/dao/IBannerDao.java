@@ -37,7 +37,7 @@ public interface IBannerDao {
 	public abstract List<Banner> selectBannerByClassSecond(String classsecond);
 
 	// 修改轮播图
-	public abstract boolean modifyBanner(Banner banner);
+	public abstract boolean modifyBanner(Banner banner, int id);
 
 	// 删除轮播图
 	public abstract boolean deleteBanner(int id);
