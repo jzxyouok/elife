@@ -26,47 +26,57 @@
 		<a href="#">+添加轮播图</a>
 	</div>
 	<div align="center">
-		<label><h3>添加轮播图</h3>
-			</label>
-		<form action="">
+		<label><h3>添加轮播图</h3> </label>
+		<form action="/elife/bannerServlet" method="post"
+			enctype="MULTIPART/FORM-DATA">
 			<table style="width: 40%;height:80%;margin: 0 auto;">
-				<tr><td>选择一级分类：</td>
+				<tr>
+					<td>选择一级分类：</td>
 					<td><div class="form-group">
-							<select class="form-control">
+							<select class="form-control" name="classfirst">
 								<option>一级分类</option>
 								<option>零食</option>
 								<option>洗衣</option>
 								<option>洗车</option>
 								<option>水果</option>
 							</select>
-						</div></td>
+						</div>
+					</td>
 				</tr>
-				<tr><td>选择二级分类：</td>
+				<tr>
+					<td>选择二级分类：</td>
 					<td><div class="form-group">
-							<select class="form-control">
+							<select class="form-control" name="classsecond">
 								<option>二级分类</option>
 								<option>肉类</option>
 								<option>坚果脯</option>
 							</select>
-						</div></td>
+						</div>
+					</td>
 				</tr>
-				<tr><td>链接URL：</td>
-					<td>
-					<input type="text" name="name" class="form-control" id=""
-						placeholder="请输入url地址"></td>
+				<tr>
+					<td>链接URL：</td>
+					<td><input type="text" name="url" class="form-control" id=""
+						placeholder="请输入url地址">
+					</td>
 				</tr>
-				<tr><td>&nbsp;</td><td></td></tr>
-				<tr><td>上传轮播图图片：</td>
-					<td><input type="file" name="file1" style="width:160px;" /></td>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
 				</tr>
-				<tr><td>&nbsp;</td><td></td></tr>
-				
-					
-				
+				<tr>
+					<td>上传轮播图图片：</td>
+					<td><input type="file" name="imagefile" style="width:160px;" />
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
 			</table>
-			
-<input class="btn btn-default" type="submit" value="发布">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input class="btn btn-default" type="reset" value="重置">
+
+			<input class="btn btn-default" type="submit" value="发布">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-default" type="reset" value="重置">
 		</form>
 	</div>
 </body>

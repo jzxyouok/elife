@@ -12,8 +12,6 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-
-
 import com.elife.model.beans.Business;
 import com.elife.model.beans.Classone;
 import com.elife.model.beans.Classsecond;
@@ -28,11 +26,8 @@ import com.elife.utils.PageUtils;
 import com.elife.utils.ParamUtils;
 
 /**
- * @author 高远</n>
- * 编写时期  2016-4-13 下午7:53:05</n>
- * TODO</n>
- * 邮箱：wgyscsf@163.com</n>
- * 博客  http://blog.csdn.net/wgyscsf</n>
+ * @author 高远</n> 编写时期 2016-4-13 下午7:53:05</n> TODO</n> 邮箱：wgyscsf@163.com</n>
+ *         博客 http://blog.csdn.net/wgyscsf</n>
  * 
  */
 public class GoodsDao implements IGoodsDao {
@@ -136,7 +131,7 @@ public class GoodsDao implements IGoodsDao {
 	public int getGoodsCount() {
 		String sql = "select count(*) from goods";
 		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
-		
+
 		try {
 			long totalRecordNum = (Long) queryRunner.query(sql,
 					new ScalarHandler(1));
@@ -145,12 +140,8 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 			return -1;
 		}
-		
+
 	}
-
-	
-
-	
 
 	@Override
 	public List<Goods> getGoodsByMerchant(int businessid) {
@@ -161,7 +152,17 @@ public class GoodsDao implements IGoodsDao {
 	@Override
 	public Goods getGoodsById(int id) {
 
-		return null;
+		String sql = "select * from Goods where id = ?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			Goods goods = queryRunner.query(sql, new BeanHandler<Goods>(
+					Goods.class), id);
+			return goods;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	@Override
@@ -195,8 +196,8 @@ public class GoodsDao implements IGoodsDao {
 			ps.setString(7, goods.getRemark());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
-			if (rs.next()){
-				int index=rs.getInt(1);
+			if (rs.next()) {
+				int index = rs.getInt(1);
 				System.out.println(TAG + ":" + index);
 				return index;
 			}
@@ -251,15 +252,16 @@ public class GoodsDao implements IGoodsDao {
 
 	@Override
 	public List<Goods> getGoodsList(int page) {
-		
+
 		String sql = "select * from goods limit ?,?";
 		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
 		try {
 			List<Goods> goodsList = queryRunner.query(sql,
-					new BeanListHandler<Goods>(Goods.class),PageUtils.getParam1(page),ParamUtils.PERPAGE);
-			//返回之前，我们获取商家名字
+					new BeanListHandler<Goods>(Goods.class),
+					PageUtils.getParam1(page), ParamUtils.PERPAGE);
+			// 返回之前，我们获取商家名字
 			for (Goods goods : goodsList) {
-				String name=getBusinessNameById(goods.getBusinessid());
+				String name = getBusinessNameById(goods.getBusinessid());
 				goods.setUsername(name);
 			}
 			return goodsList;
@@ -267,14 +269,12 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 
 	@Override
 	public List<Goods> getGoodsBySale(int page, boolean bl) {
-		
-		
-		
+
 		return null;
 	}
 
@@ -294,10 +294,186 @@ public class GoodsDao implements IGoodsDao {
 			return business.getUsername();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return -1+"";
+			return -1 + "";
 		}
 
-		
+	}
+
+	@Override
+	public List<Goodsimg> getGoodsImgByGoodsId(int id) {
+		String sql = "select * from Goodsimg where goodsid=?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goodsimg> goodsimgList = queryRunner.query(sql,
+					new BeanListHandler<Goodsimg>(Goodsimg.class), id);
+
+			return goodsimgList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean updateGoods(Goods goods) {
+		String sql = "update goods set name=?,description=?,price=?,stock=?,oldprice=?,businessid=?,threeclassid=?,remark=? where id = ?";
+		Object[] param = { goods.getName(), goods.getDescription(),
+				goods.getPrice(), goods.getStock(), goods.getOldprice(),
+				goods.getBusinessid(), goods.getThreeclassid(),
+				goods.getRemark(), goods.getId() };
+
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGoodsClass(Goodsclass goodsclass) {
+		String sql = "update goodsclass set goodsid=?,classthreeid=?,remark=? where id = ?";
+		Object[] param = { goodsclass.getGoodsid(),
+				goodsclass.getClassthreeid(), goodsclass.getRemark(),
+				goodsclass.getId() };
+
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGoodsImg(Goodsimg gs) {
+		String sql = "insert into goodsimg values(null,?,?,?)";
+		Object[] param = { gs.getImgaddress(), gs.getGoodsid(), gs.getRemark() };
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteGoodsByGoodsId(int goodsid) {
+		String sql = "delete from Goodsimg where goodsid = ?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+
+		try {
+			queryRunner.update(sql, goodsid);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delGood(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goods where id=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean delImgs(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goodsimg where goodsid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delGoodsClass(Connection conn, int id) {
+		PreparedStatement ps = null;
+		String sql = "delete from goodsclass where goodsid=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/*
+	 * 这里具体排行根据rank字段:1:销量由低到高；2：销量由高到低；3：库存由低到高；4：库存由高到低；
+	 * 5：现价由低到高；6：现价由高到低；7：原价由低到高；8：原价由高到低。
+	 */
+	// select * from goods order by name asc limit 0,1;
+	@Override
+	public List<Goods> getGoodsListByRank(int page, String rank) {
+		String placeHolder = "";
+		if (rank.equals("1")) {
+			placeHolder = "sale asc";
+		} else if (rank.equals("2")) {
+			placeHolder = "sale desc";
+		} else if (rank.equals("3")) {
+			placeHolder = "stock asc";
+		} else if (rank.equals("4")) {
+			placeHolder = "stock desc";
+		} else if (rank.equals("5")) {
+			placeHolder = "price asc";
+		} else if (rank.equals("6")) {
+			placeHolder = "price desc";
+		} else if (rank.equals("7")) {
+			placeHolder = "oldprice asc";
+		} else if (rank.equals("8")) {
+			placeHolder = "oldprice desc";
+		} else {
+			placeHolder = "name asc";
+		}
+		/*
+		 * 特别注意，placeHolder不能使用占位符，原因：怀疑占位符之间如果没有“，”，就不能连着使用占位符，可以使用传统的拼接方式
+		 */
+		String sql = "select * from goods order by " + placeHolder
+				+ " limit ?,?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goods> goodsList = queryRunner.query(sql,
+					new BeanListHandler<Goods>(Goods.class),
+					PageUtils.getParam1(page), ParamUtils.PERPAGE);
+			// 返回之前，我们获取商家名字
+			for (Goods goods : goodsList) {
+				String name = getBusinessNameById(goods.getBusinessid());
+				goods.setUsername(name);
+			}
+			return goodsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
