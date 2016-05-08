@@ -27,9 +27,14 @@ public class QueryBannerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		// 获得客户端提交页码
 		String pNumStr = req.getParameter("pNum");
-		System.out.println(pNumStr);
 		int pNum = 0;
 		if (pNumStr == null) {
 			pNum = 1;
@@ -52,12 +57,6 @@ public class QueryBannerServlet extends HttpServlet {
 		//
 		// }
 		// super.doPost(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		doGet(req, resp);
 	}
 
 }
