@@ -48,14 +48,34 @@ public class GoodsDao implements IGoodsDao {
 
 	@Override
 	public boolean addThreeClass(Classthree classthree) {
-
+		String sql = "insert into Classthree values(null,?,?,?)";
+		Object[] param = { classthree.getName(), classthree.getClasssecondid(),
+				classthree.getRemark() };
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public List<Classone> getFirstClass() {
+		String sql = "select * from Classone";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Classone> classoneList = queryRunner.query(sql,
+					new BeanListHandler<Classone>(Classone.class));
 
+			return classoneList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
+
+
 	}
 
 	@Override
@@ -473,6 +493,36 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+
+	@Override
+	public List<Classsecond> getSecondClassByClassOneId(int id) {
+		String sql = "select * from Classsecond where classoneid=?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Classsecond> classsecondList = queryRunner.query(sql,
+					new BeanListHandler<Classsecond>(Classsecond.class), id);
+
+			return classsecondList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Classthree> getThridClassByClassSecondId(int id) {
+		String sql = "select * from Classthree where classsecondid=?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Classthree> classthreeList = queryRunner.query(sql,
+					new BeanListHandler<Classthree>(Classthree.class), id);
+
+			return classthreeList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
