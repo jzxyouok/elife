@@ -23,5 +23,5 @@ public interface IAdminDAO {
 	//删除管理员
 	public abstract boolean deleteAdmin(int id);
 	//修改管理员信息
-	public abstract boolean updateAdminByid(Admin admin);
+	public abstract boolean updateAdminByid(Admin admin,int id);
 }

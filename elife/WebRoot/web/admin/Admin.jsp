@@ -52,9 +52,11 @@
 		<div class="modal-body">
 		<!-- 这个地方放内容 -->
              <div class="table_con">
+             <form action="/elife/adminServlet?name=${'add'}" method="post"
+			enctype="MULTIPART/FORM-DATA">
 		          <table style="width: 60%;height:80%;margin: 5px auto;" >
 					<tr>
-						<td width="30%">管理员名字</td>
+						<td width="35%">管理员名字</td>
 						<td align="center" style="margin: 8px auto;t"><input type="text" name="name" class="form-control" id=""
 							placeholder="请输入管理员名字">
 						</td>
@@ -62,9 +64,16 @@
 					
 				
 					<tr>
-						<td width="30%">密码</td>
+						<td width="35%">密码</td>
 						<td><input type="text" name="psword" class="form-control" id=""
 							placeholder="请输入密码">
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="35%">等级</td>
+						<td><input type="text" name="psword" class="form-control" id=""
+							placeholder="请输入等级">
 						</td>
 					</tr>
 					
@@ -77,6 +86,7 @@
 					</tr>
 					
 				</table>
+				</form>
 		<div align="center" style="margin:5px">
 		
 			</div>
@@ -120,6 +130,7 @@
             <td width="12%">密码</td>
            
             <td width="12%">等级</td>
+            <td width="12%">头像</td>
             <td width="21%">操作 </td>
         </tr>
        
@@ -128,7 +139,7 @@
             <td width="20%">叶梦雅</td>
             <td width="12%">123456</td>
             <td width="12%">商家</td>
-           
+           <td width="12%"></td>
             <td width="21%">
       
                 <a class="btn btn-primary"
@@ -142,7 +153,7 @@
             <td width="20%">张杰</td>
             <td width="12%">123456</td>
             <td width="12%">商家</td>
-            
+            <td width="12%"></td>
             <td width="21%">
             	 <a class="btn btn-primary"
 					onclick="window.open('AdminAlter.jsp')" />编辑</a> 

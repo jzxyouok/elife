@@ -1,8 +1,6 @@
 package com.elife.web.servlet.web;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.elife.model.beans.Banner;
 import com.elife.model.daoimpl.BannerDaoImpl;
+
 /**
  * @ClassName: BannerServlet
- * @author 张凯   E-mail: cloudpluie.github.io
- * @date: 2016-4-14 下午8:17:29 
+ * @author 张凯 E-mail: cloudpluie.github.io
+ * @date: 2016-4-14 下午8:17:29
  * @Description: 对轮播图表的转发处理
  */
 @WebServlet("/bannerServlet")
@@ -33,25 +32,54 @@ public class BannerServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("dopost");
-		Banner banner=new Banner();
-		String classfirst=request.getParameter("classfirst");
-		String classsecond=request.getParameter("classsecond");
-		String url=request.getParameter("url");
-		banner.setClassfirst(classfirst);
-		banner.setClasssecond(classsecond);
-		banner.setImgaddress("uploadimage");
-		banner.setUrl(url);
-		BannerDaoImpl bannerImpl=new BannerDaoImpl();
-		bannerImpl.addBanner(banner);
-		List<Banner> list=bannerImpl.selectAllBanner(1);
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getId());
-			System.out.println(list.get(i).getClassfirst());
-			System.out.println(list.get(i).getClasssecond());
-			System.out.println(list.get(i).getImgaddress());
-			System.out.println(list.get(i).getUrl());
-			System.out.println();
+		String name = request.getParameter("name");
+		if (name.equals("add")) {
+			// 添加轮播图
+			Banner banner = new Banner();
+			String classfirst = request.getParameter("classfirst");
+			String classsecond = request.getParameter("classsecond");
+			String url = request.getParameter("url");
+			banner.setClassfirst(classfirst);
+			banner.setClasssecond(classsecond);
+			banner.setImgaddress("uploadimage");
+			banner.setUrl(url);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.addBanner(banner);
+		} else if (name.equals("modify")) {
+			// 修改轮播图
+			String bannerid = request.getParameter("id");// 获取要修改轮播图的id
+			int id = Integer.parseInt(bannerid);
+			Banner banner = new Banner();
+			String classfirst = request.getParameter("classfirst");
+			String classsecond = request.getParameter("classsecond");
+			String url = request.getParameter("url");
+			banner.setClassfirst(classfirst);
+			banner.setClasssecond(classsecond);
+			banner.setImgaddress("uploadimage");
+			banner.setUrl(url);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.modifyBanner(banner, id);
+		} else if (name.equals("delete")) {
+			// 删除轮播图
+			String bannerid = request.getParameter("id");// 获取要删除轮播图的id
+			int id = Integer.parseInt(bannerid);
+			BannerDaoImpl bannerImpl = new BannerDaoImpl();
+			bannerImpl.deleteBanner(id);
 		}
+
+		// // 查出所有轮播图
+		// List<Banner> bannerList = bannerImpl.selectAllBanner(start, num);
+		//
+		// for (int i = 0; i < bannerList.size(); i++) {
+		// System.out.println(bannerList.get(i).getId());
+		// System.out.println(bannerList.get(i).getClassfirst());
+		// System.out.println(bannerList.get(i).getClasssecond());
+		// System.out.println(bannerList.get(i).getImgaddress());
+		// System.out.println(bannerList.get(i).getUrl());
+		// System.out.println();
+		// }
+		// request.setAttribute("bannerList", bannerList);
+		// request.getRequestDispatcher("web/admin/Banner.jsp").forward(request,
+		// response);
 	}
 }
