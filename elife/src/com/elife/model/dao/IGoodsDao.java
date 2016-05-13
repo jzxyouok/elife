@@ -214,5 +214,10 @@ public interface IGoodsDao {
 	 * TODO
 	 */
 	public List<Classthree> getThridClassByClassSecondId(int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean updateThreeName(Classthree classthree);
 	
 }

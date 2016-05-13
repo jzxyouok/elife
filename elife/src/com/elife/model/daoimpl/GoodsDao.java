@@ -75,7 +75,6 @@ public class GoodsDao implements IGoodsDao {
 		}
 		return null;
 
-
 	}
 
 	@Override
@@ -524,6 +523,22 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean updateThreeName(Classthree classthree) {
+		String sql = "update Classthree set name=? where id = ? and classsecondid=?";
+		Object[] param = { classthree.getName(), classthree.getId(),
+				classthree.getClasssecondid() };
+
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			queryRunner.update(sql, param);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
