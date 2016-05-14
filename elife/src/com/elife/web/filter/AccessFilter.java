@@ -1,7 +1,5 @@
 package com.elife.web.filter;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,51 +30,51 @@ public class AccessFilter implements Filter {
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 
-		// 设置管理员
-		try {
-			BufferedReader admin = new BufferedReader(new FileReader(
-					AccessFilter.class.getResource(
-							AccessFilter.PATH + "/admin.txt")
-							.getFile()));
-			String line1;
-			while ((line1 = admin.readLine()) != null) {
-				adminPathList.add(line1);
-			}
-			admin.close();
-
-			// 设置商家
-			BufferedReader merchant = new BufferedReader(new FileReader(
-					AccessFilter.class.getResource(
-							AccessFilter.PATH + "/merchant.txt").getFile()));
-			String line2;
-			while ((line2 = merchant.readLine()) != null) {
-				merchantPathList.add(line2);
-			}
-			merchant.close();
-
-			// 设置顾客
-			BufferedReader customer = new BufferedReader(new FileReader(
-					AccessFilter.class.getResource(
-							AccessFilter.PATH + "/customer.txt").getFile()));
-			String line3;
-			while ((line3 = customer.readLine()) != null) {
-				customerPathList.add(line3);
-			}
-			customer.close();
-
-			// 设置游客
-			BufferedReader guest = new BufferedReader(new FileReader(
-					AccessFilter.class.getResource(
-							AccessFilter.PATH + "/guest.txt").getFile()));
-			String line4;
-			while ((line4 = guest.readLine()) != null) {
-				guestPathList.add(line4);
-			}
-			guest.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// // 设置管理员
+		// try {
+		// BufferedReader admin = new BufferedReader(new FileReader(
+		// AccessFilter.class.getResource(
+		// AccessFilter.PATH + "/admin.txt")
+		// .getFile()));
+		// String line1;
+		// while ((line1 = admin.readLine()) != null) {
+		// adminPathList.add(line1);
+		// }
+		// admin.close();
+		//
+		// // 设置商家
+		// BufferedReader merchant = new BufferedReader(new FileReader(
+		// AccessFilter.class.getResource(
+		// AccessFilter.PATH + "/merchant.txt").getFile()));
+		// String line2;
+		// while ((line2 = merchant.readLine()) != null) {
+		// merchantPathList.add(line2);
+		// }
+		// merchant.close();
+		//
+		// // 设置顾客
+		// BufferedReader customer = new BufferedReader(new FileReader(
+		// AccessFilter.class.getResource(
+		// AccessFilter.PATH + "/customer.txt").getFile()));
+		// String line3;
+		// while ((line3 = customer.readLine()) != null) {
+		// customerPathList.add(line3);
+		// }
+		// customer.close();
+		//
+		// // 设置游客
+		// BufferedReader guest = new BufferedReader(new FileReader(
+		// AccessFilter.class.getResource(
+		// AccessFilter.PATH + "/guest.txt").getFile()));
+		// String line4;
+		// while ((line4 = guest.readLine()) != null) {
+		// guestPathList.add(line4);
+		// }
+		// guest.close();
+		//
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response,
