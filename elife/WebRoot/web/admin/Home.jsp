@@ -72,7 +72,7 @@
                 <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>管理员管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="Admin.jsp" target="menuFrame">
+                        <a href="../../QueryAdminServlet" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
                             管理员管理
                         </a>

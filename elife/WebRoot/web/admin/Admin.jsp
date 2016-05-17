@@ -30,7 +30,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
 
   </head>
  
@@ -144,7 +144,7 @@
 					<td width="12%" align="center">${admin.level }</td>
 					<td width="12%" align="center">${admin.icon }</td>
 					<td width="21%" align="center"><a class="btn btn-primary"
-						onclick="" href="web/admin/ModifyBanner.jsp?id=${banner.id}" />编辑</a>
+						onclick="" href="web/admin/AdminAlter.jsp?id=${admin.id}" />编辑</a>
 						<a class="btn btn-danger" onclick="" href="/elife/adminServlet?name=${'delete' }&id=${admin.id}" />删除</a></td>
 				</tr>
 			</c:forEach>
