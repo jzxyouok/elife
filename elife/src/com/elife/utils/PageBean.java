@@ -5,6 +5,7 @@ package com.elife.utils;
 
 import java.util.List;
 
+import com.elife.model.beans.Admin;
 import com.elife.model.beans.Banner;
 
 /**
@@ -19,6 +20,15 @@ public class PageBean {
 	private int totalPageNum;// 总页数
 	private int totalRecordNum;// 总记录数
 	private List<Banner> bannerList;
+	private List<Admin> adminList;//管理员列表
+
+	public List<Admin> getAdminList() {
+		return adminList;
+	}
+
+	public void setAdminList(List<Admin> adminList) {
+		this.adminList = adminList;
+	}
 
 	/**
 	 * @return the bannerList

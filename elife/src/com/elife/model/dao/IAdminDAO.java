@@ -14,7 +14,7 @@ public interface IAdminDAO {
 	//根据管理员名字查询
 	public abstract Admin selectAdminByuname(String username);
 	//查询所有的管理员信息
-	public abstract List<Admin> selectAllAdmin(int page);
+	public abstract List<Admin> selectAllAdmin(int start, int num);
 	//查询根据管理员等级排序
 	public abstract List<Admin> selectTopicBylevel(int id,int page);
 	

@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@page import="com.elife.utils.PageBean"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -133,34 +135,19 @@
             <td width="12%">头像</td>
             <td width="21%">操作 </td>
         </tr>
-       
-        <tr>
-        	<td width="10%">001</td>
-            <td width="20%">叶梦雅</td>
-            <td width="12%">123456</td>
-            <td width="12%">商家</td>
-           <td width="12%"></td>
-            <td width="21%">
-      
-                <a class="btn btn-primary"
-					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
-					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-
-            </td>
-        </tr>
-        <tr>
-        	<td width="10%">002</td>
-            <td width="20%">张杰</td>
-            <td width="12%">123456</td>
-            <td width="12%">商家</td>
-            <td width="12%"></td>
-            <td width="21%">
-            	 <a class="btn btn-primary"
-					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
-					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-
-            </td>
-        </tr>
+        
+        <c:forEach items="${pageBean.adminList}" var="admin">
+				<tr>
+					<td width="10%" align="center">${admin.id }</td>
+					<td width="20%" align="center">${admin.username }</td>
+					<td width="12%" align="center">${admin.password }</td>
+					<td width="12%" align="center">${admin.level }</td>
+					<td width="12%" align="center">${admin.icon }</td>
+					<td width="21%" align="center"><a class="btn btn-primary"
+						onclick="" href="web/admin/ModifyBanner.jsp?id=${banner.id}" />编辑</a>
+						<a class="btn btn-danger" onclick="" href="/elife/adminServlet?name=${'delete' }&id=${admin.id}" />删除</a></td>
+				</tr>
+			</c:forEach>
     </table>
    </div>
 
