@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="ShowClassList.jsp" target="menuFrame">
+                        <a href="../../classservlet?type=1" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
                            分类管理
                         </a>

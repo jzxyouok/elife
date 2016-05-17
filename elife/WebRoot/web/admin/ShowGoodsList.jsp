@@ -187,7 +187,6 @@ table tr td {
 	}
 	function processDel(){
 	self.location ="goodsservlet?type=6&id="+myid;
-	
 	}
 </script>
 </html>

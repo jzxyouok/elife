@@ -204,5 +204,20 @@ public interface IGoodsDao {
 	 * TODO
 	 */
 	public List<Goods> getGoodsListByRank(int page, String rank);
+
+	/**
+	 * TODO
+	 */
+	public List<Classsecond> getSecondClassByClassOneId(int id);
+
+	/**
+	 * TODO
+	 */
+	public List<Classthree> getThridClassByClassSecondId(int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean updateThreeName(Classthree classthree);
 	
 }
