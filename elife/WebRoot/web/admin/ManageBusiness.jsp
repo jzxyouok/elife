@@ -39,7 +39,7 @@
       	data-target=".bs-example-modal-lg">+添加商家</a>
      </div> -->
 	<div class="table_con add_cp">
-		<a  href="AddBusiness.jsp" >+添加商家</a>
+		<a  href="../../getclassone" >+添加商家</a>
 		<%--ID 商品  商家名字  原价  现价  库存  销量   操作--%>
 		<table>
 			<tr class="tb_title">

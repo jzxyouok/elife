@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,13 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
+
+<style type="text/css">
+.checkbox{
+	margin-left: 5px;
+}
+</style>
 
 </head>
 <body>
@@ -28,31 +35,32 @@
 		<a href="ManageBusiness.jsp">返回商家列表</a>
 	</div>
 	<div class="table_con">
-		<%--		添加商品--%>
-		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
-		<form action="" method="post">
+		<form action="addbusiness" method="post">
 			<table style="width: 60%;height:80%;margin: 0 auto;">
 				<tr>
 					<td width="15%">手机号：</td>
-					<td align="center" style="margin: 0 auto;t"><input type="text"
-						name="name" class="form-control" id="" placeholder="请输入产品名字">
+					<td align="center" style="margin: 0 auto;">
+					<input type="text"	name="phone" class="form-control" id="" placeholder="请输入手机号">
 					</td>
 				</tr>
 				<tr>
 					<td width="15%">商家名称：</td>
-					<td><input type="text" name="oldprice" class="form-control"
+					<td><input type="text" name="storename" class="form-control"
 						id="" placeholder="请输入价格">
 					</td>
 				</tr>
 				<tr>
 					<td width="15%">身份类型：</td>
-					<td><input type="text" name="price" class="form-control" id=""
-						placeholder="身份类型可以选择(多选)">
+					<td>
+					<c:forEach items="${requestScope.classonelist }" var="item">
+					<input type="checkbox" name="type" value="${item.id }" />&nbsp;${item.name}&nbsp;
+					</c:forEach>
+					
 					</td>
 				</tr>
 				<tr>
 					<td width="15%">地址：</td>
-					<td><input type="text" name="stock" class="form-control" id=""
+					<td><input type="text" name="address" class="form-control" id=""
 						placeholder="验证手机号的正确性">
 					</td>
 				</tr>
