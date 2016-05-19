@@ -36,13 +36,13 @@
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>商品管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="../../goodsservlet?type=3" target="menuFrame">
+                        <a href="../../goodsservlet?type=7" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
                             商品排行
                         </a>
                     </li>
                     <li>
-                        <a href="ShowClassList.jsp" target="menuFrame">
+                        <a href="../../classservlet?type=1" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
                            分类管理
                         </a>
@@ -72,7 +72,7 @@
                 <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>管理员管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="Admin.jsp" target="menuFrame">
+                        <a href="../../QueryAdminServlet" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
                             管理员管理
                         </a>
@@ -84,7 +84,7 @@
                <a style="cursor:pointer" class="firsta"><i  class="glyph-icon xlcd"></i>活动管理<s class="sz"></s></a>
                 <ul>
                     <li>
-                        <a href="Banner.jsp" target="menuFrame">
+                        <a href="/elife/queryBanner" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right1"></i>
                            轮播图管理
                         </a>

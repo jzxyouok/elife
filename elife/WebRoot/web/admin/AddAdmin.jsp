@@ -29,7 +29,7 @@
 		
 		<table style="width: 60%;height:80%;margin: 0 auto;" >
 			<tr>
-				<td width="18%">管理员名字</td>
+				<td width="20%">管理员名字</td>
 				<td align="center" style="margin: 0 auto;t"><input type="text" name="name" class="form-control" id=""
 					placeholder="请输入管理员名字">
 				</td>
@@ -37,14 +37,20 @@
 			
 		
 			<tr>
-				<td width="18%">密码</td>
+				<td width="20%">密码</td>
 				<td><input type="text" name="psword" class="form-control" id=""
 					placeholder="请输入密码">
 				</td>
 			</tr>
 			
 			<tr>
-				<td width="18%">选择上传头像</td>
+				<td width="20%">等级</td>
+				<td><input type="text" name="psword" class="form-control" id=""
+					placeholder="请输入等级">
+				</td>
+			</tr>
+			<tr>
+				<td width="20%">选择上传头像</td>
 				<td><input style="display: block;width: 25%;" type="file"
 					name="img" id="exampleInputFile">
 				</td>

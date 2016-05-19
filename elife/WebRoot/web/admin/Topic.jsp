@@ -95,10 +95,10 @@
 			<button type="submit" class="btn btn-default">搜索</button>
 		</form>
 	</div>
-	<div class="btn-group" style="margin:8px auto;">
+	<div class="btn-group" style="margin:8px auto;float:right;" >
 		<button type="button" class="btn btn-info dropdown-toggle"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			按参与量查询 <span class="caret"></span>
+			查询条件<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu">
 			<li><a href="#">按参与量查询</a></li>
@@ -131,7 +131,7 @@
 					onclick="window.open('TopicAlter.jsp')" />编辑</a> <a
 					class="btn btn-warning"
 					onclick="window.location.href('Login.html')" />审核</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />禁用</a>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 			</tr>
 			<tr>
 				<td width="10%">002</td>
@@ -144,7 +144,7 @@
 					onclick="window.open('TopicAlter.jsp')" />编辑</a> <a
 					class="btn btn-warning"
 					onclick="window.location.href('Login.html')" />审核</a> <a
-					class="btn btn-danger" onclick="window.location.href('连接')" />禁用</a>
+					class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
 				</td>
 			</tr>
 		</table>

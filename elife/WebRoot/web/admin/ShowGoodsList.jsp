@@ -27,6 +27,7 @@ table tr td {
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
 	<span class="cp_title">产品管理</span>
@@ -47,17 +48,12 @@ table tr td {
 							销量/库存 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">销量由低到高排序</a>
-							</li>
-							<li><a href="#">销量由高到低排序</a>
-							</li>
-							<li><a href="#">库存由低到高排序</a>
-							</li>
-							<li><a href="#">库存由高到低排序</a>
-							</li>
+							<li><a onclick="myRank('7','1')">销量由低到高排序</a></li>
+							<li><a onclick="myRank('7','2')">销量由高到低排序</a></li>
+							<li><a onclick="myRank('7','3')">库存由低到高排序</a></li>
+							<li><a onclick="myRank('7','4')">库存由高到低排序</a></li>
 						</ul>
-					</div>
-				</td>
+					</div></td>
 
 				<td width="10%">
 					<div class="dropdown">
@@ -67,16 +63,13 @@ table tr td {
 							现价/原价 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">现价由低到高排序</a>
-							</li>
-							<li><a href="#">现价由高到低排序</a>
-							</li>
-							<li><a href="#">原价由低到高排序</a>
-							</li>
-							<li><a href="#">原价由高到低排序</a>
-							</li>
+							<li><a onclick="myRank('7','5')">现价由低到高排序</a></li>
+							<li><a onclick="myRank('7','6')">现价由高到低排序</a></li>
+							<li><a onclick="myRank('7','7')">原价由低到高排序</a></li>
+							<li><a onclick="myRank('7','8')">原价由高到低排序</a></li>
 						</ul>
-					</div></td>
+					</div>
+				</td>
 				<td width="10%">状态</td>
 				<td width="25%">操作</td>
 			</tr>
@@ -90,35 +83,35 @@ table tr td {
 					<td width="10%">${goods.price }/${goods.oldprice }</td>
 					<td width="10%">${goods.status }</td>
 					<td width="25%"><a class="btn btn-primary"
-						onclick="window.open('Login.html')" />编辑</a> <a
-						class="btn btn-warning"
-						onclick="window.location.href('Login.html')" />锁定</a> <a
-						class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
+						onclick="javascript:window.location.href='goodsservlet?type=4&id=${goods.id }';" />编辑</a>
+						<a class="btn btn-warning"
+						onclick="window.location.href('Login.html')" />锁定</a> <!-- 						以下是处理删除弹出框操作 -->
+						<span class="btn btn-danger" data-toggle="modal"
+						onclick="prepareDel(${goods.id })"
+						data-target=".bs-example-modal-sm"><c:set var="myid"
+								value="${goods.id }" />删除</span> <!-- 						弹出框操作结束 -->
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-		
-		
-		
-		<!-- 分页处理 -->
+
+
+
+		<!-- 分页处理，需要在最上面添加taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" -->
 		<!-- 		问题:不能保证当前页面每次都在中间。只能保证正常翻页 。最好可以每次保证当前页面在中间-->
 		<!-- goodsPager就是一个Pagerlist对象 -->
-		<nav class="text-center">
-		<!-- 向前翻处理 -->
+		<nav class="text-center"> <!-- 向前翻处理 -->
 		<ul class="pagination">
 			<!-- 		当当前页面小于等于1时，禁止向前翻页 -->
 			<c:if test="${goodsPager.nowPager<=1}">
 				<li class="disabled"><a aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span> </a>
-				</li>
+						aria-hidden="true">&laquo;</span> </a></li>
 			</c:if>
 			<c:if test="${goodsPager.nowPager>1}">
 				<li><a
-					href="goodsservlet?type=3&page=${goodsPager.nowPager-1 }"
+					href="goodsservlet?type=${type}&page=${goodsPager.nowPager-1 }&rank=${rank}"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a>
-				</li>
+				</a></li>
 			</c:if>
 
 			<!-- 1~5页的处理 -->
@@ -126,32 +119,74 @@ table tr td {
 				<c:if
 					test="${goodsPager.nowPager==(state.index+goodsPager.nowPager/5*5-1)}">
 					<li class="disabled"><a style="background: gray;color: white;"
-						href="">${goodsPager.nowPager}</a>
-					</li>
+						href="">${goodsPager.nowPager}</a></li>
 				</c:if>
 				<!-- 获取格式化数据（不然会出现小数点），需要在最上面添加taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" -->
 				<fmt:formatNumber var="c"
 					value="${(state.index+goodsPager.nowPager/5*5-1)}" pattern="#" />
 				<c:if test="${goodsPager.nowPager!=c}">
-					<li><a href="goodsservlet?type=3&page=${c}">${c}</a></li>
+					<li><a href="goodsservlet?type=${type}&page=${c}&rank=${rank}">${c}</a>
+					</li>
 				</c:if>
 			</c:forEach>
-			
-			
+
+
 			<!-- 		向后翻页 -->
 			<c:if test="${goodsPager.nowPager+4>=goodsPager.totalPageNum}">
 				<li class="disabled"><a aria-label="Previous"> <span
-						aria-hidden="true">&raquo;</span> </a>
-				</li>
+						aria-hidden="true">&raquo;</span> </a></li>
 			</c:if>
 			<c:if test="${goodsPager.nowPager+4<goodsPager.totalPageNum}">
 				<li><a
-					href="goodsservlet?type=3&page=${goodsPager.nowPager+1 }"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a>
-				</li>
+					href="goodsservlet?type=${type}&page=${goodsPager.nowPager+1 }&rank=${rank}"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a></li>
 			</c:if>
 		</ul>
 		</nav>
+
+
+		<!-- 		以下处理删除时的弹出框 -->
+		<div class="modal fade bs-example-modal-sm">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">请确认</h4>
+					</div>
+					<div class="modal-body">
+						<p>您确定要删除该项吗？</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<!-- onclick="javascript:window.location.href='goodsservlet?type=6&id=${myid}';" -->
+						<a class="btn btn-danger" onclick="processDel()">删除</a>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+		<!-- 	弹出框结束 -->
 </body>
+
+<script type="text/javascript">
+	function myRank(mtype, mrank) {
+		var type = mtype;
+		var rank = mrank;
+		self.location = 'goodsservlet?type=' + type+'&rank='+rank;
+	}
+// 	以下两个函数处理删除问题
+	var myid;
+	function prepareDel(id){
+	 myid=id;
+	}
+	function processDel(){
+	self.location ="goodsservlet?type=6&id="+myid;
+	}
+</script>
 </html>

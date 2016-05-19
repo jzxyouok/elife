@@ -26,6 +26,8 @@
 	<span class="cp_title">修改管理员</span>
 	
 	<div class="table_con">
+	<form action="/elife/adminServlet?name=${'updata'}&id=<%= adminid %>" method="post"
+			enctype="MULTIPART/FORM-DATA">
 		<table style="width: 60%;height:80%;margin: 2px auto;" >
 			<tr>
 				<td width="20%">管理员名字</td>
@@ -59,6 +61,7 @@
 				</td>
 			</tr>
 			</div>
+			</form>
 	</div>
 </body>
 </html>

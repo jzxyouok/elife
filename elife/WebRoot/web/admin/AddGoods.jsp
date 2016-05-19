@@ -21,19 +21,21 @@
 
 
 <link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
+<script type="text/javascript" src="web/admin/js/jquery-1.8.3.js"></script>
 
 </head>
 <body>
 	<span class="cp_title">添加商品</span>
 	<div class="add_cp">
-		<a href="ShowGoodsList.jsp">"<<"返回商品列表</a>
+		<a href="goodsservlet?type=3">返回商品列表</a>
 	</div>
 	<div class="table_con">
 		<%--		添加商品--%>
 		<%--	id  商品名字    原价    打折价   商品图片  总库存  分类   描述 --%>
-		<form action="goodsservlet?type=2" method="post" enctype="multipart/form-data">
+		<form action="goodsservlet?type=2" method="post"
+			enctype="multipart/form-data">
 			<%--		请求类型，2代表添加商品--%>
-<!-- 			<input type="hidden" name="type" value="2"> -->
+			<!-- 			<input type="hidden" name="type" value="2"> -->
 			<%--		商家id，到时候要动态获取--%>
 			<input type="hidden" name="businessid" value="1">
 			<table style="width: 60%;height:80%;margin: 0 auto;">
@@ -78,15 +80,75 @@
 
 				</tr>
 				<tr>
-					<td><input style="display: block;" type="file" name="img">
+					<td><input style="display: block;" type="file"
+						name="uploadfile1" id="uploadfile1">
 					</td>
-					<td><input style="display: block;" type="file" name="img">
+					<td><input style="display: block;" type="file" name="img"
+						id="uploadfile2">
 					</td>
-					<td><input style="display: block;" type="file" name="img">
+					<td><input style="display: block;" type="file" name="img"
+						id="uploadfile3">
 					</td>
-					<td><input style="display: block;" type="file" name="img">
+					<td><input style="display: block;" type="file" name="img"
+						id="uploadfile4">
 					</td>
 				</tr>
+				<tr>
+					<td style="color: gray;">预览效果</td>
+				</tr>
+
+				<tr style="height: 150px">
+					<td><img alt="商品图预览1" src="web/admin/images/load.png"
+						width="80px" height="100px" id="img1">
+					</td>
+					<td><img alt="商品图预览2" src="web/admin/images/load.png"
+						width="80px" height="100px" id="img2">
+					</td>
+					<td><img alt="商品图预览3" src="web/admin/images/load.png"
+						width="80px" height="100px" id="img3">
+					</td>
+					<td><img alt="商品图预览4" src="web/admin/images/load.png"
+						width="80px" height="100px" id="img4"></td>
+				</tr>
+				<!-- 以下开始预览图片操作 -->
+				<script>
+					$("#uploadfile1").change(function() {
+						var objUrl = getObjectURL(this.files[0]);
+						if (objUrl) {
+							$("#img1").attr("src", objUrl);
+						}
+					});
+					$("#uploadfile2").change(function() {
+						var objUrl = getObjectURL(this.files[0]);
+						if (objUrl) {
+							$("#img2").attr("src", objUrl);
+						}
+					});
+					$("#uploadfile3").change(function() {
+						var objUrl = getObjectURL(this.files[0]);
+						if (objUrl) {
+							$("#img3").attr("src", objUrl);
+						}
+					});
+					$("#uploadfile4").change(function() {
+						var objUrl = getObjectURL(this.files[0]);
+						if (objUrl) {
+							$("#img4").attr("src", objUrl);
+						}
+					});
+					//建立一個可存取到該file的url
+					function getObjectURL(file) {
+						var url = null;
+						if (window.createObjectURL != undefined) { // basic
+							url = window.createObjectURL(file);
+						} else if (window.URL != undefined) { // mozilla(firefox)
+							url = window.URL.createObjectURL(file);
+						} else if (window.webkitURL != undefined) { // webkit or chrome
+							url = window.webkitURL.createObjectURL(file);
+						}
+						return url;
+					}
+				</script>
 				<tr style="height: 100px;">
 					<td>商品 描述</td>
 					<td><textarea placeholder="填下商品描述，最多支持200字哟" rows="3"

@@ -6,6 +6,7 @@ package com.elife.model.dao;
  */
 import java.util.List;
 
+import com.elife.model.beans.Pager;
 import com.elife.model.beans.Topic;
 
 public interface ITopicDAO {
@@ -17,10 +18,12 @@ public interface ITopicDAO {
 	public abstract List<Topic> selectTopic(String starttime,String endtime,int nowpage);
 	//查询根据话题讨论的人数对话题进行排序（查询出最热话题）
 	public abstract List<Topic> selectAllTopicByJoin(boolean bl, int nowpage);
+	//查询话题总条数
+	public int selectTopicCount();
 	//查询没有通过审核的话题
 	public abstract List<Topic> selectNockTopic(int status, int nowpage);
-	//查询所有的话题信息
-	public abstract List<Topic> selectAllTopic(int page);
+	//查询所有的话题信息，默认排序
+	public abstract List<Topic> selectAllTopic();
 
 	//审核话题,修改状态status
 	public abstract boolean updateTopic(Topic topic);
@@ -31,4 +34,9 @@ public interface ITopicDAO {
 
 	// 删除话题
 	public abstract boolean deleteTopicByname(String name);
+	//分页
+	public Pager<Topic> getTopicPager(int page);
+	//得到话题创建人name
+	public String getUsersNameById(int id);
+	
 }

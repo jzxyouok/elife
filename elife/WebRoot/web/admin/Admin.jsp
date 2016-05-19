@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@page import="com.elife.utils.PageBean"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -28,7 +30,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
 
   </head>
  
@@ -52,9 +54,11 @@
 		<div class="modal-body">
 		<!-- 这个地方放内容 -->
              <div class="table_con">
+             <form action="/elife/adminServlet?name=${'add'}" method="post"
+			enctype="MULTIPART/FORM-DATA">
 		          <table style="width: 60%;height:80%;margin: 5px auto;" >
 					<tr>
-						<td width="30%">管理员名字</td>
+						<td width="35%">管理员名字</td>
 						<td align="center" style="margin: 8px auto;t"><input type="text" name="name" class="form-control" id=""
 							placeholder="请输入管理员名字">
 						</td>
@@ -62,9 +66,16 @@
 					
 				
 					<tr>
-						<td width="30%">密码</td>
+						<td width="35%">密码</td>
 						<td><input type="text" name="psword" class="form-control" id=""
 							placeholder="请输入密码">
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="35%">等级</td>
+						<td><input type="text" name="psword" class="form-control" id=""
+							placeholder="请输入等级">
 						</td>
 					</tr>
 					
@@ -77,6 +88,7 @@
 					</tr>
 					
 				</table>
+				</form>
 		<div align="center" style="margin:5px">
 		
 			</div>
@@ -120,36 +132,22 @@
             <td width="12%">密码</td>
            
             <td width="12%">等级</td>
+            <td width="12%">头像</td>
             <td width="21%">操作 </td>
         </tr>
-       
-        <tr>
-        	<td width="10%">001</td>
-            <td width="20%">叶梦雅</td>
-            <td width="12%">123456</td>
-            <td width="12%">商家</td>
-           
-            <td width="21%">
-      
-                <a class="btn btn-primary"
-					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
-					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-
-            </td>
-        </tr>
-        <tr>
-        	<td width="10%">002</td>
-            <td width="20%">张杰</td>
-            <td width="12%">123456</td>
-            <td width="12%">商家</td>
-            
-            <td width="21%">
-            	 <a class="btn btn-primary"
-					onclick="window.open('AdminAlter.jsp')" />编辑</a> 
-					<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
-
-            </td>
-        </tr>
+        
+        <c:forEach items="${pageBean.adminList}" var="admin">
+				<tr>
+					<td width="10%" align="center">${admin.id }</td>
+					<td width="20%" align="center">${admin.username }</td>
+					<td width="12%" align="center">${admin.password }</td>
+					<td width="12%" align="center">${admin.level }</td>
+					<td width="12%" align="center">${admin.icon }</td>
+					<td width="21%" align="center"><a class="btn btn-primary"
+						onclick="" href="web/admin/AdminAlter.jsp?id=${admin.id}" />编辑</a>
+						<a class="btn btn-danger" onclick="" href="/elife/adminServlet?name=${'delete' }&id=${admin.id}" />删除</a></td>
+				</tr>
+			</c:forEach>
     </table>
    </div>
 

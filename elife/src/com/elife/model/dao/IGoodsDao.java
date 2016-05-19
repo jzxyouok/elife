@@ -1,5 +1,6 @@
 package com.elife.model.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.elife.model.beans.Classone;
@@ -158,5 +159,65 @@ public interface IGoodsDao {
 	 */
 
 	public String getBusinessNameById(int id);
+
+	/**
+	 * 添加接口： 根据商品id获取图片。添加时间：0423
+	 */
+	public List<Goodsimg> getGoodsImgByGoodsId(int id);
+
+	/**
+	 * 添加接口： 根据商品id更新商品信息。添加时间：0423
+	 */
+	public boolean updateGoods(Goods goods);
+
+	/**
+	 * TODO 添加接口： 根据Goodsclass（包含商品id）更新商品分类信息。添加时间：0423
+	 */
+	public boolean updateGoodsClass(Goodsclass goodsclass);
+
+	/**
+	 * TODO 添加接口： 根据商品id更新。添加时间：0423
+	 */
+	public boolean updateGoodsImg(Goodsimg gs);
+
+	/**
+	 * 添加接口： 根据商品id删除原有图片。添加时间：0423
+	 */
+	public boolean deleteGoodsByGoodsId(int goodsid);
+
+	/**
+	 * TODO
+	 */
+	public boolean delGood(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean delImgs(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean delGoodsClass(Connection conn, int id);
+
+	/**
+	 * TODO
+	 */
+	public List<Goods> getGoodsListByRank(int page, String rank);
+
+	/**
+	 * TODO
+	 */
+	public List<Classsecond> getSecondClassByClassOneId(int id);
+
+	/**
+	 * TODO
+	 */
+	public List<Classthree> getThridClassByClassSecondId(int id);
+
+	/**
+	 * TODO
+	 */
+	public boolean updateThreeName(Classthree classthree);
 	
 }
