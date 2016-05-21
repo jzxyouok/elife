@@ -169,7 +169,7 @@ table tr td {
 				<!-- /.modal-content -->
 			</div>
 			<!-- /.modal-dialog -->
-		</div>
+		</div> 
 		<!-- /.modal -->
 		<!-- 	弹出框结束 -->
 </body>

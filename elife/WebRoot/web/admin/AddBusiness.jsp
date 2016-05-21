@@ -35,7 +35,8 @@
 		<a href="ManageBusiness.jsp">返回商家列表</a>
 	</div>
 	<div class="table_con">
-		<form action="addbusiness" method="post">
+		<form action="businessservlet" method="post">
+		<input type="hidden" name="action" value="add" />
 			<table style="width: 60%;height:80%;margin: 0 auto;">
 				<tr>
 					<td width="15%">手机号：</td>
@@ -46,7 +47,7 @@
 				<tr>
 					<td width="15%">商家名称：</td>
 					<td><input type="text" name="storename" class="form-control"
-						id="" placeholder="请输入价格">
+						id="" placeholder="请输入名称">
 					</td>
 				</tr>
 				<tr>
@@ -61,7 +62,7 @@
 				<tr>
 					<td width="15%">地址：</td>
 					<td><input type="text" name="address" class="form-control" id=""
-						placeholder="验证手机号的正确性">
+						placeholder="请输入地址">
 					</td>
 				</tr>
 				<tr>

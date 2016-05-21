@@ -108,7 +108,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="ManageBusiness.jsp" target="menuFrame">
+                        <a href="../../businessservlet?action=show" target="menuFrame">
                             <i class="glyph-icon icon-chevron-right2"></i>
                            商家管理 
                         </a>

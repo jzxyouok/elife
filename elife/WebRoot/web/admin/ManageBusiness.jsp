@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +21,7 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" type="text/css" href="web/admin/css/Iframe.css" />
 
 <style type="text/css">
 	#link{
@@ -28,6 +29,9 @@
 	}
 	#link:hover{
 		color:#B70D24;
+	}
+	td{
+		text-align: center;
 	}
 </style>
 
@@ -39,7 +43,7 @@
       	data-target=".bs-example-modal-lg">+添加商家</a>
      </div> -->
 	<div class="table_con add_cp">
-		<a  href="../../getclassone" >+添加商家</a>
+		<a  href="getclassone" >+添加商家</a>
 		<%--ID 商品  商家名字  原价  现价  库存  销量   操作--%>
 		<table>
 			<tr class="tb_title">
@@ -53,50 +57,65 @@
 							aria-expanded="true">身份类型<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">零食</a></li>
-							<li><a href="#">洗衣</a></li>
-							<li><a href="#">洗车</a></li>
+							<c:forEach items="${requestScope.allClassone }" var="type">
+								<li><a href="businessservlet?action=show&typeid=${type.id }">${type.name }</a></li>
+							</c:forEach>
+							
 						</ul>
 					</div>
 				</td>
 				<td width="15%">注册时间 </td>
 				<td width="12%">
-					<div class="dropdown">
+					地址
+					<!-- <div class="dropdown">目前不提供按照地址选择商家
 						<button class="btn btn-default dropdown-toggle" type="button"
 							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="true">
 							地址 <span class="caret"></span>
 						</button>
+						
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<li><a href="#">郑州航院</a></li>
 							<li><a href="#">庙张</a></li>
 							<li><a href="#">华水</a></li>
 							<li><a href="#">警察学院</a></li>
 						</ul>
-					</div></td>
+					</div> -->
+					</td>
 				<td width="9%">用户状态</td>
 				<td width="19%" align="left">操作</td>
 			</tr>
-			<%
-			int i = 6;
-				while(i-- > 0){
-			 %>
+			
+			 <c:forEach items="${requestScope.businesslist}" var="business">
 			<tr>
-				<td width="10%"><a href="ShowBusiness.jsp" class="text-primary" id="link" >leke</a></td>
-				<td width="10%">郑州航院</td>
-				<td width="12%">18018126045</td>
-				<td width="13%">零食</td>
-				<td width="15%">航院南门50米</td>
-				<td width="12%">2016-03-06</td>
-				<td width="9%">可以登录</td>
+				<td width="10%"><a href="ShowBusiness.jsp" class="text-primary" id="link" >${business.nickname }</a></td>
+				<td width="10%">${business.storename }</td>
+				<td width="12%">${business.phone }</td>
+				<td width="13%">${business.identity}</td>
+				<td width="15%">${business.lasttime}</td>
+				<td width="12%">${business.address }</td>
+				<td width="9%">
+				<c:choose>
+				<c:when test="${business.status == 1}">
+				可以登录
+				</c:when>
+				<c:otherwise>
+				不能登录
+				</c:otherwise>
+				</c:choose>
+				</td>
 				<td width="15%">
-				 <a class="btn btn-warning" onclick="window.location.href('Login.html')" />锁定</a> 
-				<a class="btn btn-danger" onclick="window.location.href('连接')" />删除</a>
+				
+				 <a class="btn btn-warning" href="businessservlet?action=lock&id=${business.id}&status=${business.status}" />锁定</a> 
+				<!-- <a class="btn btn-danger" onclick="window.location.alert('连接')"  />删除</a> -->
+				<span class="btn btn-danger" data-toggle="modal"
+						onclick="prepareDel(${business.id })"
+						data-target=".bs-example-modal-sm"><c:set var="myid"
+								value="${business.id }" />删除</span>
 				</td>
 			</tr>
-			<%
-			}
-			 %>
+			</c:forEach>
+			
 			
 		</table>
 
@@ -115,5 +134,52 @@
 			</li>
 		</ul>
 		</nav>
+		
+		
+		
+		<!-- 		以下处理删除时的弹出框 -->
+		<div class="modal fade bs-example-modal-sm">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">请确认</h4>
+					</div>
+					<div class="modal-body">
+						<p>目前不支持删除商家操作</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<!-- onclick="javascript:window.location.href='goodsservlet?type=6&id=${myid}';" -->
+						<a class="btn btn-danger" onclick="processDel()">删除</a>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div> 
+		<!-- /.modal -->
+		<!-- 	弹出框结束 -->
 </body>
+
+<script type="text/javascript">
+	function myRank(mtype, mrank) {
+		var type = mtype;
+		var rank = mrank;
+		self.location = 'goodsservlet?type=' + type+'&rank='+rank;
+	}
+// 	以下两个函数处理删除问题
+	var myid;
+	function prepareDel(id){
+	 myid=id;
+	}
+	
+	function processDel() {
+		self.location ="传递给操作商家";
+	}
+</script>
 </html>
