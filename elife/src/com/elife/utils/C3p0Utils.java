@@ -35,7 +35,7 @@ public class C3p0Utils {
 		cpds = new ComboPooledDataSource();
 		try {
 			cpds.setDriverClass("com.mysql.jdbc.Driver");
-			cpds.setJdbcUrl("jdbc:mysql://localhost/elife");
+			cpds.setJdbcUrl("jdbc:mysql://42.96.144.28/elife");
 			cpds.setUser("root");
 			cpds.setPassword("elifeadmin");
 
