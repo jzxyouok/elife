@@ -5,9 +5,12 @@ import java.util.List;
 
 import com.elife.model.beans.Business;
 import com.elife.model.beans.Businessclass;
+import com.elife.model.beans.Pager;
 import com.elife.model.daoimpl.BusinessClassDao;
 import com.elife.model.daoimpl.BusinessDao;
 import com.elife.model.daoimpl.ClassoneDao;
+import com.elife.utils.PageUtils;
+import com.elife.utils.ParamUtils;
 
 /**
  * @author 任创权
@@ -16,6 +19,7 @@ import com.elife.model.daoimpl.ClassoneDao;
  *
  */
 public class BusinessService {
+
 
 	/**
 	 * 
@@ -32,7 +36,7 @@ public class BusinessService {
 	}
 
 	/**
-	 * TODO 得到所有的商家信息
+	 * TODO 得到所有的商家信息 因为里面设计到商家的身份类型，所以方法内容显得有点多
 	 */
 	public List<Business> getAllBusiness() {
 		//
@@ -82,5 +86,35 @@ public class BusinessService {
 		//
 		return businessdao.lockById(lockId, businessid);
 	}
+
+	/**
+	 * TODO 这是给客户端用的数据的选取，不用所有的数据
+	 */
+	public Pager<Business>  getAllBusinessByPage(int page) {
+		//
+	
+	Pager<Business> p = new Pager<Business>();
+	
+	List<Business> businessList = businessdao.getAllBusinessByPage(page);// 获取List参数
+	int count = businessdao.getGoodsCount();// 获取总条数
+
+	p.setNowPager(page);// 设置当前页
+	p.setPerSize(ParamUtils.PERPAGE);// 设置每页大小
+	p.setTotalRecordNum(count);// 设置总条数
+	p.setTotalPageNum(PageUtils.getPagersByNums(count));// 设置总页数
+	p.setObjects(businessList);// 封装信息list
+
+	return p;
+	}
+
+	/**
+	 * 根据商家的id获取商家的所有的信息，
+	 */
+	public Business getBusinessById(int businessid) {
+		// businessdao.getBussinessById(businessid);
+		return businessdao.getBussinessById(businessid);
+
+	}
+
 
 }

@@ -486,12 +486,34 @@ public class GoodsDao implements IGoodsDao {
 			for (Goods goods : goodsList) {
 				String name = getBusinessNameById(goods.getBusinessid());
 				goods.setUsername(name);
+				
+				
+				//下面这一块为了客户端考虑，获取图片
+				goods.setGoodsImgsList(getGoodsImagesList(goods.getId()));
+				
 			}
 			return goodsList;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+
+	/**
+	 * TODO ---根据shangpinid获取商品图片
+	 */
+	private List<Goodsimg> getGoodsImagesList(int id) {
+		String sql = "select * from Goodsimg where goodsid=?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goodsimg> goodsimgs = queryRunner.query(sql,
+					new BeanListHandler<Goodsimg>(Goodsimg.class), id);
+
+			return goodsimgs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -539,6 +561,61 @@ public class GoodsDao implements IGoodsDao {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.elife.model.dao.IGoodsDao#getGoodsListByRank(int,
+	 * java.lang.String, int)
+	 */
+	@Override
+	public List<Goods> getGoodsListByRank(int page, String rank, int id) {
+		String placeHolder = "";
+		if (rank.equals("1")) {
+			placeHolder = "sale asc";
+		} else if (rank.equals("2")) {
+			placeHolder = "sale desc";
+		} else if (rank.equals("3")) {
+			placeHolder = "stock asc";
+		} else if (rank.equals("4")) {
+			placeHolder = "stock desc";
+		} else if (rank.equals("5")) {
+			placeHolder = "price asc";
+		} else if (rank.equals("6")) {
+			placeHolder = "price desc";
+		} else if (rank.equals("7")) {
+			placeHolder = "oldprice asc";
+		} else if (rank.equals("8")) {
+			placeHolder = "oldprice desc";
+		} else {
+			placeHolder = "name asc";
+		}
+		/*
+		 * 特别注意，placeHolder不能使用占位符，原因：怀疑占位符之间如果没有“，”，就不能连着使用占位符，可以使用传统的拼接方式
+		 */
+		String sql = "select * from goods where businessid=" + id
+				+ " order by " + placeHolder + " limit ?,?";
+		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+		try {
+			List<Goods> goodsList = queryRunner.query(sql,
+					new BeanListHandler<Goods>(Goods.class),
+					PageUtils.getParam1(page), ParamUtils.PERPAGE);
+			// 返回之前，我们获取商家名字
+			for (Goods goods : goodsList) {
+				String name = getBusinessNameById(goods.getBusinessid());
+				goods.setUsername(name);
+
+				// 下面这一块为了客户端考虑，获取图片
+				goods.setGoodsImgsList(getGoodsImagesList(goods.getId()));
+
+			}
+			return goodsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }

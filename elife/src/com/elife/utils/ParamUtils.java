@@ -25,7 +25,7 @@ public class ParamUtils {
 	/*
 	 * 规定全局分页，每页显示条数
 	 */
-	public static final int PERPAGE = 5;
+	public static final int PERPAGE = 10;
 	/*
 	 * 定义一个存储的全局位置，注意，这是一个根节点，全部img在此文件夹下.前面加“/”相对于tomcat所在的盘符的根目录，不加“/”，
 	 * 相对于myeclipse安装目录为根目录
@@ -36,6 +36,8 @@ public class ParamUtils {
 	 */
 	public static final String SAVEPATP_GOODS = "/img/goods/";
 
+	// app相关
+	public static final int PERPAGE_APP = 10;
 
 
 }

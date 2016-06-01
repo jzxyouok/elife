@@ -67,7 +67,7 @@ public class BusinessServlet extends HttpServlet {
 		// 获取操作类型
 		String action = req.getParameter("action");
 		
-		System.out.println("我要执行的操作是" + action);
+		System.out.println(TAG + "我要执行的操作是" + action);
 
 		if ("add".equals(action)) {
 			// 添加商家

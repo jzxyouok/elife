@@ -79,12 +79,11 @@ public class GoodsServlet extends HttpServlet {
 			 * 添加商品
 			 */
 			/*
-			 * 上传商品所有逻辑： 
-			 * 第一步：点击添加商品按钮，携带过来商家ID、商家产品的商品所属的全部三级分类信息。
-			 * 第二步：提交之后，初始化第三方文件上传框架SmartUpload，为获取普通表单数据做准备。注意,获取普通表单数据不能使用传统方式，在smartUpload.upload()之后，用该框架提供的方法获取表单数据。
-			 * 第三步：上传文件。
-			 * 第四步：获取商品表单基本信息之后插入商品表，返回插入商品的id 
-			 * 第五步：遍历存储分类ID和返回的商品ID插入到三级分类中间表。
+			 * 上传商品所有逻辑： 第一步：点击添加商品按钮，携带过来商家ID、商家产品的商品所属的全部三级分类信息。
+			 * 第二步：提交之后，初始化第三方文件上传框架SmartUpload
+			 * ，为获取普通表单数据做准备。注意,获取普通表单数据不能使用传统方式，
+			 * 在smartUpload.upload()之后，用该框架提供的方法获取表单数据。 第三步：上传文件。
+			 * 第四步：获取商品表单基本信息之后插入商品表，返回插入商品的id 第五步：遍历存储分类ID和返回的商品ID插入到三级分类中间表。
 			 * 第六步：遍历获取到的商品图片路径和商品ID存储到商品图片表。
 			 */
 
@@ -103,8 +102,7 @@ public class GoodsServlet extends HttpServlet {
 
 				Map<String, String> parameterMap = new HashMap<String, String>();
 				@SuppressWarnings("rawtypes")
-				Enumeration em = smartUpload.getRequest()
-						.getParameterNames();
+				Enumeration em = smartUpload.getRequest().getParameterNames();
 				/*
 				 * 这一块处理获取普通表单， 存储到Map中然后用beanutils进行封装
 				 */
@@ -191,47 +189,44 @@ public class GoodsServlet extends HttpServlet {
 			}
 			System.out.println(TAG + ":测试打印数据：" + goods);
 
-		}else if(type.equals("3")){
+		} else if (type.equals("3")) {
 			/*
 			 * 查询商品排行
 			 */
 			/*
-			 * 显示商品list逻辑：
-			 * 第一步：获取请求页码。如果第一次请求，默认页码是1。
-			 * 第二步：根据页码获取相应商品List和商品总条数。
+			 * 显示商品list逻辑： 第一步：获取请求页码。如果第一次请求，默认页码是1。 第二步：根据页码获取相应商品List和商品总条数。
 			 * 第三步：根据商品id获取商家bean。
-			 * 第四步：根据当前页码、商品List、商品总条数、每页条数（全局参数）封装PagerBean(注意，该bean包括所有需要的信息，包括List,页码各种信息等).
-			 * 我们需要回传的数据：只有一个Pager
+			 * 第四步：根据当前页码、商品List、商品总条数、每页条数（全局参数）封装PagerBean(
+			 * 注意，该bean包括所有需要的信息，包括List,页码各种信息等). 我们需要回传的数据：只有一个Pager
 			 */
 			/*
-			 * 分页逻辑：
-			 * 第一步：获取请求页码【nowPager】。如果第一次请求，默认页码是1。
+			 * 分页逻辑： 第一步：获取请求页码【nowPager】。如果第一次请求，默认页码是1。
 			 * 第二步：获取信息条数【totalRecordNum】，得到页数【totalPageNum】。
-			 * 第三步：根据页码获取对应List【List<Object>】。
-			 * 第四步：封装成pagerbean。
+			 * 第三步：根据页码获取对应List【List<Object>】。 第四步：封装成pagerbean。
 			 */
-			//第一步
-			String parameter = req.getParameter("page");//获取的页码
-			int page=1;//默认第一页
-			if(parameter==null){
-				
-			}else{
-				page=Integer.parseInt(parameter);//获取的页码
+			// 第一步
+			String parameter = req.getParameter("page");// 获取的页码
+			int page = 1;// 默认第一页
+			if (parameter == null) {
+
+			} else {
+				page = Integer.parseInt(parameter);// 获取的页码
 			}
-			Pager<Goods>  goodsPager=goodsService.getGoodsPager(page);
-			
+			Pager<Goods> goodsPager = goodsService.getGoodsPager(page);
+
 			/*
 			 * 测试数据
 			 */
-			System.out.println(TAG+"页码信息:"+goodsPager);
-			List<Goods> goodsList=goodsPager.getObjects();
+			System.out.println(TAG + "页码信息:" + goodsPager);
+			List<Goods> goodsList = goodsPager.getObjects();
 			for (Goods goods2 : goodsList) {
-				System.out.println(TAG+"获取到的商品list:"+goods2);
+				System.out.println(TAG + "获取到的商品list:" + goods2);
 			}
-			
+
 			req.setAttribute("type", type);
-			req.setAttribute("goodsPager",goodsPager);
-			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(req, resp);
+			req.setAttribute("goodsPager", goodsPager);
+			req.getRequestDispatcher("web/admin/ShowGoodsList.jsp").forward(
+					req, resp);
 		} else if (type.equals("4")) {
 			/*
 			 * 全部逻辑： 第一步:获取商品id。 第二步：根据id获取商品信息。 第三步：根据id获取商品图片。
@@ -365,9 +360,7 @@ public class GoodsServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-
 			// 这里放处理更新商品之后的操作
-
 
 		} else if (type.equals("6")) {
 			// 根据商品id删除商品
@@ -408,7 +401,7 @@ public class GoodsServlet extends HttpServlet {
 				page = Integer.parseInt(parameter);// 获取的页码
 			}
 			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
-					rank);
+					rank, null);
 
 			/*
 			 * 测试数据
@@ -426,7 +419,7 @@ public class GoodsServlet extends HttpServlet {
 					req, resp);
 
 		}
-		
+
 	}
 
 }

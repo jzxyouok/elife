@@ -219,5 +219,10 @@ public interface IGoodsDao {
 	 * TODO
 	 */
 	public boolean updateThreeName(Classthree classthree);
+
+	/**
+	 * TODO ---
+	 */
+	public List<Goods> getGoodsListByRank(int page, String rank, int id);
 	
 }
