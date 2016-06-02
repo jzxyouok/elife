@@ -57,13 +57,10 @@ public class GoodsServlet extends HttpServlet {
 			GoodsService goodsService = new GoodsService();
 			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
 					"0");// 按照默认排序
-			System.out.println(goodsPager.toString());
-			System.out.println(goodsPager.getObjects());
 			// 开始解析
 			Gson gson = new Gson();
 			List<Goods> goodsList = goodsPager.getObjects();
 			String json = gson.toJson(goodsList);
-			System.out.println(json);
 			printWriter.print(json);
 			printWriter.close();
 		} else if (type.equals("2")) {
@@ -78,8 +75,6 @@ public class GoodsServlet extends HttpServlet {
 			GoodsService goodsService = new GoodsService();
 			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
 					"2");// 销量由高到低
-			System.out.println(goodsPager.toString());
-			System.out.println(goodsPager.getObjects());
 			// 开始解析
 			Gson gson = new Gson();
 			List<Goods> goodsList = goodsPager.getObjects();
@@ -100,13 +95,10 @@ public class GoodsServlet extends HttpServlet {
 			GoodsService goodsService = new GoodsService();
 			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
 					"2", merchantid);// 销量由高到低
-			System.out.println(goodsPager.toString());
-			System.out.println(goodsPager.getObjects());
 			// 开始解析
 			Gson gson = new Gson();
 			List<Goods> goodsList = goodsPager.getObjects();
 			String json = gson.toJson(goodsList);
-			System.out.println(json);
 			printWriter.print(json);
 			printWriter.close();
 		} else if (type.equals("4")) {
@@ -118,6 +110,9 @@ public class GoodsServlet extends HttpServlet {
 			String json = gson.toJson(goods);
 			printWriter.print(json);
 			printWriter.close();
+		} else {
+			printWriter.print("-1");// 异常
+			return;
 		}
 
 	}

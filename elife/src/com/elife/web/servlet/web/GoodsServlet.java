@@ -401,7 +401,7 @@ public class GoodsServlet extends HttpServlet {
 				page = Integer.parseInt(parameter);// 获取的页码
 			}
 			Pager<Goods> goodsPager = goodsService.getGoodsPagerByRank(page,
-					rank, null);
+					rank);
 
 			/*
 			 * 测试数据

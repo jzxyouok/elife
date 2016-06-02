@@ -38,6 +38,13 @@ public class ParamUtils {
 
 	// app相关
 	public static final int PERPAGE_APP = 10;
+	// 对于好评差评的定义：十分制；对于商品，综合考虑商品评价、商家服务、快递服务平均分。对于商家只考虑商家服务
+	public static final int BOTTOM = 0;// 最低分
+	public static final int TOP = 10;// 最高分
+	public static final int BAD = 3;// 小于等于4
+	public static final int MIDDLE = 6;// 小于等于7
+	public static final int GOOD = 10;// 小于等于10
+
 
 
 }

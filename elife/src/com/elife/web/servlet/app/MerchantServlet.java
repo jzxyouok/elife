@@ -188,7 +188,8 @@ public class MerchantServlet extends HttpServlet {
 			}
 			// objectJson.put("merchantList", arraytJson);
 		} else {
-			// objectJson.put("error", "0");
+			out.println("-1");
+			return;
 		}
 		out.println(arraytJson);
 	}
