@@ -34,7 +34,6 @@ public class ParamUtils {
 	 * 商品的存储位置
 	 */
 	public static final String SAVEPATP_GOODS = "/img/goods/";
-<<<<<<< HEAD
 
 	// app相关
 	public static final int PERPAGE_APP = 10;
@@ -51,13 +50,9 @@ public class ParamUtils {
 	public static final String SECRET_KEY = "QQNVrx9ZNdQtnSSaA-eP3s2CugxCiLGcqsVd-UqX";
 	// 要上传的空间
 	public static final String bucketname = "wgyscsf";
-
-
-=======
 	/*
 	 * 轮播图的存储位置
 	 */
 	public static final String SAVEPATP_BANNERS = "/img/banners";
->>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
 
 }
