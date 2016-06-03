@@ -45,6 +45,13 @@ public class ParamUtils {
 	public static final int MIDDLE = 6;// 小于等于7
 	public static final int GOOD = 10;// 小于等于10
 
+	// 七牛相关配置
+	// 设置好账号的ACCESS_KEY和SECRET_KEY
+	public static final String ACCESS_KEY = "FHr8UUiAK_HWCa8UInZumUiwwhlSCsOjqn1_Ob1m";
+	public static final String SECRET_KEY = "QQNVrx9ZNdQtnSSaA-eP3s2CugxCiLGcqsVd-UqX";
+	// 要上传的空间
+	public static final String bucketname = "wgyscsf";
+
 
 
 }
