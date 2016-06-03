@@ -1,6 +1,5 @@
 package com.elife.utils;
 
-
 /**
  * @author 高远</n> 编写时期 2016-4-11 下午12:53:46</n> TODO 一些全局参数全部放到这个类里面</n>
  *         邮箱：wgyscsf@163.com</n> 博客 http://blog.csdn.net/wgyscsf</n>
@@ -35,6 +34,7 @@ public class ParamUtils {
 	 * 商品的存储位置
 	 */
 	public static final String SAVEPATP_GOODS = "/img/goods/";
+<<<<<<< HEAD
 
 	// app相关
 	public static final int PERPAGE_APP = 10;
@@ -53,5 +53,11 @@ public class ParamUtils {
 	public static final String bucketname = "wgyscsf";
 
 
+=======
+	/*
+	 * 轮播图的存储位置
+	 */
+	public static final String SAVEPATP_BANNERS = "/img/banners";
+>>>>>>> branch 'master' of https://github.com/cloudpluie/elife.git
 
 }
