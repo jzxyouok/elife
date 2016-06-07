@@ -1,10 +1,15 @@
 package com.elife.web.servlet.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +26,9 @@ import com.elife.model.service.BusinessService;
 import com.elife.model.service.ClassoneService;
 import com.elife.utils.DateUtils;
 import com.elife.utils.MD5Utils;
+import com.elife.utils.ParamUtils;
+import com.jspsmart.upload.SmartUpload;
+import com.jspsmart.upload.SmartUploadException;
 
 /**
  * @author 任创权
@@ -36,6 +44,19 @@ public class BusinessServlet extends HttpServlet {
 	BusinessService businessservice = new BusinessService();
 	BusinessClassService bclassservice = new BusinessClassService();
 	ClassoneService classoneService = new ClassoneService();
+	private ServletConfig config;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.servlet.GenericServlet#init()
+	 */
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		//
+		super.init();
+		this.config = config;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -66,31 +87,86 @@ public class BusinessServlet extends HttpServlet {
 		
 		// 获取操作类型
 		String action = req.getParameter("action");
-		
-		System.out.println(TAG + "我要执行的操作是" + action);
+		System.out.println("action = " + action);
 
 		if ("add".equals(action)) {
 			// 添加商家
 			try {
 				Businessclass businessclass = new Businessclass();
 
-				// 在此处获取了商家手机号(phone)、地址(address)、商家称呼(storename)
-				BeanUtils.populate(business, req.getParameterMap());
+				/******** 上传图片 ***********/
+				SmartUpload smartUpload = new SmartUpload();
+				smartUpload.initialize(config, req, resp);
+
+				try {
+					smartUpload.upload();
+				} catch (SmartUploadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Map<String, String> parameterMap = new HashMap<String, String>();
+				@SuppressWarnings("rawtypes")
+				Enumeration em = smartUpload.getRequest().getParameterNames();
+
+				while (em.hasMoreElements()) {
+					String key = (String) em.nextElement();
+					String value = smartUpload.getRequest().getParameter(key);
+					parameterMap.put(key, value);
+					System.out.println(TAG + "key:" + key + "value:" + value);
+				}
+
+				BeanUtils.populate(business, parameterMap);// 我们在这里获取自己封装的数据
+				// // 在此处获取了商家手机号(phone)、地址(address)、商家称呼(storename)
+				// BeanUtils.populate(business, req.getParameterMap());
+
 				// 获取商家的身份类别(一级分类)
-				String[] type = req.getParameterValues("type");
+				String[] type = smartUpload.getRequest().getParameterValues(
+						"type");
+				System.out.println(TAG + "身份类型 ：" + type);
 
 				business.setStatus(1);
 				business.setNickname(business.getPhone());
 				business.setLasttime(DateUtils.getNowDate());
 				business.setPassword(MD5Utils.md5("123456"));// 默认的密码
 
-				System.out.println(TAG + "注册时间为" + business.getLasttime());
+				// 上传文件
+				  String dir = ParamUtils.SAVEPATP + ParamUtils.SAVEPATP_GOODS;
+				  File file = new File(dir);
+				  if (!file.exists()) {
+					  file.mkdirs();// 文件夹不存在，创建
+				  } 
+				  
+				com.jspsmart.upload.File myFile = smartUpload.getFiles()
+						.getFile(0);
+				String fileName = myFile.getFileName();
 
-				// 根据添加商家返回的一些信息，判断接下进行什么样的操作
-				if (addBusiness(business, type)) {
-					// 添加成功，跳转到商家展示页面
-					resp.sendRedirect("businessservlet?action=show");
+				long currentTimeMillis = System.currentTimeMillis();
+
+				  String saveName = currentTimeMillis + fileName.substring(fileName.lastIndexOf(".")); 
+
+				  String saveFullPath = dir + saveName;
+
+				try {
+					smartUpload.getFiles().getFile(0).saveAs(saveFullPath);
+				} catch (SmartUploadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				
+				business.setImageurl(saveFullPath);
+				System.out.println(TAG + "整个对象为" + business);
+
+
+				System.out.println(TAG + "商家身份类型" + type.length);
+				 
+				
+				
+				
+				// 根据添加商家返回的一些信息，判断接下进行什么样的操作
+				 if (addBusiness(business, type)) {
+				 // 添加成功，跳转到商家展示页面
+				 resp.sendRedirect("businessservlet?action=show");
+				 }
 
 			} catch (IllegalAccessException e) {
 				throw new RuntimeException("添加商家出错");

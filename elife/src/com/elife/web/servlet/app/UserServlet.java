@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import com.elife.model.beans.Users;
 import com.elife.model.service.UserService;
 import com.google.gson.Gson;
@@ -128,13 +126,19 @@ public class UserServlet extends HttpServlet {
 			printWriter.print(json);
 			printWriter.close();
 		} else if (type.equals("4")) {
+			/*
+			 * 获取json数据，解析后，回传
+			 */
+			String userJson = req.getParameter("user");// userjson
 			Users user = new Users();
-			try {
-				BeanUtils.populate(user, req.getParameterMap());
-			} catch (Exception e) {
-				e.printStackTrace();
-				printWriter.print("-1");
-			}
+			Gson gson = new Gson();
+			user = gson.fromJson(userJson, new Users().getClass());
+			// try {
+			// BeanUtils.populate(user, req.getParameterMap());
+			// } catch (Exception e) {
+			// e.printStackTrace();
+			// printWriter.print("-1");
+			// }
 			UserService userService = new UserService();
 			boolean isExist = userService.update(user);
 			if (isExist) {
@@ -146,7 +150,7 @@ public class UserServlet extends HttpServlet {
 			}
 
 			// 开始解析
-			Gson gson = new Gson();
+			// Gson gson = new Gson();
 			String json = gson.toJson(user);
 			System.out.println(TAG + "4" + json);
 			printWriter.print(json);

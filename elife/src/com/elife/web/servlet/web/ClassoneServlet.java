@@ -21,7 +21,7 @@ import com.elife.model.service.ClassoneService;
 @WebServlet("/getclassone")
 public class ClassoneServlet extends HttpServlet {
 	
-	private final static String TAG = "ClassoneServlet:";
+	// private final static String TAG = "ClassoneServlet:";
 
 	/*
 	 * (non-Javadoc)
@@ -33,7 +33,7 @@ public class ClassoneServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println(TAG + "在这里可以得到");
+		// System.out.println(TAG + "在这里可以得到");
 		doPost(req, resp);
 	}
 
@@ -53,20 +53,18 @@ public class ClassoneServlet extends HttpServlet {
 		ClassoneService classone = new ClassoneService();
 		ArrayList<Classone> classonelist = (ArrayList<Classone>) classone
 				.getAllClass();
-		System.out.println(TAG + "可以得到所有的一级分类");
+		// System.out.println(TAG + "可以得到所有的一级分类");
 		
 
 		if (classonelist != null) {
 			//返回的一级分类集合不为空
-			System.out.println(TAG + "一级分类列表不为空");
+			// System.out.println(TAG + "一级分类列表不为空");
 			req.setAttribute("classonelist", classone.getAllClass());
 			req.getRequestDispatcher("web/admin/AddBusiness.jsp").forward(req,
 					resp);
 
 		} else {
 			// 返回的一级分类集合为空，跳转到错误页面
-			System.out.println(TAG + "一级分类列表为空");
-
 		}
 		
 

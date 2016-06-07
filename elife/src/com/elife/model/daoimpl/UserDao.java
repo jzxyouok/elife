@@ -48,7 +48,7 @@ public class UserDao implements IUserDao {
 		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
 		try {
 			Users users = queryRunner.query(sql, new BeanHandler<Users>(
-					Users.class), phone, password);
+					Users.class), phone, MD5Utils.md5(password));
 			return users;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,22 +98,40 @@ public class UserDao implements IUserDao {
 	 */
 	@Override
 	public boolean update(Users user) {
-		String sql = "update Users set username=?,nickname=?,password=?,email=?,sex=?,age=?,birthday=?,headimg=?,address=?,school=?,verify=?,status=?,remark=? where phone=?";
-		Object[] param = { user.getUsername(), user.getNickname(),
-				MD5Utils.md5(user.getPassword()), user.getEmail(),
-				user.getSex(), user.getAge(), user.getBirthday(),
-				user.getHeadimg(), user.getAddress(), user.getSchool(),
-				user.getVerify(), user.getStatus(),
-				user.getRemark(), user.getPhone() };
 
-		QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
-		try {
-			queryRunner.update(sql, param);
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
+		if (user.getPassword().equals("-1")) {
+			String sql = "update Users set username=?,nickname=?,email=?,sex=?,age=?,birthday=?,headimg=?,address=?,school=?,verify=?,status=?,remark=? where phone=?";
+			Object[] param = { user.getUsername(), user.getNickname(),
+					user.getEmail(), user.getSex(), user.getAge(),
+					user.getBirthday(), user.getHeadimg(), user.getAddress(),
+					user.getSchool(), user.getVerify(), user.getStatus(),
+					user.getRemark(), user.getPhone() };
+			QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+			try {
+				queryRunner.update(sql, param);
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+		} else {
+			String sql = "update Users set username=?,nickname=?,password=?,email=?,sex=?,age=?,birthday=?,headimg=?,address=?,school=?,verify=?,status=?,remark=? where phone=?";
+			Object[] param = { user.getUsername(), user.getNickname(),
+					MD5Utils.md5(user.getPassword()), user.getEmail(),
+					user.getSex(), user.getAge(), user.getBirthday(),
+					user.getHeadimg(), user.getAddress(), user.getSchool(),
+					user.getVerify(), user.getStatus(), user.getRemark(),
+					user.getPhone() };
+			QueryRunner queryRunner = new QueryRunner(C3p0Utils.getDataSource());
+			try {
+				queryRunner.update(sql, param);
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
+
 	}
 
 }

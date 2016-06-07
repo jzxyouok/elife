@@ -32,12 +32,13 @@ public class BusinessDao implements IBusiness {
 		//  
 		QueryRunner runner = new QueryRunner(C3p0Utils.getDataSource());
 		Connection conn = C3p0Utils.getConnection();
-		String sql = "insert into business(phone,address,storename,nickname,password,status,lasttime)"
-				+ " values (?,?,?,?,?,?,?)";
+		String sql = "insert into business(phone,address,storename,nickname,password,status,lasttime,decription,imageurl)"
+				+ " values (?,?,?,?,?,?,?,?,?)";
 		String[] params = { business.getPhone(), business.getAddress(),
 				business.getStorename(), business.getNickname(),
 				business.getPassword(), business.getStatus() + "",
-				business.getLasttime()
+				business.getLasttime(), business.getDecription(),
+				business.getImageurl()
 		};
 
 		try {

@@ -24,7 +24,7 @@ public class BusinessService {
 	/**
 	 * 
 	 */
-	private static final String TAG = "BusinessService";
+	// private static final String TAG = "BusinessService";
 	BusinessDao businessdao = new BusinessDao();
 
 	/* (non-Javadoc)
@@ -50,11 +50,7 @@ public class BusinessService {
 			// 获取商家的身份类型
 			List<Businessclass> result = bcDao.getClassById(businessList.get(i)
 					.getId());
-			if (result == null) {
-				System.out.println(TAG + "获取的商家身份集合为空");
-			} else {
-				System.out.println(TAG + "商家身份集合大小" + result.size());
-			}
+
 			String identity = "";
 			if (result != null) {
 				for (Businessclass businessclass : result) {
@@ -113,7 +109,20 @@ public class BusinessService {
 	public Business getBusinessById(int businessid) {
 		// businessdao.getBussinessById(businessid);
 		return businessdao.getBussinessById(businessid);
+	}
+	
 
+	/**
+	 * 根据商家id获取商家名
+	 */
+	public List<String> getNameById(List<Integer> ids) {
+		List<String> nameList = new ArrayList<String>();
+
+		for (int id : ids) {
+			Business business = getBusinessById(id);
+			nameList.add(business.getStorename());
+		}
+		return nameList;
 	}
 
 

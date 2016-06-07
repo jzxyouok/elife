@@ -17,6 +17,8 @@ import org.json.JSONObject;
 import com.elife.model.beans.Business;
 import com.elife.model.beans.Pager;
 import com.elife.model.service.BusinessService;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 
@@ -75,11 +77,40 @@ public class MerchantServlet extends HttpServlet {
 			String businessid = req.getParameter("id");
 			getMerchantComment(businessid, null, null);
 		} else if (type.equals("4")) {
-			// 所有的评论
-			String businessid = req.getParameter("id");
-			String info = req.getParameter("info");
-			String page = req.getParameter("page");
-			getMerchantComment(businessid, page, info);
+			// 获取商家名字
+			String ids = req.getParameter("ids");
+
+			System.out.println("获取的数据集合为" + ids);
+			Gson gson = new Gson();
+			
+			List<Integer> merchantnameid = gson.fromJson(ids,
+					new TypeToken<List<Integer>>() {
+					}.getType());
+			
+			// 根据商家名获取商家名
+			if (merchantnameid != null && merchantnameid.size() > 0) {
+				List<String> nameList = businessservice
+						.getNameById(merchantnameid);
+
+				String result = gson.toJson(nameList);
+				out.println(result);
+			} else {
+				out.println("-1");
+			}
+
+		} else if (type.equals("5")) {
+			// List<Integer> list = new ArrayList<Integer>();
+			// list.add(21);
+			// list.add(22);
+			// list.add(24);
+			String name = req.getParameter("name");
+			String password = req.getParameter("password");
+			Gson gson = new Gson();
+			
+			String result = gson.toJson(name + password);
+			
+			out.println(result + "asdf");
+			
 		}
 
 

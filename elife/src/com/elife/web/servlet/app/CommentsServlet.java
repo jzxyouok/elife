@@ -69,7 +69,6 @@ public class CommentsServlet extends HttpServlet {
 			}
 			if (info == null || info == "") {
 				infos = 0;
-
 			} else {
 				infos = Integer.parseInt(info);
 			}
